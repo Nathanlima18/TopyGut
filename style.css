@@ -1,0 +1,172 @@
+/* CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #222222;
+}
+
+/* CABEÇALHO */
+.cabecalho {
+    width: 100%;
+    min-height: 80px;
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.logo h1 {
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.menu a {
+    color: #222222;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    opacity: 0.6;
+}
+
+/* PRIMEIRA TELA */
+.hero {
+    min-height: calc(100vh - 80px);
+    padding: 70px 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.hero-texto {
+    width: 50%;
+}
+
+.destaque {
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+}
+
+.hero h2 {
+    font-size: 52px;
+    line-height: 1.05;
+    margin-bottom: 22px;
+}
+
+.hero-texto > p:not(.destaque) {
+    max-width: 560px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #555555;
+}
+
+/* BOTÕES */
+.hero-botoes {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.botao {
+    display: inline-block;
+    padding: 14px 25px;
+
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.botao-principal {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+.botao-principal:hover {
+    transform: translateY(-2px);
+}
+
+.botao-secundario {
+    color: #111111;
+    border: 1px solid #111111;
+}
+
+.botao-secundario:hover {
+    background-color: #f2f2f2;
+}
+
+/* ÁREA DA IMAGEM */
+.hero-imagem {
+    width: 50%;
+}
+
+.imagem-placeholder {
+    width: 100%;
+    height: 430px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #eeeeee;
+    border-radius: 12px;
+    color: #777777;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 850px) {
+    .cabecalho {
+        padding: 20px 5%;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 50px 5%;
+        flex-direction: column;
+    }
+
+    .hero-texto,
+    .hero-imagem {
+        width: 100%;
+    }
+
+    .hero h2 {
+        font-size: 38px;
+    }
+}
