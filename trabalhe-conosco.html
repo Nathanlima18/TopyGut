@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Trabalhe conosco e faça parte da equipe Topy'Gut."
+    >
+
+    <title>Trabalhe Conosco | Topy'Gut</title>
+
+    <!-- FAVICON -->
+    <link
+        rel="icon"
+        type="image/avif"
+        href="img/Logo Topy'Gut.avif"
+    >
+
+    <!-- CSS PRINCIPAL -->
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <!-- CSS TRABALHE CONOSCO -->
+    <link
+        rel="stylesheet"
+        href="css/trabalhe-conosco.css">
+    >
+</head>
+
+
+<body class="pagina-trabalhe">
+
+
+    <!-- =====================================================
+         CABEÇALHO
+    ====================================================== -->
+
+    <header class="cabecalho">
+
+        <div class="cabecalho-container">
+
+            <!-- LOGO -->
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Página inicial da Topy'Gut"
+            >
+                <img
+                    src="img/Logo Topy'Gut.avif"
+                    alt="Logo Topy'Gut"
+                >
+            </a>
+
+
+            <!-- MENU -->
+            <nav class="menu">
+
+                <a href="index.html#inicio">
+                    Início
+                </a>
+
+                <a href="index.html#produtos">
+                    Produtos
+                </a>
+
+                <a href="index.html#pao-de-queijo">
+                    Pão de Queijo
+                </a>
+
+                <a href="index.html#area-cliente">
+                    Área do Cliente
+                </a>
+
+                <a href="index.html#distribuidor">
+                    Seja nosso Distribuidor
+                </a>
+
+                <a
+                    href="trabalhe-conosco.html"
+                    class="menu-ativo"
+                >
+                    Estamos Contratando
+                </a>
+
+                <a href="index.html#contato">
+                    Contato
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+
+    <main>
+
+        <section class="trabalhe-conosco">
+
+            <div class="trabalhe-container">
+
+
+                <!-- =================================================
+                     INTRODUÇÃO
+                ================================================== -->
+
+                <div class="trabalhe-header">
+
+                    <span class="trabalhe-tag">
+                        Faça parte da nossa equipe
+                    </span>
+
+                    <h1>
+                        Trabalhe Conosco
+                    </h1>
+
+                    <p>
+                        Se você está interessado em trabalhar na Topy'Gut,
+                        estamos em busca de pessoas comprometidas,
+                        responsáveis e que desejam crescer junto com
+                        a nossa equipe.
+                    </p>
+
+                    <p>
+                        Preencha o formulário abaixo e envie seu currículo.
+                        Seus dados serão utilizados exclusivamente para
+                        fins relacionados ao processo de recrutamento
+                        e seleção.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     FORMULÁRIO
+                ================================================== -->
+
+                <form
+                    class="form-trabalhe"
+                    id="formTrabalhe"
+                    enctype="multipart/form-data"
+                >
+
+                    <div class="form-grid">
+
+
+                        <!-- NOME COMPLETO -->
+
+                        <div class="form-group">
+
+                            <label for="nome">
+                                Nome completo
+                                <span class="obrigatorio">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Digite seu nome completo"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- DATA DE NASCIMENTO -->
+
+                        <div class="form-group">
+
+                            <label for="nascimento">
+                                Data de nascimento
+                                <span class="obrigatorio">*</span>
+                            </label>
+
+                            <input
+                                type="date"
+                                id="nascimento"
+                                name="nascimento"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- E-MAIL -->
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                E-mail
+                                <span class="obrigatorio">*</span>
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Digite seu e-mail"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- TELEFONE / WHATSAPP -->
+
+                        <div class="form-group">
+
+                            <label for="telefone">
+                                Telefone / WhatsApp
+                                <span class="obrigatorio">*</span>
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="telefone"
+                                name="telefone"
+                                placeholder="(11) 99999-9999"
+                                autocomplete="tel"
+                                maxlength="15"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- ENDEREÇO -->
+
+                        <div class="form-group">
+
+                            <label for="endereco">
+                                Endereço
+                                <span class="obrigatorio">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="endereco"
+                                name="endereco"
+                                placeholder="Rua, número e complemento"
+                                autocomplete="street-address"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CIDADE -->
+
+                        <div class="form-group">
+
+                            <label for="cidade">
+                                Cidade
+                                <span class="obrigatorio">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="cidade"
+                                name="cidade"
+                                placeholder="Digite sua cidade"
+                                autocomplete="address-level2"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CEP -->
+
+                        <div class="form-group">
+
+                            <label for="cep">
+                                CEP
+                                <span class="obrigatorio">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="cep"
+                                name="cep"
+                                placeholder="00000-000"
+                                autocomplete="postal-code"
+                                inputmode="numeric"
+                                maxlength="9"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- EXPERIÊNCIA PROFISSIONAL -->
+
+                        <div class="form-group">
+
+                            <label for="experiencia">
+                                Experiência profissional
+                            </label>
+
+                            <textarea
+                                id="experiencia"
+                                name="experiencia"
+                                placeholder="Conte brevemente sobre suas experiências profissionais"
+                            ></textarea>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             CURRÍCULO
+                        ================================================== -->
+
+                        <div class="curriculo-area">
+
+                            <label for="curriculo">
+                                Currículo
+                                <span class="obrigatorio">*</span>
+                            </label>
+
+                            <input
+                                type="file"
+                                id="curriculo"
+                                name="curriculo"
+                                accept=".pdf,.doc,.docx"
+                                required
+                            >
+
+                            <p class="curriculo-info">
+                                Formatos aceitos: PDF, DOC ou DOCX.
+                            </p>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             LGPD
+                        ================================================== -->
+
+                        <div class="lgpd-area">
+
+                            <input
+                                type="checkbox"
+                                id="lgpd"
+                                name="lgpd"
+                                required
+                            >
+
+                            <label for="lgpd">
+
+                                Declaro que li e concordo com o tratamento
+                                dos meus dados pessoais para fins de
+                                recrutamento e seleção, conforme a legislação
+                                aplicável e a
+
+                                <a href="#">
+                                    Política de Privacidade da Topy'Gut
+                                </a>.
+
+                                <span class="obrigatorio">*</span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- AVISO DE PRIVACIDADE -->
+
+                        <p class="privacidade-info">
+
+                            Os dados fornecidos neste formulário serão
+                            utilizados exclusivamente para avaliação da
+                            candidatura e demais etapas relacionadas ao
+                            processo seletivo, observando a Lei Geral de
+                            Proteção de Dados Pessoais
+                            (LGPD – Lei nº 13.709/2018).
+
+                        </p>
+
+
+                        <!-- BOTÃO -->
+
+                        <div class="form-botao">
+
+                            <button
+                                type="submit"
+                                class="btn-enviar"
+                            >
+                                Enviar candidatura
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         RODAPÉ
+    ====================================================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-conteudo">
+
+            <div class="rodape-logo">
+
+                <img
+                    src="img/Logo Topy'Gut.avif"
+                    alt="Logo Topy'Gut"
+                >
+
+            </div>
+
+            <p>
+                © 2026 Topy'Gut. Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="js/trabalhe-conosco.js"></script>
+
+</body>
+
+</html>

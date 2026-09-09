@@ -1,0 +1,1449 @@
+/* =========================================================
+   RESET E CONFIGURAÇÕES GERAIS
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   CORES
+========================================================= */
+
+:root {
+    --azul: #168fd3;
+    --azul-escuro: #075c98;
+
+    --rosa: #fb8fb4;
+    --rosa-claro: #f8abc7;
+    --rosa-card: #ffe2ec;
+
+    --azul-card: #e4f3fb;
+    --azul-muito-claro: #f1f9fe;
+
+    --amarelo: #f4c956;
+    --amarelo-card: #fff1bb;
+
+    --dourado: #d6a632;
+    --dourado-claro: #f0d27c;
+
+    --branco: #ffffff;
+
+    --cinza-claro: #f7f7f7;
+    --cinza-borda: #e8e8e8;
+    --cinza-texto: #5f5f5f;
+
+    --texto: #252525;
+
+    --sombra:
+        0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.cabecalho {
+    width: 100%;
+
+    background-color: #ffffff;
+
+    border-bottom: 1px solid #eeeeee;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+}
+
+.cabecalho-container {
+    width: 90%;
+
+    max-width: 1500px;
+
+    height: 95px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    display: flex;
+
+    align-items: center;
+}
+
+.logo img {
+    width: 145px;
+
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu {
+    display: flex;
+
+    align-items: center;
+
+    gap: 38px;
+}
+
+.menu a {
+    position: relative;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    color: #222222;
+
+    transition: color 0.25s ease;
+}
+
+.menu a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -7px;
+
+    width: 0;
+
+    height: 3px;
+
+    border-radius: 20px;
+
+    background-color: var(--rosa);
+
+    transition: width 0.25s ease;
+}
+
+.menu a:hover {
+    color: var(--azul);
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+.botao {
+    min-width: 165px;
+
+    padding: 15px 26px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+.botao:hover {
+    transform: translateY(-3px);
+}
+
+
+/* BOTÃO AZUL */
+
+.botao-azul {
+    background-color: var(--azul);
+
+    color: #ffffff;
+
+    border: 2px solid var(--azul);
+
+    box-shadow:
+        0 10px 25px rgba(22, 143, 211, 0.18);
+}
+
+.botao-azul:hover {
+    background-color: #ffffff;
+
+    color: var(--azul);
+
+    box-shadow:
+        0 14px 30px rgba(22, 143, 211, 0.22);
+}
+
+
+/* BOTÃO ROSA */
+
+.botao-rosa {
+    background-color: var(--rosa);
+
+    color: #ffffff;
+
+    border: 2px solid var(--rosa);
+
+    box-shadow:
+        0 10px 25px rgba(251, 143, 180, 0.22);
+}
+
+.botao-rosa:hover {
+    background-color: #ffffff;
+
+    color: var(--rosa);
+
+    box-shadow:
+        0 14px 30px rgba(251, 143, 180, 0.25);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    width: 90%;
+
+    max-width: 1500px;
+
+    min-height: calc(100vh - 95px);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 80px;
+
+    padding: 70px 0;
+}
+
+.hero-texto {
+    max-width: 620px;
+}
+
+.destaque {
+    display: inline-block;
+
+    margin-bottom: 22px;
+
+    padding: 7px 18px;
+
+    border-radius: 30px;
+
+    background-color: var(--rosa-claro);
+
+    color: #d95f8d;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    margin-bottom: 22px;
+
+    color: var(--azul-escuro);
+
+    font-size: clamp(45px, 4vw, 68px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+}
+
+.hero-texto > p:not(.destaque) {
+    max-width: 600px;
+
+    margin-bottom: 32px;
+
+    color: var(--cinza-texto);
+
+    font-size: 19px;
+
+    line-height: 1.7;
+}
+
+.hero-botoes {
+    display: flex;
+
+    gap: 16px;
+
+    flex-wrap: wrap;
+}
+
+.hero-imagem {
+    width: 100%;
+}
+
+
+/* =========================================================
+   PLACEHOLDER DE IMAGENS
+========================================================= */
+
+.imagem-placeholder {
+    width: 100%;
+
+    min-height: 450px;
+
+    border: 1px solid #e4e4e4;
+
+    border-radius: 28px;
+
+    background-color: #f8f8f8;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #666666;
+
+    font-weight: 600;
+
+    box-shadow: var(--sombra);
+}
+
+
+/* =========================================================
+   CONFIGURAÇÃO PADRÃO DAS SEÇÕES
+========================================================= */
+
+.produtos,
+.pao-de-queijo,
+.area-cliente,
+.distribuidor,
+.trabalhe,
+.contato {
+    scroll-margin-top: 110px;
+}
+
+
+/* =========================================================
+   TÍTULOS DAS SEÇÕES
+========================================================= */
+
+.titulo-secao {
+    max-width: 750px;
+
+    margin: 0 auto 55px;
+
+    text-align: center;
+}
+
+.subtitulo-secao {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color: var(--rosa);
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+.titulo-secao h2 {
+    margin-bottom: 14px;
+
+    color: var(--azul-escuro);
+
+    font-size: clamp(32px, 3vw, 46px);
+
+    line-height: 1.15;
+}
+
+.titulo-secao p {
+    color: var(--cinza-texto);
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PRODUTOS
+========================================================= */
+
+.produtos {
+    padding: 100px 5%;
+
+    background-color: #fafafa;
+}
+
+.grade-produtos {
+    width: 100%;
+
+    max-width: 1500px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 30px;
+}
+
+
+/* =========================================================
+   CARD DE PRODUTO
+========================================================= */
+
+.card-produto {
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(0, 0, 0, 0.05);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.06);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card-produto:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.11);
+}
+
+
+/* =========================================================
+   IMAGEM DOS PRODUTOS
+========================================================= */
+
+.produto-imagem {
+    height: 280px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    text-align: center;
+
+    color: rgba(0, 0, 0, 0.45);
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   CONTEÚDO DO PRODUTO
+========================================================= */
+
+.produto-conteudo {
+    padding: 28px;
+}
+
+.produto-categoria {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+
+    text-transform: uppercase;
+}
+
+.produto-conteudo h3 {
+    margin-bottom: 6px;
+
+    color: var(--azul-escuro);
+
+    font-size: 24px;
+
+    line-height: 1.2;
+}
+
+.produto-tamanho {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #777777;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.produto-conteudo p {
+    min-height: 78px;
+
+    margin-bottom: 22px;
+
+    color: var(--cinza-texto);
+
+    font-size: 15px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   BOTÃO PRODUTO
+========================================================= */
+
+.produto-botao {
+    padding: 11px 20px;
+
+    border-radius: 8px;
+
+    background-color: var(--azul);
+
+    border: 2px solid var(--azul);
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.produto-botao:hover {
+    background-color: #ffffff;
+
+    color: var(--azul);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   CARDS ROSA
+   IOGURTES
+========================================================= */
+
+.card-rosa {
+    background-color: var(--rosa-card);
+}
+
+.card-rosa .produto-imagem {
+    background-color: var(--rosa-claro);
+}
+
+.card-rosa .produto-categoria {
+    color: #d95f8d;
+}
+
+.card-rosa .produto-conteudo {
+    background-color: var(--rosa-card);
+}
+
+
+/* =========================================================
+   CARD AZUL
+========================================================= */
+
+.card-azul {
+    background-color: var(--azul-card);
+}
+
+.card-azul .produto-imagem {
+    background-color: #cfeaf8;
+}
+
+.card-azul .produto-categoria {
+    color: var(--azul);
+}
+
+.card-azul .produto-conteudo {
+    background-color: var(--azul-card);
+}
+
+
+/* =========================================================
+   CARD AMARELO
+========================================================= */
+
+.card-amarelo {
+    background-color: var(--amarelo-card);
+}
+
+.card-amarelo .produto-imagem {
+    background-color: #ffe89a;
+}
+
+.card-amarelo .produto-categoria {
+    color: #d69600;
+}
+
+.card-amarelo .produto-conteudo {
+    background-color: var(--amarelo-card);
+}
+
+
+/* =========================================================
+   PÃO DE QUEIJO
+========================================================= */
+
+.pao-de-queijo {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 110px 5%;
+
+    background-color: var(--azul-escuro);
+}
+
+
+/* =========================================================
+   PONTOS DOURADOS
+========================================================= */
+
+.pao-de-queijo::before,
+.pao-de-queijo::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background-color: var(--dourado);
+
+    opacity: 0.45;
+
+    pointer-events: none;
+}
+
+.pao-de-queijo::before {
+    width: 11px;
+
+    height: 11px;
+
+    top: 80px;
+
+    left: 8%;
+
+    box-shadow:
+        70px 60px 0 var(--dourado-claro),
+        165px 25px 0 var(--dourado),
+        240px 110px 0 var(--dourado-claro),
+        310px 45px 0 var(--dourado),
+        390px 145px 0 var(--dourado-claro),
+        500px 70px 0 var(--dourado),
+        610px 125px 0 var(--dourado-claro),
+        720px 40px 0 var(--dourado),
+        850px 110px 0 var(--dourado-claro);
+}
+
+.pao-de-queijo::after {
+    width: 7px;
+
+    height: 7px;
+
+    right: 7%;
+
+    bottom: 90px;
+
+    box-shadow:
+        -90px -30px 0 var(--dourado),
+        -170px 20px 0 var(--dourado-claro),
+        -260px -60px 0 var(--dourado),
+        -340px 15px 0 var(--dourado-claro),
+        -440px -40px 0 var(--dourado),
+        -520px 30px 0 var(--dourado-claro),
+        -620px -55px 0 var(--dourado);
+}
+
+
+/* =========================================================
+   CONTEÚDO PÃO DE QUEIJO
+========================================================= */
+
+.pao-de-queijo .titulo-secao,
+.grade-pao-queijo {
+    position: relative;
+
+    z-index: 2;
+}
+
+.pao-de-queijo .subtitulo-secao {
+    color: var(--dourado-claro);
+}
+
+.pao-de-queijo .titulo-secao h2 {
+    color: #ffffff;
+}
+
+.pao-de-queijo .titulo-secao p {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.grade-pao-queijo {
+    width: 100%;
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 30px;
+}
+
+
+/* =========================================================
+   CARD PÃO DE QUEIJO
+========================================================= */
+
+.card-pao-queijo {
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    background-color: #ffffff;
+
+    border: 1px solid rgba(214, 166, 50, 0.45);
+
+    border-top: 5px solid var(--dourado);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card-pao-queijo:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 22px 50px rgba(0, 0, 0, 0.25);
+}
+
+.card-pao-queijo .produto-imagem {
+    background-color: #0d6ca8;
+
+    color: #ffffff;
+}
+
+.card-pao-queijo .produto-categoria {
+    color: var(--dourado);
+}
+
+.card-pao-queijo .produto-conteudo h3 {
+    color: var(--azul-escuro);
+}
+
+.card-pao-queijo .produto-botao {
+    background-color: var(--azul);
+
+    border-color: var(--azul);
+}
+
+.card-pao-queijo .produto-botao:hover {
+    background-color: var(--dourado);
+
+    border-color: var(--dourado);
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   ÁREA DO CLIENTE
+========================================================= */
+
+.area-cliente {
+    padding: 110px 5%;
+
+    background-color: #f4faff;
+}
+
+.area-cliente-conteudo {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    padding: 65px;
+
+    text-align: center;
+
+    background-color: #ffffff;
+
+    border-radius: 28px;
+
+    box-shadow: var(--sombra);
+}
+
+.area-cliente h2 {
+    margin-bottom: 15px;
+
+    color: var(--azul-escuro);
+
+    font-size: 42px;
+}
+
+.area-cliente p {
+    max-width: 620px;
+
+    margin: 0 auto 30px;
+
+    color: var(--cinza-texto);
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   SEJA NOSSO DISTRIBUIDOR
+========================================================= */
+
+.distribuidor {
+    padding: 115px 5%;
+
+    background-color: var(--azul-muito-claro);
+}
+
+.distribuidor-conteudo {
+    width: 100%;
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 0.9fr;
+
+    align-items: center;
+
+    gap: 70px;
+}
+
+.distribuidor-texto .subtitulo-secao {
+    color: var(--azul);
+}
+
+.distribuidor-texto h2 {
+    margin-bottom: 20px;
+
+    color: var(--azul-escuro);
+
+    font-size: clamp(36px, 4vw, 52px);
+
+    line-height: 1.1;
+}
+
+.distribuidor-texto p {
+    max-width: 650px;
+
+    margin-bottom: 18px;
+
+    color: var(--cinza-texto);
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+.distribuidor-texto .botao {
+    margin-top: 12px;
+}
+
+
+/* =========================================================
+   CARD DISTRIBUIDOR
+========================================================= */
+
+.distribuidor-destaque {
+    padding: 42px;
+
+    border-radius: 28px;
+
+    background-color: var(--azul-escuro);
+
+    box-shadow:
+        0 20px 50px rgba(7, 92, 152, 0.18);
+}
+
+.distribuidor-destaque h3 {
+    margin-bottom: 28px;
+
+    color: #ffffff;
+
+    font-size: 28px;
+
+    line-height: 1.25;
+}
+
+.vantagens-distribuidor {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.vantagem {
+    padding: 18px 20px;
+
+    border-radius: 14px;
+
+    background-color: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.vantagem strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--rosa-claro);
+
+    font-size: 17px;
+}
+
+.vantagem span {
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ESTAMOS CONTRATANDO
+========================================================= */
+
+.trabalhe {
+    padding: 110px 5%;
+
+    background-color: var(--rosa-claro);
+}
+
+.trabalhe-conteudo {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.trabalhe .subtitulo-secao {
+    color: #ffffff;
+}
+
+.trabalhe h2 {
+    margin-bottom: 16px;
+
+    color: var(--azul-escuro);
+
+    font-size: 42px;
+}
+
+.trabalhe p {
+    max-width: 650px;
+
+    margin: 0 auto 30px;
+
+    color: #555555;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   CONTATO
+========================================================= */
+
+.contato {
+    padding: 110px 5% 70px;
+
+    background-color: #ffffff;
+}
+
+.contato-conteudo {
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        0.8fr 1.2fr;
+
+    gap: 70px;
+
+    align-items: start;
+}
+
+.contato-info {
+    padding: 35px;
+
+    border-radius: 22px;
+
+    background-color: #f4faff;
+}
+
+.contato-info h3 {
+    margin-bottom: 15px;
+
+    color: var(--azul-escuro);
+
+    font-size: 30px;
+}
+
+.contato-info p {
+    margin-bottom: 14px;
+
+    color: var(--cinza-texto);
+}
+
+
+/* =========================================================
+   FORMULÁRIO
+========================================================= */
+
+.formulario-contato {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.campo {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.campo label {
+    color: var(--azul-escuro);
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 9px;
+
+    background-color: #ffffff;
+
+    color: #333333;
+
+    outline: none;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.campo textarea {
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    border-color: var(--azul);
+
+    box-shadow:
+        0 0 0 3px rgba(22, 143, 211, 0.1);
+}
+
+
+/* =========================================================
+   FIORINOS
+========================================================= */
+
+.fiorinos-container {
+    width: 100%;
+
+    min-height: 260px;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: flex-end;
+
+    padding: 0 55px;
+
+    background-color: #ffffff;
+
+    position: relative;
+
+    z-index: 20;
+
+    margin-bottom: -18px;
+
+    pointer-events: none;
+}
+
+.fiorinos-img {
+    display: block;
+
+    width: 470px;
+
+    max-width: 38vw;
+
+    height: auto;
+
+    object-fit: contain;
+
+    position: relative;
+
+    z-index: 25;
+
+    filter:
+        drop-shadow(
+            0 8px 6px
+            rgba(0, 0, 0, 0.12)
+        );
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+.rodape {
+    position: relative;
+
+    z-index: 10;
+
+    padding: 45px 5%;
+
+    background-color: var(--azul-escuro);
+
+    color: #ffffff;
+}
+
+.rodape-conteudo {
+    width: 100%;
+
+    max-width: 1500px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.rodape-logo img {
+    width: 120px;
+
+    height: auto;
+}
+
+.rodape p {
+    font-size: 14px;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .cabecalho-container {
+        height: auto;
+
+        padding: 20px 0;
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    .menu {
+        justify-content: center;
+
+        gap: 20px;
+
+        flex-wrap: wrap;
+    }
+
+    .hero {
+        min-height: auto;
+
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+
+        padding: 70px 0;
+    }
+
+    .hero-texto {
+        max-width: 750px;
+    }
+
+    .grade-produtos {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .grade-pao-queijo {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .distribuidor-conteudo {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .contato-conteudo {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .fiorinos-container {
+        min-height: 230px;
+
+        padding: 0 35px;
+
+        margin-bottom: -15px;
+    }
+
+    .fiorinos-img {
+        width: 430px;
+
+        max-width: 52vw;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   CELULAR
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .logo img {
+        width: 125px;
+    }
+
+    .menu {
+        gap: 12px 18px;
+    }
+
+    .menu a {
+        font-size: 14px;
+    }
+
+    .hero {
+        width: 88%;
+
+        padding: 55px 0;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero h1 br {
+        display: none;
+    }
+
+    .hero-texto > p:not(.destaque) {
+        font-size: 17px;
+    }
+
+    .hero-botoes {
+        flex-direction: column;
+    }
+
+    .hero-botoes .botao {
+        width: 100%;
+    }
+
+    .imagem-placeholder {
+        min-height: 320px;
+    }
+
+    .produtos,
+    .pao-de-queijo,
+    .area-cliente,
+    .distribuidor,
+    .trabalhe,
+    .contato {
+        padding: 75px 6%;
+    }
+
+    .grade-produtos {
+        grid-template-columns: 1fr;
+    }
+
+    .grade-pao-queijo {
+        grid-template-columns: 1fr;
+    }
+
+    .produto-imagem {
+        height: 240px;
+    }
+
+    .produto-conteudo p {
+        min-height: auto;
+    }
+
+    .area-cliente-conteudo {
+        padding: 45px 25px;
+    }
+
+    .distribuidor-destaque {
+        padding: 30px 22px;
+    }
+
+    .area-cliente h2,
+    .trabalhe h2 {
+        font-size: 34px;
+    }
+
+    /* FIORINOS */
+
+    .fiorinos-container {
+        min-height: 190px;
+
+        justify-content: center;
+
+        padding: 0 15px;
+
+        margin-bottom: -10px;
+    }
+
+    .fiorinos-img {
+        width: 360px;
+
+        max-width: 92vw;
+    }
+
+    /* RODAPÉ */
+
+    .rodape-conteudo {
+        flex-direction: column;
+
+        text-align: center;
+    }
+}

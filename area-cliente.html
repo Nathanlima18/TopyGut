@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Área do Cliente | Topy'Gut</title>
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        type="image/avif"
+        href="img/Logo Topy´Gut.avif"
+    >
+
+    <!-- CSS da Área do Cliente -->
+    <link
+        rel="stylesheet"
+        href="css/area-cliente.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================== -->
+
+    <header class="cabecalho">
+
+        <div class="cabecalho-container">
+
+            <a href="index.html" class="logo">
+                <img
+                    src="img/Logo Topy´Gut.avif"
+                    alt="Logo Topy'Gut"
+                >
+            </a>
+
+
+            <nav class="menu">
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="index.html#produtos">
+                    Produtos
+                </a>
+
+                <a href="index.html#pao-de-queijo">
+                    Pão de Queijo
+                </a>
+
+                <a
+                    href="area-cliente.html"
+                    class="ativo"
+                >
+                    Área do Cliente
+                </a>
+
+                <a href="index.html#distribuidor">
+                    Seja nosso Distribuidor
+                </a>
+
+                <a href="trabalhe-conosco.html">
+                    Estamos Contratando
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         ÁREA DE LOGIN
+    ========================================== -->
+
+    <main class="area-login">
+
+        <div class="login-container">
+
+
+            <!-- LADO ESQUERDO -->
+
+            <section class="login-apresentacao">
+
+                <span class="login-tag">
+                    ÁREA EXCLUSIVA
+                </span>
+
+                <h1>
+                    Bem-vindo à<br>
+                    Área do Cliente
+                </h1>
+
+                <p>
+                    Acesse sua conta para consultar
+                    produtos, realizar pedidos e
+                    acompanhar suas compras com a
+                    Topy'Gut.
+                </p>
+
+
+                <div class="login-beneficios">
+
+                    <div class="beneficio">
+                        <span>✓</span>
+                        <p>Faça seus pedidos online</p>
+                    </div>
+
+                    <div class="beneficio">
+                        <span>✓</span>
+                        <p>Consulte seus produtos e preços</p>
+                    </div>
+
+                    <div class="beneficio">
+                        <span>✓</span>
+                        <p>Acompanhe seu histórico de pedidos</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- LADO DIREITO / LOGIN -->
+
+<div class="login-card-wrapper">
+
+    <!-- MASCOTE -->
+    <img
+        src="img/mascote.png"
+        alt="Mascote Topy'Gut"
+        class="mascote-login"
+    >
+
+    <section class="login-card">
+
+        <div class="login-card-header">
+
+            <h2>
+                Acesse sua conta
+            </h2>
+
+            <p>
+                Informe seus dados para continuar.
+            </p>
+
+        </div>
+
+
+        <form id="formLogin">
+
+            <!-- E-MAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Digite seu e-mail"
+                    autocomplete="email"
+                    required
+                >
+
+            </div>
+
+
+            <!-- SENHA -->
+
+            <div class="form-group">
+
+                <label for="senha">
+                    Senha
+                </label>
+
+
+                <div class="senha-container">
+
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="mostrar-senha"
+                        id="mostrarSenha"
+                        aria-label="Mostrar senha"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- OPÇÕES -->
+
+            <div class="login-opcoes">
+
+                <label class="lembrar">
+
+                    <input
+                        type="checkbox"
+                        id="lembrar"
+                    >
+
+                    <span>
+                        Lembrar de mim
+                    </span>
+
+                </label>
+
+
+                <a
+                    href="#"
+                    class="esqueci-senha"
+                >
+                    Esqueci minha senha
+                </a>
+
+            </div>
+
+
+            <!-- BOTÃO -->
+
+            <button
+                type="submit"
+                class="btn-entrar"
+            >
+                Entrar
+            </button>
+
+
+            <!-- AVISO -->
+
+            <p class="login-aviso">
+                O acesso à Área do Cliente é
+                exclusivo para clientes cadastrados
+                pela Topy'Gut.
+            </p>
+
+        </form>
+
+    </section>
+
+</div>
+
+</div>
+
+</main>
+
+
+    <!-- =========================================
+         RODAPÉ
+    ========================================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-container">
+
+            <img
+                src="img/Logo Topy´Gut.avif"
+                alt="Topy'Gut"
+                class="rodape-logo"
+            >
+
+            <p>
+                © 2026 Topy'Gut. Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="js/area-cliente.js"></script>
+
+</body>
+
+</html>

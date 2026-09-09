@@ -1,0 +1,746 @@
+/* =========================================================
+   TOPY'GUT - TRABALHE CONOSCO
+   Estilos exclusivos da página Trabalhe Conosco
+========================================================= */
+
+
+/* =========================================================
+   CONFIGURAÇÕES GERAIS
+========================================================= */
+
+.pagina-trabalhe {
+    margin: 0;
+    min-height: 100vh;
+
+    background-color: #ffffff;
+
+    color: #333333;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+   Mesmo padrão visual da página inicial
+========================================================= */
+
+.cabecalho {
+    width: 100%;
+
+    background-color: #ffffff;
+
+    border-bottom: 1px solid #eeeeee;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+}
+
+
+.cabecalho-container {
+    width: 90%;
+
+    max-width: 1500px;
+
+    height: 95px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    text-decoration: none;
+}
+
+
+.logo img {
+    width: 145px;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu {
+    display: flex;
+
+    align-items: center;
+
+    gap: 32px;
+}
+
+
+.menu a {
+    position: relative;
+
+    color: #222222;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: color 0.25s ease;
+}
+
+
+/* LINHA ROSA ABAIXO DO MENU */
+
+.menu a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -7px;
+
+    width: 0;
+
+    height: 3px;
+
+    border-radius: 20px;
+
+    background-color: #fb8fb4;
+
+    transition: width 0.25s ease;
+}
+
+
+/* HOVER */
+
+.menu a:hover {
+    color: #168fd3;
+}
+
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+
+/* PÁGINA ATUAL */
+
+.menu a.menu-ativo {
+    color: #168fd3;
+}
+
+
+.menu a.menu-ativo::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   ÁREA PRINCIPAL
+========================================================= */
+
+.trabalhe-conosco {
+    padding: 80px 8% 100px;
+
+    background-color: #ffffff;
+}
+
+
+.trabalhe-container {
+    width: 100%;
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   CABEÇALHO DO CONTEÚDO
+========================================================= */
+
+.trabalhe-header {
+    max-width: 850px;
+
+    margin-bottom: 50px;
+}
+
+
+.trabalhe-tag {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    padding: 9px 18px;
+
+    border-radius: 30px;
+
+    background-color: #f8abc7;
+
+    color: #a72b67;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+.trabalhe-header h1 {
+    margin: 0 0 20px;
+
+    color: #075c98;
+
+    font-size: 48px;
+
+    line-height: 1.1;
+
+    font-weight: 700;
+}
+
+
+.trabalhe-header p {
+    margin: 0 0 12px;
+
+    color: #555555;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FORMULÁRIO
+========================================================= */
+
+.form-trabalhe {
+    padding: 45px;
+
+    border: 1px solid #f8d5e2;
+
+    border-radius: 22px;
+
+    background-color: #fff5f8;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================================
+   GRID DO FORMULÁRIO
+========================================================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 25px 35px;
+}
+
+
+/* =========================================================
+   CAMPOS
+========================================================= */
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.form-group label {
+    margin-bottom: 8px;
+
+    color: #075c98;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+.obrigatorio {
+    color: #df5f91;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 15px 16px;
+
+    border: 1px solid #d9d9d9;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background-color: #ffffff;
+
+    color: #333333;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    box-sizing: border-box;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #168fd3;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 143, 211, 0.12);
+}
+
+
+.form-group textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999999;
+}
+
+
+/* =========================================================
+   CURRÍCULO
+========================================================= */
+
+.curriculo-area {
+    grid-column: 1 / -1;
+
+    margin-top: 5px;
+}
+
+
+.curriculo-area label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #075c98;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+.curriculo-area input[type="file"] {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px dashed #168fd3;
+
+    border-radius: 9px;
+
+    background-color: #ffffff;
+
+    box-sizing: border-box;
+
+    cursor: pointer;
+}
+
+
+.curriculo-area input[type="file"]::file-selector-button {
+    margin-right: 15px;
+
+    padding: 10px 16px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background-color: #168fd3;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: background-color 0.25s ease;
+}
+
+
+.curriculo-area input[type="file"]::file-selector-button:hover {
+    background-color: #075c98;
+}
+
+
+.curriculo-info {
+    margin-top: 7px;
+
+    color: #777777;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   LGPD
+========================================================= */
+
+.lgpd-area {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 11px;
+
+    margin-top: 10px;
+
+    padding: 18px;
+
+    border: 1px solid #f1d6df;
+
+    border-radius: 10px;
+
+    background-color: #ffffff;
+}
+
+
+.lgpd-area input {
+    width: 17px;
+
+    height: 17px;
+
+    margin-top: 4px;
+
+    flex-shrink: 0;
+
+    accent-color: #168fd3;
+
+    cursor: pointer;
+}
+
+
+.lgpd-area label {
+    color: #555555;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+.lgpd-area a {
+    color: #075c98;
+
+    font-weight: 600;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   AVISO DE PRIVACIDADE
+========================================================= */
+
+.privacidade-info {
+    grid-column: 1 / -1;
+
+    margin-top: -5px;
+
+    color: #777777;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   BOTÃO ENVIAR
+========================================================= */
+
+.form-botao {
+    grid-column: 1 / -1;
+
+    margin-top: 10px;
+}
+
+
+.btn-enviar {
+    width: 100%;
+
+    padding: 17px 25px;
+
+    border: 2px solid #168fd3;
+
+    border-radius: 10px;
+
+    background-color: #168fd3;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(22, 143, 211, 0.20);
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.btn-enviar:hover {
+    background-color: #ffffff;
+
+    color: #168fd3;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(22, 143, 211, 0.20);
+}
+
+
+.btn-enviar:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   RODAPÉ
+   Mesmo azul da página inicial
+========================================================= */
+
+.rodape {
+    width: 100%;
+
+    padding: 45px 5%;
+
+    background-color: #075c98;
+
+    color: #ffffff;
+
+    box-sizing: border-box;
+}
+
+
+.rodape-conteudo {
+    width: 100%;
+
+    max-width: 1500px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.rodape-logo img {
+    width: 120px;
+
+    height: auto;
+
+    display: block;
+}
+
+
+.rodape p {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE - TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .cabecalho-container {
+        height: auto;
+
+        padding: 20px 0;
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+
+    .menu {
+        justify-content: center;
+
+        gap: 20px;
+
+        flex-wrap: wrap;
+    }
+
+
+    .trabalhe-conosco {
+        padding: 70px 6% 80px;
+    }
+
+
+    .trabalhe-header h1 {
+        font-size: 40px;
+    }
+
+
+    .form-trabalhe {
+        padding: 35px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE - CELULAR
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .logo img {
+        width: 125px;
+    }
+
+
+    .menu {
+        gap: 12px 18px;
+    }
+
+
+    .menu a {
+        font-size: 14px;
+    }
+
+
+    .trabalhe-conosco {
+        padding: 50px 20px 65px;
+    }
+
+
+    .trabalhe-header {
+        margin-bottom: 35px;
+    }
+
+
+    .trabalhe-header h1 {
+        font-size: 34px;
+    }
+
+
+    .trabalhe-header p {
+        font-size: 16px;
+    }
+
+
+    .form-trabalhe {
+        padding: 25px 20px;
+
+        border-radius: 16px;
+    }
+
+
+    .form-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+
+    .curriculo-area,
+    .lgpd-area,
+    .privacidade-info,
+    .form-botao {
+        grid-column: 1;
+    }
+
+
+    .rodape-conteudo {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .trabalhe-header h1 {
+        font-size: 30px;
+    }
+
+
+    .form-trabalhe {
+        padding: 22px 16px;
+    }
+
+}
