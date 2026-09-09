@@ -201,6 +201,57 @@ button {
     color: #ffffff;
 }
 
+/* =========================================================
+   MENU MOBILE
+========================================================= */
+
+.menu-toggle {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 9px;
+
+    border: none;
+    border-radius: 9px;
+
+    background-color: transparent;
+
+    cursor: pointer;
+
+    position: relative;
+
+    z-index: 1100;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin: 5px 0;
+    border-radius: 10px;
+    background-color: var(--azul-escuro);
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.menu-toggle.ativo span:nth-child(1) {
+    transform:
+        translateY(8px)
+        rotate(45deg);
+}
+
+.menu-toggle.ativo span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.ativo span:nth-child(3) {
+    transform:
+        translateY(-8px)
+        rotate(-45deg);
+}
 
 /* =========================================================
    CONTEÚDO PRINCIPAL
@@ -208,20 +259,16 @@ button {
 
 .pedidos {
     flex: 1;
-
     width: 100%;
-
     padding:
         60px 5%
         90px;
-
     background-color: #f4faff;
 }
 
 .pedidos-container {
     width: 100%;
     max-width: 1250px;
-
     margin: 0 auto;
 }
 
@@ -236,30 +283,20 @@ button {
 
 .pedidos-tag {
     display: inline-block;
-
     margin-bottom: 14px;
-
     padding: 7px 16px;
-
     border-radius: 30px;
-
     background-color: var(--rosa-claro);
-
     color: #a72b67;
-
     font-size: 12px;
     font-weight: 800;
-
     letter-spacing: 1.3px;
-
     text-transform: uppercase;
 }
 
 .pedidos-topo h1 {
     margin-bottom: 12px;
-
     color: var(--azul-escuro);
-
     font-size:
         clamp(38px, 4vw, 54px);
 
@@ -440,7 +477,6 @@ button {
 
 .status.entrega {
     background-color: var(--roxo-claro);
-
     color: var(--roxo);
 }
 
@@ -449,7 +485,6 @@ button {
 
 .status.entregue {
     background-color: var(--verde-claro);
-
     color: var(--verde);
 }
 
@@ -578,9 +613,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 25px;
-
     border-bottom: 1px solid #e7edf1;
 }
 
@@ -591,27 +624,22 @@ button {
 .item-pedido > div {
     display: flex;
     flex-direction: column;
-
     gap: 2px;
 }
 
 .item-pedido strong {
     color: #333333;
-
     font-size: 14px;
 }
 
 .item-pedido span {
     color: #777777;
-
     font-size: 13px;
 }
 
 .item-pedido > span {
     white-space: nowrap;
-
     color: var(--azul-escuro);
-
     font-weight: 700;
 }
 
@@ -715,27 +743,99 @@ button {
 @media (max-width: 850px) {
 
     .cabecalho-container {
-        height: auto;
+        width: 92%;
+        height: 80px;
 
-        padding: 18px 0;
+        padding: 0;
 
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
 
-        gap: 18px;
+        gap: 0;
+
+        position: relative;
     }
 
     .logo img {
-        width: 130px;
+        width: 125px;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 
     .menu {
-        justify-content: center;
-        flex-wrap: wrap;
+        position: absolute;
 
-        gap:
-            14px 22px;
+        top: 80px;
+        left: 0;
+
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 12px;
+
+        background-color: #ffffff;
+
+        border-radius: 0 0 16px 16px;
+
+        box-shadow:
+            0 14px 30px
+            rgba(0, 0, 0, 0.10);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-12px);
+
+        pointer-events: none;
+
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease,
+            visibility 0.25s ease;
     }
 
+    .menu.ativo {
+        opacity: 1;
+        visibility: visible;
+
+        transform: translateY(0);
+
+        pointer-events: auto;
+    }
+
+    .menu a {
+        width: 100%;
+
+        padding: 14px 16px;
+
+        border-radius: 9px;
+
+        font-size: 14px;
+
+        text-align: left;
+    }
+
+    .menu a::after {
+        display: none;
+    }
+
+    .menu a:hover {
+        background-color: #f4faff;
+
+        color: var(--azul);
+    }
+
+    .menu .sair {
+        margin-top: 4px;
+    }
 
     .pedidos {
         padding:
@@ -751,9 +851,16 @@ button {
 
 @media (max-width: 650px) {
 
+   .cabecalho-container {
+        height: 76px;
+    }
+
+    .logo img {
+        width: 115px;
+    }
+
     .menu {
-        gap:
-            12px 16px;
+        top: 76px;
     }
 
     .menu a {

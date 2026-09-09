@@ -1,12 +1,8 @@
 /* =========================================================
-   TOPY'GUT - PAINEL DO CLIENTE
+   TOPY'GUT - MINHA CONTA
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
-
-    /* =====================================================
-       MENU MOBILE
-    ===================================================== */
 
     const menuToggle =
         document.getElementById("menuToggle");
@@ -47,8 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
 
-
-        /* FECHA AO CLICAR EM UM LINK */
 
         const linksMenu =
             menu.querySelectorAll("a");

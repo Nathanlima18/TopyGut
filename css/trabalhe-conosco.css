@@ -1,12 +1,14 @@
-/* =========================================================
-   TOPY'GUT - TRABALHE CONOSCO
-   Estilos exclusivos da página Trabalhe Conosco
-========================================================= */
-
 
 /* =========================================================
-   CONFIGURAÇÕES GERAIS
+   CORES
 ========================================================= */
+
+:root {
+    --azul: #168fd3;
+    --azul-escuro: #075c98;
+    --rosa: #fb8fb4;
+    --rosa-claro: #f8abc7;
+}
 
 .pagina-trabalhe {
     margin: 0;
@@ -392,21 +394,13 @@
 
 .curriculo-area input[type="file"]::file-selector-button {
     margin-right: 15px;
-
     padding: 10px 16px;
-
     border: none;
-
     border-radius: 7px;
-
     background-color: #168fd3;
-
     color: #ffffff;
-
     font-weight: 700;
-
     cursor: pointer;
-
     transition: background-color 0.25s ease;
 }
 
@@ -418,118 +412,76 @@
 
 .curriculo-info {
     margin-top: 7px;
-
     color: #777777;
-
     font-size: 13px;
 }
-
-
 /* =========================================================
    LGPD
 ========================================================= */
-
 .lgpd-area {
     grid-column: 1 / -1;
-
     display: flex;
-
     align-items: flex-start;
-
     gap: 11px;
-
     margin-top: 10px;
-
     padding: 18px;
-
     border: 1px solid #f1d6df;
-
     border-radius: 10px;
-
     background-color: #ffffff;
 }
 
 
 .lgpd-area input {
     width: 17px;
-
     height: 17px;
-
     margin-top: 4px;
-
     flex-shrink: 0;
-
     accent-color: #168fd3;
-
     cursor: pointer;
 }
 
 
 .lgpd-area label {
     color: #555555;
-
     font-size: 14px;
-
     line-height: 1.5;
 }
 
 
 .lgpd-area a {
     color: #075c98;
-
     font-weight: 600;
-
     text-decoration: underline;
 }
-
-
 /* =========================================================
    AVISO DE PRIVACIDADE
 ========================================================= */
-
 .privacidade-info {
     grid-column: 1 / -1;
-
     margin-top: -5px;
-
     color: #777777;
-
     font-size: 12px;
-
     line-height: 1.5;
 }
-
-
 /* =========================================================
    BOTÃO ENVIAR
 ========================================================= */
-
 .form-botao {
-    grid-column: 1 / -1;
-
+    grid-column 1 / -1;
     margin-top: 10px;
 }
 
 
 .btn-enviar {
     width: 100%;
-
     padding: 17px 25px;
-
     border: 2px solid #168fd3;
-
     border-radius: 10px;
-
     background-color: #168fd3;
-
     color: #ffffff;
-
     font-size: 16px;
-
     font-weight: 700;
-
     cursor: pointer;
-
     box-shadow:
         0 8px 20px rgba(22, 143, 211, 0.20);
 
@@ -543,11 +495,8 @@
 
 .btn-enviar:hover {
     background-color: #ffffff;
-
     color: #168fd3;
-
     transform: translateY(-2px);
-
     box-shadow:
         0 12px 25px rgba(22, 143, 211, 0.20);
 }
@@ -562,42 +511,28 @@
    RODAPÉ
    Mesmo azul da página inicial
 ========================================================= */
-
 .rodape {
     width: 100%;
-
     padding: 45px 5%;
-
     background-color: #075c98;
-
     color: #ffffff;
-
     box-sizing: border-box;
 }
 
-
 .rodape-conteudo {
     width: 100%;
-
     max-width: 1500px;
-
     margin: 0 auto;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 30px;
 }
 
 
 .rodape-logo img {
     width: 120px;
-
     height: auto;
-
     display: block;
 }
 
@@ -612,6 +547,62 @@
     opacity: 0.9;
 }
 
+/* =========================================================
+   MENU MOBILE
+========================================================= */
+
+.menu-toggle {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 9px;
+
+    border: none;
+    border-radius: 9px;
+
+    background-color: transparent;
+
+    cursor: pointer;
+
+    position: relative;
+
+    z-index: 1100;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 100%;
+    height: 3px;
+
+    margin: 5px 0;
+
+    border-radius: 10px;
+
+    background-color: var(--azul-escuro);
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.menu-toggle.ativo span:nth-child(1) {
+    transform:
+        translateY(8px)
+        rotate(45deg);
+}
+
+.menu-toggle.ativo span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.ativo span:nth-child(3) {
+    transform:
+        translateY(-8px)
+        rotate(-45deg);
+}
 
 /* =========================================================
    RESPONSIVIDADE - TABLET
@@ -620,24 +611,86 @@
 @media (max-width: 1050px) {
 
     .cabecalho-container {
-        height: auto;
+        width: 92%;
+        height: 80px;
 
-        padding: 20px 0;
+        padding: 0;
 
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        position: relative;
+    }
+
+    .logo img {
+        width: 125px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+   .menu {
+        position: absolute;
+
+        top: 80px;
+        left: 0;
+
+        width: 100%;
+
+        display: flex;
         flex-direction: column;
+        align-items: stretch;
 
-        gap: 20px;
+        gap: 0;
+
+        padding: 12px;
+
+        background-color: #ffffff;
+
+        border-radius: 0 0 16px 16px;
+
+        box-shadow:
+            0 14px 30px
+            rgba(0, 0, 0, 0.10);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-12px);
+
+        pointer-events: none;
+
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease,
+            visibility 0.25s ease;
     }
 
-
-    .menu {
-        justify-content: center;
-
-        gap: 20px;
-
-        flex-wrap: wrap;
+    .menu.ativo {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 
+    .menu a {
+        width: 100%;
+        padding: 14px 16px;
+        border-radius: 9px;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .menu a::after {
+        display: none;
+    }
+
+    .menu a:hover {
+        background-color: #f4faff;
+        color: var(--azul);
+    }
 
     .trabalhe-conosco {
         padding: 70px 6% 80px;

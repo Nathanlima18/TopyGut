@@ -1450,6 +1450,61 @@ button {
         scale(1);
 }
 
+/* =========================================================
+   MENU MOBILE
+========================================================= */
+
+.menu-toggle {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 9px;
+
+    border: none;
+    border-radius: 9px;
+
+    background-color: transparent;
+
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 100%;
+    height: 3px;
+
+    margin: 5px 0;
+
+    border-radius: 10px;
+
+    background-color: var(--azul-escuro);
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+
+/* TRANSFORMA ☰ EM X */
+
+.menu-toggle.ativo span:nth-child(1) {
+    transform:
+        translateY(8px)
+        rotate(45deg);
+}
+
+.menu-toggle.ativo span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.ativo span:nth-child(3) {
+    transform:
+        translateY(-8px)
+        rotate(-45deg);
+}
 
 /* =========================================================
    ACESSIBILIDADE
@@ -1584,23 +1639,129 @@ button {
 
 @media (max-width: 1050px) {
 
-    /* CABEÇALHO */
+    /* =====================================================
+       CABEÇALHO + MENU HAMBÚRGUER
+    ===================================================== */
 
     .cabecalho-container {
-        height: auto;
-        padding: 20px 0;
-        flex-direction: column;
-        gap: 20px;
+        width: 92%;
+        height: 80px;
+
+        padding: 0;
+
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 0;
+
+        position: relative;
     }
+
+    .logo img {
+        width: 125px;
+    }
+
+    @media (max-width: 1050px) {
+
+    .menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50px !important;
+        height: 50px !important;
+        padding: 8px !important;
+        position: relative !important;
+        z-index: 99999 !important;
+    }
+
+    .menu-toggle span {
+        display: block !important;
+
+        width: 28px !important;
+        height: 4px !important;
+
+        margin: 3px 0 !important;
+
+        background: #0064a3 !important;
+
+        border-radius: 10px;
+    }
+}
 
     .menu {
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
+        position: absolute;
+
+        top: 80px;
+        left: 0;
+
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 12px;
+
+        background-color: #ffffff;
+
+        border-radius: 0 0 16px 16px;
+
+        box-shadow:
+            0 14px 30px
+            rgba(0, 0, 0, 0.10);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-12px);
+
+        pointer-events: none;
+
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease,
+            visibility 0.25s ease;
+    }
+
+    .menu.ativo {
+        opacity: 1;
+        visibility: visible;
+
+        transform: translateY(0);
+
+        pointer-events: auto;
+    }
+
+    .menu a {
+        width: 100%;
+
+        padding: 14px 16px;
+
+        border-radius: 9px;
+
+        font-size: 14px;
+
+        text-align: left;
+    }
+
+    .menu a::after {
+        display: none;
+    }
+
+    .menu a:hover {
+        background-color: #f4faff;
+
+        color: var(--azul);
     }
 
 
-    /* HERO */
+    /* =====================================================
+       HERO
+    ===================================================== */
 
     .hero {
         min-height: auto;
@@ -1614,7 +1775,9 @@ button {
     }
 
 
-    /* PRODUTOS */
+    /* =====================================================
+       PRODUTOS
+    ===================================================== */
 
     .grade-produtos {
         grid-template-columns:
@@ -1622,7 +1785,9 @@ button {
     }
 
 
-    /* PÃO DE QUEIJO */
+    /* =====================================================
+       PÃO DE QUEIJO
+    ===================================================== */
 
     .grade-pao-queijo {
         grid-template-columns:
@@ -1634,7 +1799,9 @@ button {
     }
 
 
-    /* DISTRIBUIDOR */
+    /* =====================================================
+       DISTRIBUIDOR
+    ===================================================== */
 
     .distribuidor-conteudo {
         grid-template-columns: 1fr;
@@ -1642,7 +1809,9 @@ button {
     }
 
 
-    /* HÁBITOS + FIORINOS */
+    /* =====================================================
+       HÁBITOS + FIORINOS
+    ===================================================== */
 
     .fiorinos-container {
         min-height: 420px;
@@ -1674,6 +1843,7 @@ button {
     .fiorinos-img {
         width: 520px;
         max-width: 75vw;
+
         transform:
             translateX(140px)
             scale(0.96);
@@ -1686,7 +1856,9 @@ button {
     }
 
 
-    /* RODAPÉ */
+    /* =====================================================
+       RODAPÉ
+    ===================================================== */
 
     .rodape-conteudo {
         gap: 25px;
@@ -1704,26 +1876,24 @@ button {
 
 @media (max-width: 700px) {
 
-    /* CABEÇALHO */
+    .cabecalho-container {
+        width: 92%;
+        height: 76px;
+    }
 
     .logo img {
-        width: 125px;
+        width: 115px;
     }
 
     .menu {
-        gap: 12px 18px;
+        top: 76px;
     }
-
-    .menu a {
-        font-size: 14px;
-    }
-
-
-    /* HERO */
 
     .hero {
         width: 88%;
-        padding: 55px 0;
+
+        padding:
+            55px 0;
     }
 
     .hero h1 {
@@ -1750,9 +1920,6 @@ button {
         min-height: 320px;
     }
 
-
-    /* SEÇÕES */
-
     .produtos,
     .pao-de-queijo,
     .area-cliente,
@@ -1760,9 +1927,6 @@ button {
     .trabalhe {
         padding: 75px 6%;
     }
-
-
-    /* PRODUTOS */
 
     .grade-produtos {
         grid-template-columns: 1fr;
@@ -1780,42 +1944,30 @@ button {
         min-height: auto;
     }
 
-
-    /* LOGO PÃO DE QUEIJO */
-
     .logo-pao-queijo {
         width: 170px;
+
         margin-bottom: 22px;
     }
-
-
-    /* ÁREA DO CLIENTE */
 
     .area-cliente-conteudo {
         padding: 45px 25px;
     }
 
-
-    /* DISTRIBUIDOR */
-
     .distribuidor-destaque {
         padding: 30px 22px;
     }
-
-
-    /* TÍTULOS */
 
     .area-cliente h2,
     .trabalhe h2 {
         font-size: 34px;
     }
 
-
-    /* HÁBITOS + FIORINOS */
-
     .fiorinos-container {
         min-height: auto;
-        padding: 50px 20px 0;
+
+        padding:
+            50px 20px 0;
     }
 
     .fiorinos-conteudo {
@@ -1841,6 +1993,7 @@ button {
     .fiorinos-img {
         width: 390px;
         max-width: 95vw;
+
         transform:
             translateX(90px)
             scale(0.97);
@@ -1852,16 +2005,15 @@ button {
             scale(1);
     }
 
-
-    /* RODAPÉ */
-
     .rodape {
         padding: 32px 20px;
     }
 
     .rodape-conteudo {
         flex-direction: column;
+
         text-align: center;
+
         gap: 18px;
     }
 
@@ -1872,11 +2024,13 @@ button {
 
     .rodape-contatos {
         flex-direction: column;
+
         gap: 7px;
     }
 
     .rodape-copyright {
         white-space: normal;
+
         font-size: 13px;
     }
 }

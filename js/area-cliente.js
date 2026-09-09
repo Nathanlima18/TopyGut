@@ -6,23 +6,23 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
-       ELEMENTOS
+       ELEMENTOS DO LOGIN
     ===================================================== */
 
-    const formulario = document.getElementById("formLogin");
-    const email = document.getElementById("email");
-    const senha = document.getElementById("senha");
-    const lembrar = document.getElementById("lembrar");
-    const mostrarSenha = document.getElementById("mostrarSenha");
+    const formulario =
+        document.getElementById("formLogin");
 
+    const email =
+        document.getElementById("email");
 
-    /* =====================================================
-       SEGURANÇA
-    ===================================================== */
+    const senha =
+        document.getElementById("senha");
 
-    if (!formulario) {
-        return;
-    }
+    const lembrar =
+        document.getElementById("lembrar");
+
+    const mostrarSenha =
+        document.getElementById("mostrarSenha");
 
 
     /* =====================================================
@@ -31,57 +31,69 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (mostrarSenha && senha) {
 
-        mostrarSenha.addEventListener("click", function () {
+        mostrarSenha.addEventListener(
+            "click",
+            function () {
 
-            const senhaVisivel =
-                senha.type === "text";
+                const senhaVisivel =
+                    senha.type === "text";
 
 
-            if (senhaVisivel) {
+                if (senhaVisivel) {
 
-                senha.type = "password";
+                    senha.type =
+                        "password";
 
-                mostrarSenha.textContent = "👁";
+                    mostrarSenha.textContent =
+                        "👁";
 
-                mostrarSenha.setAttribute(
-                    "aria-label",
-                    "Mostrar senha"
-                );
+                    mostrarSenha.setAttribute(
+                        "aria-label",
+                        "Mostrar senha"
+                    );
 
-            } else {
+                } else {
 
-                senha.type = "text";
+                    senha.type =
+                        "text";
 
-                mostrarSenha.textContent = "🙈";
+                    mostrarSenha.textContent =
+                        "🙈";
 
-                mostrarSenha.setAttribute(
-                    "aria-label",
-                    "Ocultar senha"
-                );
+                    mostrarSenha.setAttribute(
+                        "aria-label",
+                        "Ocultar senha"
+                    );
+
+                }
 
             }
-
-        });
+        );
 
     }
 
 
     /* =====================================================
        LEMBRAR E-MAIL
-
-       Salva apenas o e-mail.
-       Nunca salvamos a senha.
     ===================================================== */
 
     const emailSalvo =
-        localStorage.getItem("topygut_email");
+        localStorage.getItem(
+            "topygut_email"
+        );
 
 
-    if (emailSalvo && email) {
+    if (
+        emailSalvo &&
+        email &&
+        lembrar
+    ) {
 
-        email.value = emailSalvo;
+        email.value =
+            emailSalvo;
 
-        lembrar.checked = true;
+        lembrar.checked =
+            true;
 
     }
 
@@ -90,129 +102,231 @@ document.addEventListener("DOMContentLoaded", function () {
        ENVIO DO FORMULÁRIO
     ===================================================== */
 
-    formulario.addEventListener("submit", function (event) {
+    if (formulario) {
 
-        /*
-           Ainda não temos backend.
-           Então impedimos o login real por enquanto.
-        */
+        formulario.addEventListener(
+            "submit",
+            function (event) {
 
-        event.preventDefault();
+                /*
+                   Ainda não temos backend.
+                   Então impedimos o login real.
+                */
 
-
-        /* =================================================
-           VALIDAÇÃO NATIVA
-        ================================================= */
-
-        if (!formulario.checkValidity()) {
-
-            formulario.reportValidity();
-
-            return;
-
-        }
+                event.preventDefault();
 
 
-        /* =================================================
-           LIMPA ESPAÇOS
-        ================================================= */
+                /* =========================================
+                   VALIDAÇÃO NATIVA
+                ========================================= */
 
-        const emailDigitado =
-            email.value.trim();
+                if (!formulario.checkValidity()) {
 
-        const senhaDigitada =
-            senha.value.trim();
+                    formulario.reportValidity();
 
+                    return;
 
-        /* =================================================
-           VALIDA E-MAIL
-        ================================================= */
-
-        if (!emailDigitado) {
-
-            alert(
-                "Digite seu e-mail."
-            );
-
-            email.focus();
-
-            return;
-
-        }
+                }
 
 
-        /* =================================================
-           VALIDA SENHA
-        ================================================= */
+                /* =========================================
+                   LIMPA ESPAÇOS
+                ========================================= */
 
-        if (!senhaDigitada) {
+                const emailDigitado =
+                    email.value.trim();
 
-            alert(
-                "Digite sua senha."
-            );
-
-            senha.focus();
-
-            return;
-
-        }
+                const senhaDigitada =
+                    senha.value.trim();
 
 
-        /* =================================================
-           LEMBRAR E-MAIL
-        ================================================= */
+                /* =========================================
+                   VALIDA E-MAIL
+                ========================================= */
 
-        if (lembrar.checked) {
+                if (!emailDigitado) {
 
-            localStorage.setItem(
-                "topygut_email",
-                emailDigitado
-            );
+                    alert(
+                        "Digite seu e-mail."
+                    );
 
-        } else {
+                    email.focus();
 
-            localStorage.removeItem(
-                "topygut_email"
-            );
+                    return;
 
-        }
+                }
 
 
-        /* =================================================
-           MENSAGEM TEMPORÁRIA
+                /* =========================================
+                   VALIDA SENHA
+                ========================================= */
 
-           Quando tivermos backend, este bloco será
-           substituído pela autenticação real.
-        ================================================= */
+                if (!senhaDigitada) {
 
-        alert(
-            "Tela de login funcionando corretamente!\n\n" +
-            "Na próxima etapa do projeto, este formulário " +
-            "será conectado ao sistema de autenticação."
+                    alert(
+                        "Digite sua senha."
+                    );
+
+                    senha.focus();
+
+                    return;
+
+                }
+
+
+                /* =========================================
+                   LEMBRAR E-MAIL
+                ========================================= */
+
+                if (
+                    lembrar &&
+                    lembrar.checked
+                ) {
+
+                    localStorage.setItem(
+                        "topygut_email",
+                        emailDigitado
+                    );
+
+                } else {
+
+                    localStorage.removeItem(
+                        "topygut_email"
+                    );
+
+                }
+
+
+                /* =========================================
+                   MENSAGEM TEMPORÁRIA
+                ========================================= */
+
+                alert(
+                    "Tela de login funcionando corretamente!\n\n" +
+                    "Na próxima etapa do projeto, este formulário " +
+                    "será conectado ao sistema de autenticação."
+                );
+
+            }
         );
 
-    });
+    }
 
 
     /* =====================================================
        SE DESMARCAR "LEMBRAR DE MIM"
-
-       Já removemos o e-mail salvo.
     ===================================================== */
 
     if (lembrar) {
 
-        lembrar.addEventListener("change", function () {
+        lembrar.addEventListener(
+            "change",
+            function () {
 
-            if (!lembrar.checked) {
+                if (!lembrar.checked) {
 
-                localStorage.removeItem(
-                    "topygut_email"
+                    localStorage.removeItem(
+                        "topygut_email"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       MENU MOBILE
+    ===================================================== */
+
+    const menuToggle =
+        document.getElementById(
+            "menuToggle"
+        );
+
+    const menu =
+        document.querySelector(
+            ".menu"
+        );
+
+
+    if (menuToggle && menu) {
+
+        menuToggle.addEventListener(
+            "click",
+            function () {
+
+                const menuAberto =
+                    menu.classList.toggle(
+                        "ativo"
+                    );
+
+
+                menuToggle.classList.toggle(
+                    "ativo",
+                    menuAberto
+                );
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    menuAberto
+                );
+
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    menuAberto
+                        ? "Fechar menu"
+                        : "Abrir menu"
                 );
 
             }
+        );
 
-        });
+
+        /* =============================================
+           FECHA AO CLICAR EM UM LINK
+        ============================================= */
+
+        const linksMenu =
+            menu.querySelectorAll(
+                "a"
+            );
+
+
+        linksMenu.forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        menu.classList.remove(
+                            "ativo"
+                        );
+
+                        menuToggle.classList.remove(
+                            "ativo"
+                        );
+
+                        menuToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                        menuToggle.setAttribute(
+                            "aria-label",
+                            "Abrir menu"
+                        );
+
+                    }
+                );
+
+            }
+        );
 
     }
 

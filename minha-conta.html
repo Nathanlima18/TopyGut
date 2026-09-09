@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Minha Conta | Topy'Gut</title>
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        type="image/avif"
+        href="img/Logo Topy´Gut.avif"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="css/minha-conta.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         CABEÇALHO
+    =================================================== -->
+
+    <header class="cabecalho">
+
+        <div class="cabecalho-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Página inicial da Topy'Gut"
+            >
+                <img
+                    src="img/Logo Topy´Gut.avif"
+                    alt="Logo Topy'Gut"
+                >
+            </a>
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="menu">
+
+                <a href="cliente-painel.html">
+                    Painel
+                </a>
+
+                <a href="novo-pedido.html">
+                    Novo Pedido
+                </a>
+
+                <a href="meus-pedidos.html">
+                    Meus Pedidos
+                </a>
+
+                <a
+                    href="minha-conta.html"
+                    class="ativo"
+                >
+                    Minha Conta
+                </a>
+
+                <a
+                    href="area-cliente.html"
+                    class="sair"
+                >
+                    Sair
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================================================
+         CONTEÚDO PRINCIPAL
+    =================================================== -->
+
+    <main class="conta">
+
+        <div class="conta-container">
+
+
+            <!-- ==================================================
+                 TOPO
+            =================================================== -->
+
+            <section class="conta-topo">
+
+                <span class="conta-tag">
+                    ÁREA DO CLIENTE
+                </span>
+
+                <h1>
+                    Minha Conta
+                </h1>
+
+                <p>
+                    Consulte suas informações cadastrais,
+                    endereço de entrega e dados de acesso.
+                </p>
+
+            </section>
+
+
+            <!-- ==================================================
+                 GRID PRINCIPAL
+            =================================================== -->
+
+            <div class="conta-grid">
+
+
+                <!-- ==================================================
+                     DADOS CADASTRAIS
+                =================================================== -->
+
+                <section class="conta-card">
+
+                    <div class="card-cabecalho">
+
+                        <div>
+
+                            <span class="card-subtitulo">
+                                CADASTRO
+                            </span>
+
+                            <h2>
+                                Dados cadastrais
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dados-grid">
+
+                        <div class="dado-item">
+
+                            <span>
+                                Nome / Razão Social
+                            </span>
+
+                            <strong id="nomeConta">
+                                Nome do Cliente
+                            </strong>
+
+                        </div>
+
+
+                        <div class="dado-item">
+
+                            <span>
+                                CPF / CNPJ
+                            </span>
+
+                            <strong id="documentoConta">
+                                00.000.000/0000-00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="dado-item">
+
+                            <span>
+                                E-mail
+                            </span>
+
+                            <strong id="emailConta">
+                                cliente@email.com
+                            </strong>
+
+                        </div>
+
+
+                        <div class="dado-item">
+
+                            <span>
+                                Telefone
+                            </span>
+
+                            <strong id="telefoneConta">
+                                (11) 00000-0000
+                            </strong>
+
+                        </div>
+
+
+                        <div class="dado-item">
+
+                            <span>
+                                Código do cliente
+                            </span>
+
+                            <strong id="codigoConta">
+                                #0000
+                            </strong>
+
+                        </div>
+
+
+                        <div class="dado-item">
+
+                            <span>
+                                Situação
+                            </span>
+
+                            <strong class="status-ativo">
+                                Conta ativa
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ==================================================
+                     ENDEREÇO
+                =================================================== -->
+
+                <section class="conta-card">
+
+                    <div class="card-cabecalho">
+
+                        <div>
+
+                            <span class="card-subtitulo">
+                                ENTREGA
+                            </span>
+
+                            <h2>
+                                Endereço cadastrado
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dados-grid">
+
+                        <div class="dado-item">
+
+                            <span>
+                                CEP
+                            </span>
+
+                            <strong id="cepConta">
+                                00000-000
+                            </strong>
+
+                        </div>
+
+
+                        <div class="dado-item">
+
+                            <span>
+                                Rua
+                            </span>
+
+                            <strong id="ruaConta">
+                                Rua Exemplo
+                            </strong>
+
+                        </div>
+
+
+                        <div class="dado-item">
+
+                            <span>
+                                Número
+                            </span>
+
+                            <strong id="numeroConta">
+                                000
+                            </strong>
+
+                        </div>
+
+
+                        <div class="dado-item">
+
+                            <span>
+                                Complemento
+                            </span>
+
+                            <strong id="complementoConta">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="dado-item">
+
+                            <span>
+                                Bairro
+                            </span>
+
+                            <strong id="bairroConta">
+                                Bairro Exemplo
+                            </strong>
+
+                        </div>
+
+
+                        <div class="dado-item">
+
+                            <span>
+                                Cidade / UF
+                            </span>
+
+                            <strong id="cidadeConta">
+                                São Paulo / SP
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ==================================================
+                     SEGURANÇA
+                =================================================== -->
+
+                <section class="conta-card conta-seguranca">
+
+                    <div class="card-cabecalho">
+
+                        <div>
+
+                            <span class="card-subtitulo">
+                                SEGURANÇA
+                            </span>
+
+                            <h2>
+                                Acesso à conta
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="seguranca-info">
+
+                        <div>
+
+                            <span>
+                                Senha
+                            </span>
+
+                            <strong>
+                                ••••••••
+                            </strong>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="btn-secundario"
+                            id="btnAlterarSenha"
+                        >
+                            Alterar senha
+                        </button>
+
+                    </div>
+
+
+                    <p class="card-aviso">
+                        A alteração de senha será disponibilizada
+                        quando a autenticação estiver integrada
+                        ao backend.
+                    </p>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ==================================================
+         RODAPÉ
+    =================================================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-container">
+
+            <img
+                src="img/Logo Topy´Gut.avif"
+                alt="Topy'Gut"
+                class="rodape-logo"
+            >
+
+            <p>
+                © 2026 Topy'Gut. Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
+    <script src="js/minha-conta.js"></script>
+
+</body>
+
+</html>

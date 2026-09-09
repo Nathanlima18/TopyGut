@@ -341,19 +341,15 @@ document.addEventListener("DOMContentLoaded", function () {
     ===================================================== */
 
     if (curriculo) {
-
         curriculo.addEventListener(
             "change",
             function () {
-
                 const arquivo =
                     curriculo.files[0];
-
 
                 if (!arquivo) {
                     return;
                 }
-
 
                 const extensoesPermitidas = [
                     "pdf",
@@ -361,13 +357,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     "docx"
                 ];
 
-
                 const extensao =
                     arquivo.name
                         .split(".")
                         .pop()
                         .toLowerCase();
-
 
                 /* =========================================
                    EXTENSÃO
@@ -378,14 +372,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         extensao
                     )
                 ) {
-
                     alert(
                         "Formato de currículo não permitido.\n\n" +
                         "Envie um arquivo PDF, DOC ou DOCX."
                     );
-
                     curriculo.value = "";
-
                     return;
 
                 }
@@ -397,25 +388,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const tamanhoMaximo =
                     5 * 1024 * 1024;
-
-
                 if (
                     arquivo.size >
                     tamanhoMaximo
                 ) {
-
                     alert(
                         "O currículo é muito grande.\n\n" +
                         "O tamanho máximo permitido é 5 MB."
                     );
-
                     curriculo.value = "";
-
                 }
-
             }
         );
-
     }
 
 
@@ -426,100 +410,66 @@ document.addEventListener("DOMContentLoaded", function () {
     formulario.addEventListener(
         "submit",
         function (event) {
-
             /*
                 O envio real ainda está desativado.
 
                 Na próxima etapa vamos conectar o
                 formulário ao envio por e-mail.
             */
-
             event.preventDefault();
-
-
             /* =============================================
                CAMPOS OBRIGATÓRIOS
             ============================================= */
 
             if (!formulario.checkValidity()) {
-
                 formulario.reportValidity();
-
                 return;
 
             }
-
-
             /* =============================================
                TELEFONE
             ============================================= */
-
             const numerosTelefone =
                 telefone.value.replace(/\D/g, "");
-
-
             if (
                 numerosTelefone.length !== 10 &&
                 numerosTelefone.length !== 11
             ) {
-
                 alert(
                     "Digite um telefone válido com DDD."
                 );
-
                 telefone.focus();
-
                 return;
-
             }
-
-
             /* =============================================
                CEP
             ============================================= */
-
             const numerosCep =
                 cep.value.replace(/\D/g, "");
-
-
             if (
                 numerosCep.length !== 8
             ) {
-
                 alert(
                     "Digite um CEP válido com 8 números."
                 );
-
                 cep.focus();
-
                 return;
-
             }
-
-
             /* =============================================
                CURRÍCULO
             ============================================= */
-
             if (
                 !curriculo.files.length
             ) {
-
                 alert(
                     "Por favor, anexe seu currículo."
                 );
-
                 curriculo.focus();
-
                 return;
-
             }
-
-
             /* =============================================
                LGPD
             ============================================= */
-
             if (!lgpd.checked) {
 
                 alert(
@@ -527,7 +477,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     "é necessário concordar com o " +
                     "tratamento dos dados pessoais."
                 );
-
                 lgpd.focus();
 
                 return;
@@ -547,5 +496,82 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
     );
+
+        /* =====================================================
+       MENU MOBILE
+    ===================================================== */
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const menu =
+        document.querySelector(".menu");
+
+
+    if (menuToggle && menu) {
+
+        menuToggle.addEventListener(
+            "click",
+            function () {
+
+                const menuAberto =
+                    menu.classList.toggle("ativo");
+
+
+                menuToggle.classList.toggle(
+                    "ativo",
+                    menuAberto
+                );
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    menuAberto
+                );
+
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    menuAberto
+                        ? "Fechar menu"
+                        : "Abrir menu"
+                );
+
+            }
+        );
+
+
+        /* FECHA O MENU AO CLICAR EM UM LINK */
+
+        const linksMenu =
+            menu.querySelectorAll("a");
+
+
+        linksMenu.forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    menu.classList.remove("ativo");
+
+                    menuToggle.classList.remove("ativo");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        "Abrir menu"
+                    );
+
+                }
+            );
+
+        });
+
+    }
 
 });
