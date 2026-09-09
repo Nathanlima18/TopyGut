@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Meus Pedidos | Topy'Gut</title>
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        type="image/avif"
+        href="img/Logo Topy´Gut.avif"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="css/meus-pedidos.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         CABEÇALHO
+    =================================================== -->
+
+    <header class="cabecalho">
+
+        <div class="cabecalho-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Página inicial da Topy'Gut"
+            >
+                <img
+                    src="img/Logo Topy´Gut.avif"
+                    alt="Logo Topy'Gut"
+                >
+            </a>
+
+
+            <nav class="menu">
+
+                <a href="cliente-painel.html">
+                    Painel
+                </a>
+
+                <a href="novo-pedido.html">
+                    Novo Pedido
+                </a>
+
+                <a
+                    href="meus-pedidos.html"
+                    class="ativo"
+                >
+                    Meus Pedidos
+                </a>
+
+                <a href="cliente-painel.html#conta">
+                    Minha Conta
+                </a>
+
+                <a
+                    href="area-cliente.html"
+                    class="sair"
+                >
+                    Sair
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================================================
+         CONTEÚDO PRINCIPAL
+    =================================================== -->
+
+    <main class="pedidos">
+
+        <div class="pedidos-container">
+
+
+            <!-- ==================================================
+                 CABEÇALHO
+            =================================================== -->
+
+            <section class="pedidos-topo">
+
+                <span class="pedidos-tag">
+                    ÁREA DO CLIENTE
+                </span>
+
+                <h1>
+                    Meus Pedidos
+                </h1>
+
+                <p>
+                    Consulte seus pedidos anteriores e acompanhe
+                    o andamento de cada compra realizada com a Topy'Gut.
+                </p>
+
+            </section>
+
+
+            <!-- ==================================================
+                 FILTROS
+            =================================================== -->
+
+            <section class="filtros-pedidos">
+
+                <button
+                    type="button"
+                    class="filtro ativo"
+                    data-filtro="todos"
+                >
+                    Todos
+                </button>
+
+                <button
+                    type="button"
+                    class="filtro"
+                    data-filtro="separacao"
+                >
+                    Em separação
+                </button>
+
+                <button
+                    type="button"
+                    class="filtro"
+                    data-filtro="entrega"
+                >
+                    Saiu para entrega
+                </button>
+
+                <button
+                    type="button"
+                    class="filtro"
+                    data-filtro="entregue"
+                >
+                    Entregues
+                </button>
+
+            </section>
+
+
+            <!-- ==================================================
+                 LISTA DE PEDIDOS
+            =================================================== -->
+
+            <section class="lista-pedidos">
+
+
+                <!-- PEDIDO 1 -->
+
+                <article
+                    class="pedido-card"
+                    data-status="separacao"
+                >
+
+                    <div class="pedido-cabecalho">
+
+                        <div>
+
+                            <span class="pedido-numero">
+                                Pedido #1054
+                            </span>
+
+                            <span class="pedido-data">
+                                Realizado em 08/09/2026
+                            </span>
+
+                        </div>
+
+
+                        <span class="status separacao">
+                            Em separação
+                        </span>
+
+                    </div>
+
+
+                    <div class="pedido-resumo">
+
+                        <div class="pedido-info">
+
+                            <span>
+                                Itens
+                            </span>
+
+                            <strong>
+                                5
+                            </strong>
+
+                        </div>
+
+
+                        <div class="pedido-info">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong>
+                                R$ 000,00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="pedido-info">
+
+                            <span>
+                                Forma de entrega
+                            </span>
+
+                            <strong>
+                                Entrega Topy'Gut
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="pedido-acoes">
+
+                        <button
+                            type="button"
+                            class="btn-detalhes"
+                        >
+                            Ver detalhes
+                        </button>
+
+                    </div>
+
+
+                    <!-- DETALHES -->
+
+                    <div class="pedido-detalhes">
+
+                        <div class="detalhes-conteudo">
+
+                            <h2>
+                                Itens do pedido
+                            </h2>
+
+
+                            <div class="item-pedido">
+
+                                <div>
+
+                                    <strong>
+                                        Iogurte Semi Desnatado
+                                    </strong>
+
+                                    <span>
+                                        Bag de 5 litros
+                                    </span>
+
+                                </div>
+
+                                <span>
+                                    Qtd. 2
+                                </span>
+
+                            </div>
+
+
+                            <div class="item-pedido">
+
+                                <div>
+
+                                    <strong>
+                                        Pão de Queijo Tradicional
+                                    </strong>
+
+                                    <span>
+                                        90g
+                                    </span>
+
+                                </div>
+
+                                <span>
+                                    Qtd. 3
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PEDIDO 2 -->
+
+                <article
+                    class="pedido-card"
+                    data-status="entrega"
+                >
+
+                    <div class="pedido-cabecalho">
+
+                        <div>
+
+                            <span class="pedido-numero">
+                                Pedido #1050
+                            </span>
+
+                            <span class="pedido-data">
+                                Realizado em 05/09/2026
+                            </span>
+
+                        </div>
+
+
+                        <span class="status entrega">
+                            Saiu para entrega
+                        </span>
+
+                    </div>
+
+
+                    <div class="pedido-resumo">
+
+                        <div class="pedido-info">
+
+                            <span>
+                                Itens
+                            </span>
+
+                            <strong>
+                                8
+                            </strong>
+
+                        </div>
+
+
+                        <div class="pedido-info">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong>
+                                R$ 000,00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="pedido-info">
+
+                            <span>
+                                Forma de entrega
+                            </span>
+
+                            <strong>
+                                Entrega Topy'Gut
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="pedido-acoes">
+
+                        <button
+                            type="button"
+                            class="btn-detalhes"
+                        >
+                            Ver detalhes
+                        </button>
+
+                    </div>
+
+
+                    <div class="pedido-detalhes">
+
+                        <div class="detalhes-conteudo">
+
+                            <h2>
+                                Itens do pedido
+                            </h2>
+
+
+                            <div class="item-pedido">
+
+                                <div>
+
+                                    <strong>
+                                        Triplo Zero
+                                    </strong>
+
+                                    <span>
+                                        Garrafa de 900g
+                                    </span>
+
+                                </div>
+
+                                <span>
+                                    Qtd. 4
+                                </span>
+
+                            </div>
+
+
+                            <div class="item-pedido">
+
+                                <div>
+
+                                    <strong>
+                                        Requeijão Cremoso
+                                    </strong>
+
+                                    <span>
+                                        Pote de 400g
+                                    </span>
+
+                                </div>
+
+                                <span>
+                                    Qtd. 4
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PEDIDO 3 -->
+
+                <article
+                    class="pedido-card"
+                    data-status="entregue"
+                >
+
+                    <div class="pedido-cabecalho">
+
+                        <div>
+
+                            <span class="pedido-numero">
+                                Pedido #1048
+                            </span>
+
+                            <span class="pedido-data">
+                                Realizado em 02/09/2026
+                            </span>
+
+                        </div>
+
+
+                        <span class="status entregue">
+                            Entregue
+                        </span>
+
+                    </div>
+
+
+                    <div class="pedido-resumo">
+
+                        <div class="pedido-info">
+
+                            <span>
+                                Itens
+                            </span>
+
+                            <strong>
+                                6
+                            </strong>
+
+                        </div>
+
+
+                        <div class="pedido-info">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong>
+                                R$ 000,00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="pedido-info">
+
+                            <span>
+                                Entregue em
+                            </span>
+
+                            <strong>
+                                03/09/2026
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="pedido-acoes">
+
+                        <button
+                            type="button"
+                            class="btn-detalhes"
+                        >
+                            Ver detalhes
+                        </button>
+
+                    </div>
+
+
+                    <div class="pedido-detalhes">
+
+                        <div class="detalhes-conteudo">
+
+                            <h2>
+                                Itens do pedido
+                            </h2>
+
+
+                            <div class="item-pedido">
+
+                                <div>
+
+                                    <strong>
+                                        Pão de Queijo Gourmet
+                                    </strong>
+
+                                    <span>
+                                        15g
+                                    </span>
+
+                                </div>
+
+                                <span>
+                                    Qtd. 3
+                                </span>
+
+                            </div>
+
+
+                            <div class="item-pedido">
+
+                                <div>
+
+                                    <strong>
+                                        Suco Concentrado
+                                    </strong>
+
+                                    <span>
+                                        Galão de 5 litros
+                                    </span>
+
+                                </div>
+
+                                <span>
+                                    Qtd. 3
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ==================================================
+                 ESTADO VAZIO
+            =================================================== -->
+
+            <div
+                class="pedidos-vazio"
+                id="pedidosVazio"
+            >
+
+                <h2>
+                    Nenhum pedido encontrado
+                </h2>
+
+                <p>
+                    Não existem pedidos com esse status.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ==================================================
+         RODAPÉ
+    =================================================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-container">
+
+            <img
+                src="img/Logo Topy´Gut.avif"
+                alt="Topy'Gut"
+                class="rodape-logo"
+            >
+
+            <p>
+                © 2026 Topy'Gut. Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
+    <script src="js/meus-pedidos.js"></script>
+
+</body>
+
+</html>
