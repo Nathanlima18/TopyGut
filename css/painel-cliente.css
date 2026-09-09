@@ -1,0 +1,1007 @@
+/* =========================================================
+   TOPY'GUT - PAINEL DO CLIENTE
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: #f4faff;
+    color: #333333;
+
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   CORES
+========================================================= */
+
+:root {
+    --azul: #168fd3;
+    --azul-escuro: #075c98;
+
+    --rosa: #fb8fb4;
+    --rosa-claro: #f8abc7;
+
+    --branco: #ffffff;
+
+    --fundo: #f4faff;
+
+    --texto: #333333;
+    --texto-claro: #6b6b6b;
+
+    --borda: #e4edf3;
+
+    --verde: #2e9b67;
+    --verde-claro: #e7f7ef;
+
+    --amarelo: #d99b17;
+    --amarelo-claro: #fff5d9;
+
+    --sombra:
+        0 12px 35px
+        rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.cabecalho {
+    width: 100%;
+
+    background-color: #ffffff;
+
+    border-bottom: 1px solid #eeeeee;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+}
+
+.cabecalho-container {
+    width: 90%;
+    max-width: 1450px;
+
+    height: 95px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 145px;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu {
+    display: flex;
+
+    align-items: center;
+
+    gap: 32px;
+}
+
+.menu a {
+    position: relative;
+
+    color: #222222;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    transition:
+        color 0.25s ease;
+}
+
+.menu a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 3px;
+
+    border-radius: 20px;
+
+    background-color:
+        var(--rosa);
+
+    transition:
+        width 0.25s ease;
+}
+
+.menu a:hover,
+.menu a.ativo {
+    color: var(--azul);
+}
+
+.menu a:hover::after,
+.menu a.ativo::after {
+    width: 100%;
+}
+
+
+/* SAIR */
+
+.menu .sair {
+    padding: 9px 17px;
+
+    border-radius: 8px;
+
+    background-color:
+        #fff0f4;
+
+    color: #d6507e;
+}
+
+.menu .sair::after {
+    display: none;
+}
+
+.menu .sair:hover {
+    background-color:
+        var(--rosa);
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   PAINEL
+========================================================= */
+
+.painel {
+    flex: 1;
+
+    width: 100%;
+
+    padding:
+        65px 5%
+        90px;
+
+    background-color:
+        var(--fundo);
+}
+
+.painel-container {
+    width: 100%;
+    max-width: 1350px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   BOAS-VINDAS
+========================================================= */
+
+.painel-topo {
+    margin-bottom: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 40px;
+}
+
+.painel-boas-vindas {
+    max-width: 760px;
+}
+
+.painel-tag {
+    display: inline-block;
+
+    margin-bottom: 14px;
+
+    padding: 7px 16px;
+
+    border-radius: 30px;
+
+    background-color:
+        var(--rosa-claro);
+
+    color: #a72b67;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+
+    text-transform: uppercase;
+}
+
+.painel-boas-vindas h1 {
+    margin-bottom: 12px;
+
+    color:
+        var(--azul-escuro);
+
+    font-size:
+        clamp(36px, 4vw, 52px);
+
+    line-height: 1.1;
+}
+
+.painel-boas-vindas h1 span {
+    color:
+        var(--azul);
+}
+
+.painel-boas-vindas p {
+    max-width: 680px;
+
+    color:
+        var(--texto-claro);
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   STATUS DA CONTA
+========================================================= */
+
+.painel-status {
+    min-width: 150px;
+
+    padding: 20px 28px;
+
+    border-radius: 16px;
+
+    background-color:
+        var(--verde-claro);
+
+    border:
+        1px solid
+        #ccebdc;
+
+    text-align: center;
+}
+
+.status-label {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color:
+        var(--texto-claro);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.painel-status strong {
+    color:
+        var(--verde);
+
+    font-size: 19px;
+}
+
+
+/* =========================================================
+   ATALHOS
+========================================================= */
+
+.atalhos {
+    margin-bottom: 38px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+.atalho-card {
+    min-height: 175px;
+
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 20px;
+
+    background-color:
+        #ffffff;
+
+    border:
+        1px solid
+        var(--borda);
+
+    box-shadow:
+        0 7px 22px
+        rgba(0, 0, 0, 0.04);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.atalho-card:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        #c9e5f5;
+
+    box-shadow:
+        0 14px 30px
+        rgba(0, 0, 0, 0.08);
+}
+
+
+/* DESTAQUE NOVO PEDIDO */
+
+.atalho-card.destaque {
+    background-color:
+        var(--azul-escuro);
+
+    border-color:
+        var(--azul-escuro);
+}
+
+.atalho-card.destaque h2 {
+    color: #ffffff;
+}
+
+.atalho-card.destaque p {
+    color:
+        rgba(255, 255, 255, 0.78);
+}
+
+
+/* =========================================================
+   ÍCONES
+========================================================= */
+
+.atalho-icone {
+    width: 44px;
+    height: 44px;
+
+    margin-bottom: 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background-color:
+        #e8f5fc;
+
+    color:
+        var(--azul);
+
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.atalho-card.destaque
+.atalho-icone {
+    background-color:
+        var(--rosa);
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   TEXTO DOS ATALHOS
+========================================================= */
+
+.atalho-conteudo h2 {
+    margin-bottom: 7px;
+
+    color:
+        var(--azul-escuro);
+
+    font-size: 19px;
+}
+
+.atalho-conteudo p {
+    color:
+        var(--texto-claro);
+
+    font-size: 14px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   GRID INFERIOR
+========================================================= */
+
+.painel-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(300px, 0.8fr);
+
+    gap: 25px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   CARDS DO PAINEL
+========================================================= */
+
+.painel-card {
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background-color:
+        #ffffff;
+
+    border:
+        1px solid
+        var(--borda);
+
+    box-shadow:
+        var(--sombra);
+}
+
+
+/* =========================================================
+   CABEÇALHO DOS CARDS
+========================================================= */
+
+.card-cabecalho {
+    margin-bottom: 25px;
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.card-subtitulo {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color:
+        var(--rosa);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+
+    text-transform: uppercase;
+}
+
+.card-cabecalho h2 {
+    color:
+        var(--azul-escuro);
+
+    font-size: 24px;
+}
+
+.card-cabecalho > a {
+    color:
+        var(--azul);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.card-cabecalho > a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   TABELA DE PEDIDOS
+========================================================= */
+
+.tabela-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.tabela-pedidos {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 600px;
+}
+
+.tabela-pedidos th {
+    padding:
+        13px 15px;
+
+    background-color:
+        #f7fafc;
+
+    color:
+        #777777;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    text-align: left;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+}
+
+.tabela-pedidos th:first-child {
+    border-radius:
+        9px 0 0 9px;
+}
+
+.tabela-pedidos th:last-child {
+    border-radius:
+        0 9px 9px 0;
+}
+
+.tabela-pedidos td {
+    padding:
+        18px 15px;
+
+    border-bottom:
+        1px solid
+        #eeeeee;
+
+    color:
+        #4d4d4d;
+
+    font-size: 14px;
+}
+
+.tabela-pedidos tbody
+tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-pedidos tbody tr {
+    transition:
+        background-color 0.2s ease;
+}
+
+.tabela-pedidos tbody
+tr:hover {
+    background-color:
+        #fbfdff;
+}
+
+
+/* =========================================================
+   STATUS DOS PEDIDOS
+========================================================= */
+
+.status-pedido {
+    display: inline-block;
+
+    padding:
+        6px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.status-pedido.separacao {
+    background-color:
+        var(--amarelo-claro);
+
+    color:
+        var(--amarelo);
+}
+
+.status-pedido.entregue {
+    background-color:
+        var(--verde-claro);
+
+    color:
+        var(--verde);
+}
+
+
+/* =========================================================
+   MINHA CONTA
+========================================================= */
+
+.conta-info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.conta-item {
+    padding:
+        15px 0;
+
+    border-bottom:
+        1px solid
+        #eeeeee;
+}
+
+.conta-item:last-child {
+    border-bottom: none;
+}
+
+.conta-item span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color:
+        #888888;
+
+    font-size: 12px;
+}
+
+.conta-item strong {
+    display: block;
+
+    color:
+        #333333;
+
+    font-size: 14px;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   BOTÃO MINHA CONTA
+========================================================= */
+
+.btn-conta {
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding:
+        13px 20px;
+
+    border-radius: 9px;
+
+    background-color:
+        var(--azul);
+
+    border:
+        2px solid
+        var(--azul);
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.btn-conta:hover {
+    background-color:
+        #ffffff;
+
+    color:
+        var(--azul);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+.rodape {
+    width: 100%;
+
+    padding:
+        30px 5%;
+
+    background-color:
+        var(--azul-escuro);
+
+    color: #ffffff;
+}
+
+.rodape-container {
+    width: 100%;
+
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.rodape-logo {
+    width: 105px;
+    max-width: 105px;
+
+    height: auto;
+
+    object-fit: contain;
+}
+
+.rodape p {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE - NOTEBOOK / TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .atalhos {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .painel-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .conta-card {
+        max-width: none;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE - TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .cabecalho-container {
+        height: auto;
+
+        padding:
+            18px 0;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .logo img {
+        width: 130px;
+    }
+
+    .menu {
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap:
+            15px 23px;
+    }
+
+
+    .painel {
+        padding:
+            50px 5%
+            70px;
+    }
+
+    .painel-topo {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 25px;
+    }
+
+    .painel-status {
+        min-width: 135px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE - CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .menu {
+        gap:
+            12px 16px;
+    }
+
+    .menu a {
+        font-size: 13px;
+    }
+
+
+    .painel {
+        padding:
+            40px 18px
+            60px;
+    }
+
+    .painel-boas-vindas h1 {
+        font-size: 35px;
+    }
+
+    .painel-boas-vindas p {
+        font-size: 15px;
+    }
+
+
+    /* ATALHOS */
+
+    .atalhos {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .atalho-card {
+        min-height: auto;
+
+        padding: 22px;
+    }
+
+
+    /* CARDS */
+
+    .painel-card {
+        padding:
+            25px 20px;
+
+        border-radius: 18px;
+    }
+
+    .card-cabecalho {
+        align-items: flex-start;
+    }
+
+    .card-cabecalho h2 {
+        font-size: 21px;
+    }
+
+
+    /* RODAPÉ */
+
+    .rodape-container {
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 15px;
+    }
+
+    .rodape-logo {
+        width: 90px;
+        max-width: 90px;
+    }
+}
+
+
+/* =========================================================
+   CELULAR PEQUENO
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .painel-boas-vindas h1 {
+        font-size: 31px;
+    }
+
+    .painel-status {
+        width: 100%;
+    }
+
+    .card-cabecalho {
+        flex-direction: column;
+
+        gap: 8px;
+    }
+}

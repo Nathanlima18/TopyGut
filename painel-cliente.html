@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Painel do Cliente | Topy'Gut</title>
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        type="image/avif"
+        href="img/Logo Topy´Gut.avif"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="css/painel-cliente.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         CABEÇALHO
+    =================================================== -->
+
+    <header class="cabecalho">
+
+        <div class="cabecalho-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Página inicial da Topy'Gut"
+            >
+                <img
+                    src="img/Logo Topy´Gut.avif"
+                    alt="Logo Topy'Gut"
+                >
+            </a>
+
+
+            <nav class="menu">
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="index.html#produtos">
+                    Produtos
+                </a>
+
+                <a
+                    href="cliente-painel.html"
+                    class="ativo"
+                >
+                    Minha Conta
+                </a>
+
+                <a
+                    href="area-cliente.html"
+                    class="sair"
+                >
+                    Sair
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================================================
+         CONTEÚDO PRINCIPAL
+    =================================================== -->
+
+    <main class="painel">
+
+        <div class="painel-container">
+
+
+            <!-- ==================================================
+                 BOAS-VINDAS
+            =================================================== -->
+
+            <section class="painel-topo">
+
+                <div class="painel-boas-vindas">
+
+                    <span class="painel-tag">
+                        ÁREA DO CLIENTE
+                    </span>
+
+                    <h1>
+                        Olá,
+                        <span id="nomeCliente">
+                            Cliente
+                        </span>!
+                    </h1>
+
+                    <p>
+                        Bem-vindo à sua área exclusiva Topy'Gut.
+                        Aqui você pode consultar seus produtos,
+                        acompanhar pedidos e acessar suas informações.
+                    </p>
+
+                </div>
+
+
+                <div class="painel-status">
+
+                    <span class="status-label">
+                        Conta
+                    </span>
+
+                    <strong>
+                        Ativa
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 ATALHOS
+            =================================================== -->
+
+            <section class="atalhos">
+
+                <!-- NOVO PEDIDO -->
+
+                <a
+                    href="#"
+                    class="atalho-card destaque"
+                >
+
+                    <div class="atalho-icone">
+                        +
+                    </div>
+
+                    <div class="atalho-conteudo">
+
+                        <h2>
+                            Novo Pedido
+                        </h2>
+
+                        <p>
+                            Escolha seus produtos e monte
+                            um novo pedido.
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <!-- MEUS PEDIDOS -->
+
+                <a
+                    href="#pedidos"
+                    class="atalho-card"
+                >
+
+                    <div class="atalho-icone">
+                        📦
+                    </div>
+
+                    <div class="atalho-conteudo">
+
+                        <h2>
+                            Meus Pedidos
+                        </h2>
+
+                        <p>
+                            Consulte pedidos anteriores e
+                            acompanhe o andamento.
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <!-- PRODUTOS E PREÇOS -->
+
+                <a
+                    href="#"
+                    class="atalho-card"
+                >
+
+                    <div class="atalho-icone">
+                        🛒
+                    </div>
+
+                    <div class="atalho-conteudo">
+
+                        <h2>
+                            Produtos e Preços
+                        </h2>
+
+                        <p>
+                            Consulte os produtos disponíveis
+                            e seus preços.
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <!-- MINHA CONTA -->
+
+                <a
+                    href="#conta"
+                    class="atalho-card"
+                >
+
+                    <div class="atalho-icone">
+                        👤
+                    </div>
+
+                    <div class="atalho-conteudo">
+
+                        <h2>
+                            Minha Conta
+                        </h2>
+
+                        <p>
+                            Consulte seus dados cadastrais
+                            e informações da conta.
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </section>
+
+
+            <!-- ==================================================
+                 CONTEÚDO DO PAINEL
+            =================================================== -->
+
+            <div class="painel-grid">
+
+
+                <!-- ==================================================
+                     ÚLTIMOS PEDIDOS
+                =================================================== -->
+
+                <section
+                    class="painel-card pedidos-card"
+                    id="pedidos"
+                >
+
+                    <div class="card-cabecalho">
+
+                        <div>
+
+                            <span class="card-subtitulo">
+                                HISTÓRICO
+                            </span>
+
+                            <h2>
+                                Últimos Pedidos
+                            </h2>
+
+                        </div>
+
+
+                        <a href="#">
+                            Ver todos
+                        </a>
+
+                    </div>
+
+
+                    <div class="tabela-wrapper">
+
+                        <table class="tabela-pedidos">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Pedido
+                                    </th>
+
+                                    <th>
+                                        Data
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Total
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        #1054
+                                    </td>
+
+                                    <td>
+                                        08/09/2026
+                                    </td>
+
+                                    <td>
+                                        <span
+                                            class="status-pedido separacao"
+                                        >
+                                            Em separação
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        R$ 000,00
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        #1048
+                                    </td>
+
+                                    <td>
+                                        02/09/2026
+                                    </td>
+
+                                    <td>
+                                        <span
+                                            class="status-pedido entregue"
+                                        >
+                                            Entregue
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        R$ 000,00
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        #1041
+                                    </td>
+
+                                    <td>
+                                        26/08/2026
+                                    </td>
+
+                                    <td>
+                                        <span
+                                            class="status-pedido entregue"
+                                        >
+                                            Entregue
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        R$ 000,00
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ==================================================
+                     RESUMO DA CONTA
+                =================================================== -->
+
+                <aside
+                    class="painel-card conta-card"
+                    id="conta"
+                >
+
+                    <div class="card-cabecalho">
+
+                        <div>
+
+                            <span class="card-subtitulo">
+                                CADASTRO
+                            </span>
+
+                            <h2>
+                                Minha Conta
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="conta-info">
+
+                        <div class="conta-item">
+
+                            <span>
+                                Cliente
+                            </span>
+
+                            <strong id="clienteNome">
+                                Nome do Cliente
+                            </strong>
+
+                        </div>
+
+
+                        <div class="conta-item">
+
+                            <span>
+                                E-mail
+                            </span>
+
+                            <strong id="clienteEmail">
+                                cliente@email.com
+                            </strong>
+
+                        </div>
+
+
+                        <div class="conta-item">
+
+                            <span>
+                                Telefone
+                            </span>
+
+                            <strong id="clienteTelefone">
+                                (11) 00000-0000
+                            </strong>
+
+                        </div>
+
+
+                        <div class="conta-item">
+
+                            <span>
+                                Código do cliente
+                            </span>
+
+                            <strong id="clienteCodigo">
+                                #0000
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn-conta"
+                    >
+                        Ver meus dados
+                    </button>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ==================================================
+         RODAPÉ
+    =================================================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-container">
+
+            <img
+                src="img/Logo Topy´Gut.avif"
+                alt="Topy'Gut"
+                class="rodape-logo"
+            >
+
+            <p>
+                © 2026 Topy'Gut. Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
+    <script src="js/cliente-painel.js"></script>
+
+</body>
+
+</html>
