@@ -1,0 +1,1044 @@
+/* =========================================================
+   TOPY'GUT - NOVO PEDIDO
+========================================================= */
+
+
+/* =========================================================
+   RESET E CONFIGURAÇÕES GERAIS
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: #f4faff;
+    color: #333333;
+
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+
+/* =========================================================
+   CORES
+========================================================= */
+
+:root {
+    --azul: #168fd3;
+    --azul-escuro: #075c98;
+
+    --rosa: #fb8fb4;
+    --rosa-claro: #f8abc7;
+    --rosa-card: #fff0f5;
+
+    --azul-card: #eef8fd;
+
+    --amarelo: #f4c956;
+    --amarelo-card: #fff8dc;
+
+    --dourado: #d6a632;
+    --dourado-card: #fff9e8;
+
+    --branco: #ffffff;
+
+    --texto: #333333;
+    --texto-claro: #6d6d6d;
+
+    --borda: #e3edf3;
+
+    --sombra:
+        0 12px 35px
+        rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.cabecalho {
+    width: 100%;
+
+    background-color: #ffffff;
+
+    border-bottom: 1px solid #eeeeee;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+}
+
+.cabecalho-container {
+    width: 90%;
+    max-width: 1450px;
+
+    height: 95px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 145px;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu {
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+.menu a {
+    position: relative;
+
+    color: #222222;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transition:
+        color 0.25s ease;
+}
+
+.menu a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 3px;
+
+    border-radius: 20px;
+
+    background-color: var(--rosa);
+
+    transition:
+        width 0.25s ease;
+}
+
+.menu a:hover,
+.menu a.ativo {
+    color: var(--azul);
+}
+
+.menu a:hover::after,
+.menu a.ativo::after {
+    width: 100%;
+}
+
+
+/* SAIR */
+
+.menu .sair {
+    padding: 9px 17px;
+
+    border-radius: 8px;
+
+    background-color: #fff0f4;
+
+    color: #d6507e;
+}
+
+.menu .sair::after {
+    display: none;
+}
+
+.menu .sair:hover {
+    background-color: var(--rosa);
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   ÁREA PRINCIPAL
+========================================================= */
+
+.pedido {
+    flex: 1;
+
+    width: 100%;
+
+    padding:
+        60px 5%
+        90px;
+
+    background-color: #f4faff;
+}
+
+.pedido-container {
+    width: 100%;
+    max-width: 1450px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   CABEÇALHO DA PÁGINA
+========================================================= */
+
+.pedido-topo {
+    margin-bottom: 45px;
+}
+
+.pedido-tag {
+    display: inline-block;
+
+    margin-bottom: 14px;
+
+    padding: 7px 16px;
+
+    border-radius: 30px;
+
+    background-color: var(--rosa-claro);
+
+    color: #a72b67;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+
+    text-transform: uppercase;
+}
+
+.pedido-topo h1 {
+    margin-bottom: 12px;
+
+    color: var(--azul-escuro);
+
+    font-size:
+        clamp(38px, 4vw, 54px);
+
+    line-height: 1.1;
+}
+
+.pedido-topo p {
+    max-width: 750px;
+
+    color: var(--texto-claro);
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   LAYOUT PRINCIPAL
+========================================================= */
+
+.pedido-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        330px;
+
+    gap: 35px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   PRODUTOS
+========================================================= */
+
+.produtos-pedido {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   CATEGORIAS
+========================================================= */
+
+.categoria-pedido {
+    margin-bottom: 50px;
+}
+
+.categoria-pedido:last-child {
+    margin-bottom: 0;
+}
+
+.categoria-header {
+    margin-bottom: 22px;
+}
+
+.categoria-tag {
+    display: inline-block;
+
+    margin-bottom: 7px;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.1px;
+
+    text-transform: uppercase;
+}
+
+.categoria-tag.rosa {
+    background-color: var(--rosa-claro);
+
+    color: #a72b67;
+}
+
+.categoria-tag.azul {
+    background-color: #dff2fc;
+
+    color: var(--azul-escuro);
+}
+
+.categoria-tag.amarelo {
+    background-color: #fff0b8;
+
+    color: #9c7410;
+}
+
+.categoria-tag.dourado {
+    background-color: #f8e9b9;
+
+    color: #8f6710;
+}
+
+.categoria-header h2 {
+    color: var(--azul-escuro);
+
+    font-size: 29px;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   GRADE DE PRODUTOS
+========================================================= */
+
+.grade-pedido {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   CARD PRODUTO
+========================================================= */
+
+.produto-pedido {
+    min-height: 195px;
+
+    padding: 23px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    gap: 22px;
+
+    background-color: #ffffff;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 7px 22px
+        rgba(0, 0, 0, 0.04);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.produto-pedido:hover {
+    transform:
+        translateY(-4px);
+
+    border-color: #cfe5f1;
+
+    box-shadow:
+        0 13px 28px
+        rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================================================
+   INFORMAÇÕES DO PRODUTO
+========================================================= */
+
+.produto-tipo {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--rosa);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.produto-info h3 {
+    margin-bottom: 5px;
+
+    color: var(--azul-escuro);
+
+    font-size: 20px;
+
+    line-height: 1.25;
+}
+
+.produto-info p {
+    margin-bottom: 14px;
+
+    color: #777777;
+
+    font-size: 14px;
+}
+
+.produto-preco {
+    display: block;
+
+    color: var(--azul);
+
+    font-size: 20px;
+
+    line-height: 1;
+}
+
+/* =========================================================
+   TAMANHO DO PÃO DE QUEIJO
+========================================================= */
+
+.tamanho-produto {
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.tamanho-produto label {
+    color: var(--azul-escuro);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.tamanho-pao-queijo {
+    min-width: 90px;
+
+    padding: 9px 34px 9px 12px;
+
+    border: 2px solid var(--azul);
+    border-radius: 9px;
+
+    background-color: #ffffff;
+
+    color: var(--texto);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.tamanho-pao-queijo:hover {
+    background-color: #f4faff;
+}
+
+.tamanho-pao-queijo:focus {
+    border-color: var(--azul-escuro);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(22, 143, 211, 0.12);
+}
+
+/* =========================================================
+   CONTROLE DE QUANTIDADE
+========================================================= */
+
+.quantidade {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 9px;
+}
+
+.btn-quantidade {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid var(--azul);
+
+    border-radius: 9px;
+
+    background-color: #ffffff;
+
+    color: var(--azul);
+
+    font-size: 22px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.btn-quantidade:hover {
+    background-color: var(--azul);
+
+    color: #ffffff;
+
+    transform:
+        translateY(-1px);
+}
+
+.btn-quantidade:active {
+    transform:
+        translateY(0);
+}
+
+.quantidade-input {
+    width: 55px;
+    height: 38px;
+
+    border: 1px solid #dce6eb;
+
+    border-radius: 9px;
+
+    background-color: #f9fbfc;
+
+    color: #333333;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    text-align: center;
+
+    outline: none;
+
+    appearance: textfield;
+}
+
+.quantidade-input::-webkit-outer-spin-button,
+.quantidade-input::-webkit-inner-spin-button {
+    margin: 0;
+
+    -webkit-appearance: none;
+}
+
+
+/* =========================================================
+   PRODUTOS COM QUANTIDADE
+========================================================= */
+
+.produto-pedido.selecionado {
+    border-color: var(--azul);
+
+    box-shadow:
+        0 10px 28px
+        rgba(22, 143, 211, 0.12);
+}
+
+
+/* =========================================================
+   RESUMO DO PEDIDO
+========================================================= */
+
+.resumo-pedido {
+    min-width: 0;
+}
+
+.resumo-card {
+    position: sticky;
+
+    top: 125px;
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background-color: #ffffff;
+
+    border: 1px solid var(--borda);
+
+    box-shadow: var(--sombra);
+}
+
+.resumo-tag {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: var(--rosa);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+}
+
+.resumo-card h2 {
+    margin-bottom: 25px;
+
+    color: var(--azul-escuro);
+
+    font-size: 27px;
+}
+
+
+/* =========================================================
+   LINHAS DO RESUMO
+========================================================= */
+
+.resumo-linha {
+    padding: 11px 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    color: var(--texto-claro);
+
+    font-size: 14px;
+}
+
+.resumo-linha strong {
+    color: #333333;
+
+    font-size: 15px;
+}
+
+.resumo-divisor {
+    height: 1px;
+
+    margin: 16px 0;
+
+    background-color: #eeeeee;
+}
+
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
+.resumo-total {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.resumo-total span {
+    color: var(--azul-escuro);
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.resumo-total strong {
+    color: var(--azul);
+
+    font-size: 25px;
+}
+
+
+/* =========================================================
+   BOTÃO FINALIZAR
+========================================================= */
+
+.btn-finalizar {
+    width: 100%;
+
+    padding: 15px 20px;
+
+    border: 2px solid var(--azul);
+
+    border-radius: 10px;
+
+    background-color: var(--azul);
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.btn-finalizar:hover {
+    background-color: #ffffff;
+
+    color: var(--azul);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 22px
+        rgba(22, 143, 211, 0.16);
+}
+
+.btn-finalizar:disabled {
+    background-color: #b9cbd5;
+
+    border-color: #b9cbd5;
+
+    color: #ffffff;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   AVISO DO RESUMO
+========================================================= */
+
+.resumo-aviso {
+    margin-top: 18px;
+
+    color: #888888;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+.rodape {
+    width: 100%;
+
+    padding: 30px 5%;
+
+    background-color: var(--azul-escuro);
+
+    color: #ffffff;
+}
+
+.rodape-container {
+    width: 100%;
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.rodape-logo {
+    width: 105px;
+    max-width: 105px;
+
+    height: auto;
+
+    object-fit: contain;
+}
+
+.rodape p {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE - NOTEBOOK
+========================================================= */
+
+@media (max-width: 1150px) {
+
+    .pedido-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            300px;
+
+        gap: 25px;
+    }
+
+    .menu {
+        gap: 20px;
+    }
+
+    .menu a {
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE - TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .cabecalho-container {
+        height: auto;
+
+        padding:
+            18px 0;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .logo img {
+        width: 130px;
+    }
+
+    .menu {
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap:
+            14px 22px;
+    }
+
+
+    .pedido {
+        padding:
+            50px 5%
+            70px;
+    }
+
+    .pedido-layout {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .resumo-card {
+        position: static;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE - CELULAR
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .menu {
+        gap:
+            12px 16px;
+    }
+
+    .menu a {
+        font-size: 13px;
+    }
+
+
+    .pedido {
+        padding:
+            40px 18px
+            60px;
+    }
+
+    .pedido-topo h1 {
+        font-size: 36px;
+    }
+
+    .pedido-topo p {
+        font-size: 15px;
+    }
+
+
+    /* PRODUTOS */
+
+    .grade-pedido {
+        grid-template-columns: 1fr;
+    }
+
+    .categoria-pedido {
+        margin-bottom: 40px;
+    }
+
+    .categoria-header h2 {
+        font-size: 25px;
+    }
+
+    .produto-pedido {
+        min-height: auto;
+
+        padding: 21px;
+    }
+
+
+    /* QUANTIDADE */
+
+    .quantidade {
+        justify-content: flex-start;
+    }
+
+
+    /* RESUMO */
+
+    .resumo-card {
+        padding:
+            26px 22px;
+
+        border-radius: 18px;
+    }
+
+
+    /* RODAPÉ */
+
+    .rodape-container {
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 15px;
+    }
+
+    .rodape-logo {
+        width: 90px;
+        max-width: 90px;
+    }
+}
+
+
+/* =========================================================
+   CELULAR PEQUENO
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .pedido-topo h1 {
+        font-size: 32px;
+    }
+
+    .produto-info h3 {
+        font-size: 18px;
+    }
+
+    .resumo-total strong {
+        font-size: 22px;
+    }
+}

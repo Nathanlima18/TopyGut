@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Novo Pedido | Topy'Gut</title>
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        type="image/avif"
+        href="img/Logo Topy´Gut.avif"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="css/novo-pedido.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         CABEÇALHO
+    =================================================== -->
+
+    <header class="cabecalho">
+
+        <div class="cabecalho-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Página inicial da Topy'Gut"
+            >
+                <img
+                    src="img/Logo Topy´Gut.avif"
+                    alt="Logo Topy'Gut"
+                >
+            </a>
+
+
+            <nav class="menu">
+
+                <a href="cliente-painel.html">
+                    Painel
+                </a>
+
+                <a
+                    href="novo-pedido.html"
+                    class="ativo"
+                >
+                    Novo Pedido
+                </a>
+
+                <a href="cliente-painel.html#pedidos">
+                    Meus Pedidos
+                </a>
+
+                <a href="cliente-painel.html#conta">
+                    Minha Conta
+                </a>
+
+                <a
+                    href="area-cliente.html"
+                    class="sair"
+                >
+                    Sair
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================================================
+         CONTEÚDO PRINCIPAL
+    =================================================== -->
+
+    <main class="pedido">
+
+        <div class="pedido-container">
+
+
+            <!-- ==================================================
+                 CABEÇALHO DA PÁGINA
+            =================================================== -->
+
+            <section class="pedido-topo">
+
+                <div>
+
+                    <span class="pedido-tag">
+                        ÁREA DO CLIENTE
+                    </span>
+
+                    <h1>
+                        Novo Pedido
+                    </h1>
+
+                    <p>
+                        Selecione os produtos e informe as quantidades
+                        desejadas para montar seu pedido.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 GRID PRINCIPAL
+            =================================================== -->
+
+            <div class="pedido-layout">
+
+
+                <!-- ==================================================
+                     LISTA DE PRODUTOS
+                =================================================== -->
+
+                <section class="produtos-pedido">
+
+
+                    <!-- ==================================================
+                         IOGURTES
+                    =================================================== -->
+
+                    <div class="categoria-pedido">
+
+                        <div class="categoria-header">
+
+                            <span class="categoria-tag rosa">
+                                IOGURTES
+                            </span>
+
+                            <h2>
+                                Iogurtes
+                            </h2>
+
+                        </div>
+
+
+                        <div class="grade-pedido">
+
+
+                            <!-- IOGURTE BAG -->
+
+                            <article
+                                class="produto-pedido"
+                                data-produto="Iogurte Semi Desnatado"
+                                data-preco="0"
+                            >
+
+                                <div class="produto-info">
+
+                                    <span class="produto-tipo">
+                                        Iogurte
+                                    </span>
+
+                                    <h3>
+                                        Iogurte Semi Desnatado
+                                    </h3>
+
+                                    <p>
+                                        Bag de 5 litros
+                                    </p>
+
+                                    <strong class="produto-preco">
+                                        R$ 00,00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="quantidade">
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade diminuir"
+                                        aria-label="Diminuir quantidade"
+                                    >
+                                        −
+                                    </button>
+
+                                    <input
+                                        type="number"
+                                        class="quantidade-input"
+                                        value="0"
+                                        min="0"
+                                        readonly
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade aumentar"
+                                        aria-label="Aumentar quantidade"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- TRIPLO ZERO -->
+
+                            <article
+                                class="produto-pedido"
+                                data-produto="Triplo Zero"
+                                data-preco="0"
+                            >
+
+                                <div class="produto-info">
+
+                                    <span class="produto-tipo">
+                                        Iogurte
+                                    </span>
+
+                                    <h3>
+                                        Triplo Zero
+                                    </h3>
+
+                                    <p>
+                                        Garrafa de 900g - Pacote com 6 unidades
+                                    </p>
+
+                                    <strong class="produto-preco">
+                                        R$ 00,00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="quantidade">
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade diminuir"
+                                    >
+                                        −
+                                    </button>
+
+                                    <input
+                                        type="number"
+                                        class="quantidade-input"
+                                        value="0"
+                                        min="0"
+                                        readonly
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade aumentar"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- IOGURTE NATURAL -->
+
+                            <article
+                                class="produto-pedido"
+                                data-produto="Iogurte Natural"
+                                data-preco="0"
+                            >
+
+                                <div class="produto-info">
+
+                                    <span class="produto-tipo">
+                                        Iogurte
+                                    </span>
+
+                                    <h3>
+                                        Iogurte Natural
+                                    </h3>
+
+                                    <p>
+                                        Garrafa de 900g - Pacote com 6 unidades
+                                    </p>
+
+                                    <strong class="produto-preco">
+                                        R$ 00,00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="quantidade">
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade diminuir"
+                                    >
+                                        −
+                                    </button>
+
+                                    <input
+                                        type="number"
+                                        class="quantidade-input"
+                                        value="0"
+                                        min="0"
+                                        readonly
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade aumentar"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- IOGURTE DESNATADO -->
+
+                            <article
+                                class="produto-pedido"
+                                data-produto="Iogurte Desnatado"
+                                data-preco="0"
+                            >
+
+                                <div class="produto-info">
+
+                                    <span class="produto-tipo">
+                                        Iogurte
+                                    </span>
+
+                                    <h3>
+                                        Iogurte Desnatado
+                                    </h3>
+
+                                    <p>
+                                        Garrafa de 850g - Pacote com 6 unidades
+                                    </p>
+
+                                    <strong class="produto-preco">
+                                        R$ 00,00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="quantidade">
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade diminuir"
+                                    >
+                                        −
+                                    </button>
+
+                                    <input
+                                        type="number"
+                                        class="quantidade-input"
+                                        value="0"
+                                        min="0"
+                                        readonly
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade aumentar"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- BANDEJA -->
+
+                            <article
+                                class="produto-pedido"
+                                data-produto="Bandeja de Iogurte"
+                                data-preco="0"
+                            >
+
+                                <div class="produto-info">
+
+                                    <span class="produto-tipo">
+                                        Iogurte
+                                    </span>
+
+                                    <h3>
+                                        Bandeja de Iogurte
+                                    </h3>
+
+                                    <p>
+                                        10 unidades • 540g
+                                    </p>
+
+                                    <strong class="produto-preco">
+                                        R$ 00,00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="quantidade">
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade diminuir"
+                                    >
+                                        −
+                                    </button>
+
+                                    <input
+                                        type="number"
+                                        class="quantidade-input"
+                                        value="0"
+                                        min="0"
+                                        readonly
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade aumentar"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         LATICÍNIOS
+                    =================================================== -->
+
+                    <div class="categoria-pedido">
+
+                        <div class="categoria-header">
+
+                            <span class="categoria-tag azul">
+                                LATICÍNIOS
+                            </span>
+
+                            <h2>
+                                Laticínios
+                            </h2>
+
+                        </div>
+
+
+                        <div class="grade-pedido">
+
+                            <article
+                                class="produto-pedido"
+                                data-produto="Requeijão Cremoso"
+                                data-preco="0"
+                            >
+
+                                <div class="produto-info">
+
+                                    <span class="produto-tipo">
+                                        Laticínio
+                                    </span>
+
+                                    <h3>
+                                        Requeijão Cremoso
+                                    </h3>
+
+                                    <p>
+                                        Pote de 400g
+                                    </p>
+
+                                    <strong class="produto-preco">
+                                        R$ 00,00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="quantidade">
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade diminuir"
+                                    >
+                                        −
+                                    </button>
+
+                                    <input
+                                        type="number"
+                                        class="quantidade-input"
+                                        value="0"
+                                        min="0"
+                                        readonly
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade aumentar"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         SUCOS
+                    =================================================== -->
+
+                    <div class="categoria-pedido">
+
+                        <div class="categoria-header">
+
+                            <span class="categoria-tag amarelo">
+                                SUCOS
+                            </span>
+
+                            <h2>
+                                Sucos
+                            </h2>
+
+                        </div>
+
+
+                        <div class="grade-pedido">
+
+
+                            <!-- SUCO 1L -->
+
+                            <article
+                                class="produto-pedido"
+                                data-produto="Suco Concentrado 1L"
+                                data-preco="0"
+                            >
+
+                                <div class="produto-info">
+
+                                    <span class="produto-tipo">
+                                        Suco
+                                    </span>
+
+                                    <h3>
+                                        Suco Concentrado
+                                    </h3>
+
+                                    <p>
+                                        Garrafa de 1 litro
+                                    </p>
+
+                                    <strong class="produto-preco">
+                                        R$ 00,00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="quantidade">
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade diminuir"
+                                    >
+                                        −
+                                    </button>
+
+                                    <input
+                                        type="number"
+                                        class="quantidade-input"
+                                        value="0"
+                                        min="0"
+                                        readonly
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade aumentar"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- SUCO 5L -->
+
+                            <article
+                                class="produto-pedido"
+                                data-produto="Suco Concentrado 5L"
+                                data-preco="0"
+                            >
+
+                                <div class="produto-info">
+
+                                    <span class="produto-tipo">
+                                        Suco
+                                    </span>
+
+                                    <h3>
+                                        Suco Concentrado
+                                    </h3>
+
+                                    <p>
+                                        Galão de 5 litros
+                                    </p>
+
+                                    <strong class="produto-preco">
+                                        R$ 00,00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="quantidade">
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade diminuir"
+                                    >
+                                        −
+                                    </button>
+
+                                    <input
+                                        type="number"
+                                        class="quantidade-input"
+                                        value="0"
+                                        min="0"
+                                        readonly
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade aumentar"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         PÃO DE QUEIJO
+                    =================================================== -->
+
+                    <div class="categoria-pedido">
+
+                        <div class="categoria-header">
+
+                            <span class="categoria-tag dourado">
+                                PÃO DE QUEIJO
+                            </span>
+
+                            <h2>
+                                Pão de Queijo do Wagner
+                            </h2>
+
+                        </div>
+
+
+                        <div class="grade-pedido">
+
+
+                            <!-- TRADICIONAL -->
+
+                            <article
+                                class="produto-pedido"
+                                data-produto="Pão de Queijo Tradicional"
+                                data-preco="0"
+                            >
+
+                                <div class="produto-info">
+                                    
+                                    <span class="produto-tipo">
+                                        Pão de Queijo
+                                    </span>
+
+                                    <h3>
+                                        Tradicional
+                                    </h3>
+
+                                    <p>
+                                        Pão de queijo tradicional - 2kg
+                                    </p>
+
+                                    <strong class="produto-preco">
+                                        R$ 00,00
+                                    </strong>
+
+                                </div>
+
+                                <!-- TAMANHO -->
+
+                                <div class="tamanho-produto">
+
+                                    <label for="tamanho-tradicional">
+                                        Tamanho
+                                    </label>
+
+                                    <select
+                                        id="tamanho-tradicional"
+                                        class="tamanho-pao-queijo"
+                                    >
+                                        <option value="15g">
+                                            15g
+                                        </option>
+
+                                        <option value="90g">
+                                            90g
+                                        </option>
+                                    </select>
+
+                                </div>
+                                
+                                <div class="quantidade">
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade diminuir"
+                                    >
+                                        −
+                                    </button>
+
+                                    <input
+                                        type="number"
+                                        class="quantidade-input"
+                                        value="0"
+                                        min="0"
+                                        readonly
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade aumentar"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- GOURMET -->
+
+                            <article
+                                class="produto-pedido"
+                                data-produto="Pão de Queijo Gourmet"
+                                data-preco="0"
+                            >
+
+                                <div class="produto-info">
+
+                                    <span class="produto-tipo">
+                                        Pão de Queijo
+                                    </span>
+
+                                    <h3>
+                                        Gourmet
+                                    </h3>
+
+                                    <p>
+                                        Linha especial com parmesão - 2kg
+                                    </p>
+
+                                    <strong class="produto-preco">
+                                        R$ 00,00
+                                    </strong>
+
+                                </div>
+
+                                <!-- TAMANHO -->
+
+                                <div class="tamanho-produto">
+
+                                    <label for="tamanho-tradicional">
+                                        Tamanho
+                                    </label>
+
+                                    <select
+                                        id="tamanho-tradicional"
+                                        class="tamanho-pao-queijo"
+                                    >
+                                        <option value="15g">
+                                            15g
+                                        </option>
+
+                                        <option value="90g">
+                                            90g
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                                <div class="quantidade">
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade diminuir"
+                                    >
+                                        −
+                                    </button>
+
+                                    <input
+                                        type="number"
+                                        class="quantidade-input"
+                                        value="0"
+                                        min="0"
+                                        readonly
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade aumentar"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- PALITO -->
+
+                            <article
+                                class="produto-pedido"
+                                data-produto="Pão de Queijo Palito"
+                                data-preco="0"
+                            >
+
+                                <div class="produto-info">
+
+                                    <span class="produto-tipo">
+                                        Pão de Queijo
+                                    </span>
+
+                                    <h3>
+                                        Palito
+                                    </h3>
+
+                                    <p>
+                                        Formato em palito - 2kg
+                                    </p>
+
+                                    <strong class="produto-preco">
+                                        R$ 00,00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="quantidade">
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade diminuir"
+                                    >
+                                        −
+                                    </button>
+
+                                    <input
+                                        type="number"
+                                        class="quantidade-input"
+                                        value="0"
+                                        min="0"
+                                        readonly
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="btn-quantidade aumentar"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ==================================================
+                     RESUMO DO PEDIDO
+                =================================================== -->
+
+                <aside class="resumo-pedido">
+
+                    <div class="resumo-card">
+
+                        <span class="resumo-tag">
+                            SEU PEDIDO
+                        </span>
+
+                        <h2>
+                            Resumo
+                        </h2>
+
+
+                        <div class="resumo-linha">
+
+                            <span>
+                                Itens
+                            </span>
+
+                            <strong id="totalItens">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="resumo-linha">
+
+                            <span>
+                                Subtotal
+                            </span>
+
+                            <strong id="subtotalPedido">
+                                R$ 0,00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="resumo-divisor"></div>
+
+                        <div class="resumo-total">
+                            <span>
+                                Total
+                            </span>
+
+                            <strong id="totalPedido">
+                                R$ 0,00
+                            </strong>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn-finalizar"
+                            id="btnFinalizar"
+                        >
+                            Finalizar pedido
+                        </button>
+
+                        <p class="resumo-aviso">
+                            Os valores exibidos serão definidos
+                            conforme a tabela de preços vinculada
+                            à sua conta.
+                        </p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- ==================================================
+         RODAPÉ
+    =================================================== -->
+
+    <footer class="rodape">
+        <div class="rodape-container">
+            <img
+                src="img/Logo Topy´Gut.avif"
+                alt="Topy'Gut"
+                class="rodape-logo"
+            >
+            <p>
+                © 2026 Topy'Gut. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+    <script src="js/novo-pedido.js"></script>
+</body>
+</html>
