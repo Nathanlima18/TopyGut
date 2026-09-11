@@ -1,0 +1,30 @@
+# Variáveis de ambiente
+.env
+.env.*
+
+# Dependências Node
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Backups e arquivos temporários
+*.bak
+*.tmp
+
+# Banco / dumps locais
+dumps/
+*.sql
+
+# Uploads locais, se forem gerados em desenvolvimento
+uploads/

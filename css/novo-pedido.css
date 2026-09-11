@@ -690,22 +690,18 @@ input {
 ========================================================= */
 
 .resumo-pedido {
-    min-width: 0;
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
 }
 
 .resumo-card {
     position: sticky;
-
     top: 125px;
-
     padding: 30px;
-
     border-radius: 22px;
-
     background-color: #ffffff;
-
     border: 1px solid var(--borda);
-
     box-shadow: var(--sombra);
 }
 
@@ -915,6 +911,182 @@ input {
     opacity: 0.9;
 }
 
+/* =========================================================
+   MODAL DE PAGAMENTO
+========================================================= */
+
+.modal-pagamento {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.modal-pagamento.ativo {
+    display: flex;
+}
+
+.modal-pagamento-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.modal-pagamento-card {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 650px;
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 32px;
+
+    background: #ffffff;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.modal-pagamento-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.modal-pagamento-header h2 {
+    margin: 8px 0;
+}
+
+.modal-pagamento-fechar {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 25px;
+}
+
+.pagamento-resumo {
+    padding: 18px;
+
+    margin-bottom: 24px;
+
+    background: #f5f9fc;
+
+    border-radius: 16px;
+}
+
+.pagamento-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-bottom: 10px;
+}
+
+.pagamento-total {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 15px;
+    padding-top: 15px;
+
+    border-top: 1px solid #dce7ee;
+
+    font-size: 18px;
+}
+
+.formas-pagamento {
+    display: grid;
+    gap: 12px;
+}
+
+.forma-pagamento {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 18px;
+
+    border: 2px solid #e1ebf1;
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.forma-pagamento:hover {
+    border-color: #1596d2;
+}
+
+.forma-pagamento input {
+    width: 20px;
+    height: 20px;
+}
+
+.forma-pagamento div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.forma-pagamento span {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.modal-pagamento-acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 28px;
+}
+
+.btn-voltar-pagamento,
+.btn-confirmar-pedido {
+    padding: 14px 22px;
+
+    border: none;
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.btn-voltar-pagamento {
+    background: #eef3f6;
+}
+
+.btn-confirmar-pedido {
+    background: #1596d2;
+    color: #ffffff;
+}
+
+.btn-confirmar-pedido:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
 
 /* =========================================================
    RESPONSIVIDADE - NOTEBOOK
@@ -1037,6 +1209,10 @@ input {
         gap: 35px;
     }
     .resumo-card {
+        position: static;
+    }
+    
+    .resumo-pedido {
         position: static;
     }
 }

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pedidos | Administração Topy'Gut</title>
+
+    <link
+        rel="icon"
+        type="image/avif"
+        href="img/Logo Topy´Gut.avif"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/admin-pedidos.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         CABEÇALHO
+    =================================================== -->
+
+    <header class="cabecalho">
+
+        <div class="cabecalho-container">
+
+            <a
+                href="admin-painel.html"
+                class="logo"
+                aria-label="Painel Administrativo Topy'Gut"
+            >
+
+                <img
+                    src="img/Logo Topy´Gut.avif"
+                    alt="Topy'Gut"
+                >
+
+            </a>
+
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <nav class="menu">
+
+                <a href="admin-painel.html">
+                    Painel
+                </a>
+
+                <a href="admin-clientes.html">
+                    Clientes
+                </a>
+
+                <a href="admin-produtos.html">
+                    Produtos
+                </a>
+
+                <a
+                    href="admin-pedidos.html"
+                    class="ativo"
+                >
+                    Pedidos
+                </a>
+
+                <a
+                    href="index.html"
+                    class="sair"
+                >
+                    Sair
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================================================
+         CONTEÚDO PRINCIPAL
+    =================================================== -->
+
+    <main class="pedidos-admin">
+
+        <div class="pedidos-container">
+
+
+            <!-- TOPO -->
+
+            <section class="pedidos-header">
+
+                <div>
+
+                    <span class="pedidos-tag">
+                        ADMINISTRAÇÃO
+                    </span>
+
+                    <h1>
+                        Pedidos
+                    </h1>
+
+                    <p>
+                        Acompanhe os pedidos realizados pelos clientes.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FILTROS -->
+
+            <section class="pedidos-ferramentas">
+
+                <div class="campo-pesquisa">
+
+                    <label for="pesquisaPedido">
+                        Buscar pedido
+                    </label>
+
+                    <input
+                        type="search"
+                        id="pesquisaPedido"
+                        placeholder="Pedido, cliente ou CNPJ..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="campo-filtro">
+
+                    <label for="filtroStatus">
+                        Status
+                    </label>
+
+                    <select id="filtroStatus">
+
+                        <option value="">
+                            Todos
+                        </option>
+
+                        <option value="pendente">
+                            Pendente
+                        </option>
+
+                        <option value="separado">
+                            Pedido separado
+                        </option>
+
+                        <option value="entregue">
+                            Entregue
+                        </option>
+
+                        <option value="cancelado">
+                            Cancelado
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </section>
+
+
+            <!-- LISTA -->
+
+            <section class="pedidos-lista">
+
+                <div class="lista-header">
+
+                    <div>
+
+                        <span class="lista-tag">
+                            PEDIDOS RECEBIDOS
+                        </span>
+
+                        <h2>
+                            Todos os pedidos
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        class="total-pedidos"
+                        id="totalPedidos"
+                    >
+                        0 pedidos
+                    </span>
+
+                </div>
+
+
+                <div class="tabela-container">
+
+                    <table class="tabela-pedidos">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Pedido</th>
+
+                                <th>Cliente</th>
+
+                                <th>CNPJ</th>
+
+                                <th>Data</th>
+
+                                <th>Total</th>
+
+                                <th>Pagamento</th>
+
+                                <th>Status</th>
+
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="listaPedidos">
+                        </tbody>
+
+                    </table>
+
+
+                    <div
+                        class="pedidos-vazio"
+                        id="pedidosVazio"
+                    >
+
+                        <h3>
+                            Nenhum pedido encontrado
+                        </h3>
+
+                        <p>
+                            Os pedidos realizados pelos clientes aparecerão aqui.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ==================================================
+         MODAL DETALHES DO PEDIDO
+    =================================================== -->
+
+    <div
+        class="modal"
+        id="modalPedido"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-overlay"
+            id="modalPedidoOverlay"
+        ></div>
+
+
+        <div
+            class="modal-card"
+            role="dialog"
+            aria-modal="true"
+        >
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-tag">
+                        PEDIDO
+                    </span>
+
+                    <h2 id="tituloPedido">
+                        Pedido
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharModalPedido"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div
+                class="pedido-detalhes"
+                id="pedidoDetalhes"
+            >
+            </div>
+
+
+            <div class="pedido-status-area">
+
+                <label for="statusPedido">
+                    Situação do pedido
+                </label>
+
+                <select id="statusPedido">
+
+                    <option value="pendente">
+                        Pendente
+                    </option>
+
+                    <option value="separado">
+                        Pedido separado
+                    </option>
+
+                    <option value="entregue">
+                        Entregue
+                    </option>
+
+                    <option value="cancelado">
+                        Cancelado
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="modal-acoes">
+
+                <button
+                    type="button"
+                    class="btn-cancelar"
+                    id="cancelarPedido"
+                >
+                    Fechar
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-salvar"
+                    id="salvarStatusPedido"
+                >
+                    Salvar situação
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         RODAPÉ
+    =================================================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-container">
+
+            <img
+                src="img/Logo Topy´Gut.avif"
+                alt="Topy'Gut"
+                class="rodape-logo"
+            >
+
+            <p>
+                © 2026 Topy'Gut. Painel Administrativo.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/admin-pedidos.js"></script>
+
+</body>
+
+</html>

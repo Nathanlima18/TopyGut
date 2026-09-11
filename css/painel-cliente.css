@@ -887,6 +887,25 @@ tr:hover {
     opacity: 0.9;
 }
 
+.status-pedido.pendente {
+    background: #fff4cf;
+    color: #9d7600;
+}
+
+.status-pedido.separado {
+    background: #dceffc;
+    color: #136c9f;
+}
+
+.status-pedido.entregue {
+    background: #dcf4e6;
+    color: #267549;
+}
+
+.status-pedido.cancelado {
+    background: #fbe0e5;
+    color: #a5394d;
+}
 
 /* =========================================================
    RESPONSIVIDADE - NOTEBOOK / TABLET
@@ -1069,9 +1088,9 @@ tr:hover {
     /* ATALHOS */
 
     .atalhos {
-        grid-template-columns: 1fr;
-
-        gap: 15px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
     }
 
     .atalho-card {

@@ -1,10 +1,10 @@
 /* =========================================================
-   TOPY'GUT - POLÍTICA DE PRIVACIDADE
+   TOPY'GUT - PAINEL ADMINISTRATIVO
 ========================================================= */
 
 
 /* =========================================================
-   RESET E CONFIGURAÇÕES GERAIS
+   RESET
 ========================================================= */
 
 * {
@@ -25,7 +25,7 @@ body {
 
     font-family: Arial, Helvetica, sans-serif;
 
-    background-color: #ffffff;
+    background-color: #f4faff;
     color: #333333;
 
     line-height: 1.6;
@@ -41,6 +41,12 @@ a {
     text-decoration: none;
 }
 
+button {
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
+
 
 /* =========================================================
    CORES
@@ -53,17 +59,16 @@ a {
     --rosa: #fb8fb4;
     --rosa-claro: #f8abc7;
 
-    --azul-claro: #f4faff;
-
     --branco: #ffffff;
+    --fundo: #f4faff;
 
     --texto: #333333;
-    --texto-claro: #666666;
+    --texto-claro: #6d6d6d;
 
-    --borda: #e8e8e8;
+    --borda: #e3edf3;
 
     --sombra:
-        0 15px 40px
+        0 12px 35px
         rgba(0, 0, 0, 0.07);
 }
 
@@ -80,7 +85,6 @@ a {
     border-bottom: 1px solid #eeeeee;
 
     position: sticky;
-
     top: 0;
 
     z-index: 1000;
@@ -97,24 +101,21 @@ a {
     display: flex;
 
     align-items: center;
-
     justify-content: space-between;
 }
 
 
 /* =========================================================
-   LOGO DO CABEÇALHO
+   LOGO
 ========================================================= */
 
 .logo {
     display: flex;
-
     align-items: center;
 }
 
 .logo img {
     width: 145px;
-
     height: auto;
 
     object-fit: contain;
@@ -130,7 +131,7 @@ a {
 
     align-items: center;
 
-    gap: 32px;
+    gap: 30px;
 }
 
 .menu a {
@@ -138,8 +139,7 @@ a {
 
     color: #222222;
 
-    font-size: 16px;
-
+    font-size: 15px;
     font-weight: 700;
 
     transition:
@@ -152,11 +152,9 @@ a {
     position: absolute;
 
     left: 0;
-
     bottom: -7px;
 
     width: 0;
-
     height: 3px;
 
     border-radius: 20px;
@@ -167,13 +165,41 @@ a {
         width 0.25s ease;
 }
 
-.menu a:hover {
+.menu a:hover,
+.menu a.ativo {
     color: var(--azul);
 }
 
-.menu a:hover::after {
+.menu a:hover::after,
+.menu a.ativo::after {
     width: 100%;
 }
+
+
+/* =========================================================
+   SAIR
+========================================================= */
+
+.menu .sair {
+    padding: 9px 17px;
+
+    border-radius: 8px;
+
+    background-color: #fff0f4;
+
+    color: #d6507e;
+}
+
+.menu .sair::after {
+    display: none;
+}
+
+.menu .sair:hover {
+    background-color: var(--rosa);
+
+    color: #ffffff;
+}
+
 
 /* =========================================================
    MENU MOBILE
@@ -232,69 +258,83 @@ a {
         rotate(-45deg);
 }
 
+
 /* =========================================================
    ÁREA PRINCIPAL
 ========================================================= */
 
-.politica {
+.admin {
     flex: 1;
 
     width: 100%;
 
     padding:
-        80px 5%
-        100px;
+        65px 5%
+        90px;
 
-    background-color:
-        var(--azul-claro);
+    background-color: var(--fundo);
 }
 
-.politica-container {
+.admin-container {
     width: 100%;
-
-    max-width: 1050px;
+    max-width: 1250px;
 
     margin: 0 auto;
-
-    padding:
-        60px 70px;
-
-    background-color: #ffffff;
-
-    border-radius: 28px;
-
-    box-shadow:
-        var(--sombra);
 }
 
 
 /* =========================================================
-   CABEÇALHO DA POLÍTICA
+   APRESENTAÇÃO
 ========================================================= */
 
-.politica-header {
-    max-width: 820px;
+.admin-header {
+    margin-bottom: 45px;
 
-    margin-bottom: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 40px;
 }
 
-.politica-tag {
+.admin-header-texto {
+    flex: 1;
+}
+
+.admin-header-mascote {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    transform: translateY(70px);
+}
+
+.admin-header-mascote img {
+    width: 310px;
+
+    max-width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+}
+
+.admin-tag {
     display: inline-block;
 
-    margin-bottom: 18px;
+    margin-bottom: 14px;
 
-    padding:
-        8px 17px;
+    padding: 7px 16px;
 
     border-radius: 30px;
 
-    background-color:
-        var(--rosa-claro);
+    background-color: var(--rosa-claro);
 
     color: #a72b67;
 
-    font-size: 13px;
-
+    font-size: 12px;
     font-weight: 800;
 
     letter-spacing: 1.3px;
@@ -302,168 +342,223 @@ a {
     text-transform: uppercase;
 }
 
-.politica-header h1 {
-    margin-bottom: 20px;
+.admin-header h1 {
+    margin-bottom: 12px;
 
-    color:
-        var(--azul-escuro);
+    color: var(--azul-escuro);
 
     font-size:
-        clamp(
-            40px,
-            4vw,
-            58px
-        );
+        clamp(38px, 4vw, 54px);
 
     line-height: 1.1;
 }
 
-.politica-header p {
-    color:
-        var(--texto-claro);
+.admin-header p {
+    max-width: 700px;
 
-    font-size: 18px;
+    color: var(--texto-claro);
+
+    font-size: 17px;
 
     line-height: 1.7;
 }
 
 
 /* =========================================================
-   SEÇÕES DA POLÍTICA
+   ACESSOS
 ========================================================= */
 
-.politica-secao {
-    margin-bottom: 42px;
+.admin-acessos h2 {
+    margin-bottom: 24px;
 
-    padding-bottom: 38px;
+    color: var(--azul-escuro);
 
-    border-bottom:
-        1px solid
-        #eeeeee;
+    font-size: 27px;
 }
 
-.politica-secao:last-of-type {
-    border-bottom: none;
-}
+.admin-grid {
+    display: grid;
 
-.politica-secao h2 {
-    margin-bottom: 16px;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
 
-    color:
-        var(--azul-escuro);
-
-    font-size: 25px;
-
-    line-height: 1.3;
-}
-
-.politica-secao p {
-    margin-bottom: 14px;
-
-    color:
-        #555555;
-
-    font-size: 16px;
-
-    line-height: 1.75;
+    gap: 24px;
 }
 
 
 /* =========================================================
-   LISTAS
+   CARDS
 ========================================================= */
 
-.politica-secao ul {
-    margin:
-        18px 0 0
-        24px;
+.admin-card {
+    min-height: 260px;
+
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+
+    border-radius: 22px;
+
+    background-color: #ffffff;
+
+    border: 1px solid var(--borda);
+
+    box-shadow: var(--sombra);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
-.politica-secao li {
-    margin-bottom: 9px;
+.admin-card:hover {
+    transform: translateY(-5px);
 
-    padding-left: 5px;
+    border-color: #cde6f3;
 
-    color:
-        #555555;
+    box-shadow:
+        0 18px 38px
+        rgba(0, 0, 0, 0.10);
+}
 
-    font-size: 16px;
+
+/* =========================================================
+   ÍCONE
+========================================================= */
+
+.admin-card-icone {
+    width: 56px;
+    height: 56px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background-color: #eef8fd;
+
+    color: var(--azul-escuro);
+
+    font-size: 25px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   CONTEÚDO DO CARD
+========================================================= */
+
+.admin-card-conteudo {
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.admin-card-tag {
+    margin-bottom: 5px;
+
+    color: var(--rosa);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+}
+
+.admin-card h3 {
+    margin-bottom: 8px;
+
+    color: var(--azul-escuro);
+
+    font-size: 23px;
+
+    line-height: 1.2;
+}
+
+.admin-card p {
+    margin-bottom: 20px;
+
+    color: var(--texto-claro);
+
+    font-size: 14px;
 
     line-height: 1.6;
 }
 
-.politica-secao li::marker {
-    color:
-        var(--rosa);
+.admin-card-link {
+    margin-top: auto;
 
-    font-size: 1.1em;
+    color: var(--azul);
+
+    font-size: 14px;
+    font-weight: 700;
 }
 
 
 /* =========================================================
-   CONTATO DA POLÍTICA
+   AVISO
 ========================================================= */
 
-.politica-contato {
-    padding:
-        30px;
+.admin-aviso {
+    margin-top: 40px;
 
-    border:
-        1px solid
-        #dceef9;
+    padding: 25px 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
 
     border-radius: 18px;
 
-    background-color:
-        #f4faff;
+    border: 1px solid #dceef8;
+
+    background-color: #ffffff;
+
+    box-shadow:
+        0 8px 22px
+        rgba(0, 0, 0, 0.04);
 }
 
-.politica-contato h2 {
-    color:
-        var(--azul-escuro);
+.admin-aviso-icone {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #e4f6ff;
+
+    color: var(--azul);
+
+    font-size: 20px;
+    font-weight: 800;
 }
 
-.politica-contato a {
-    display: inline-block;
+.admin-aviso h2 {
+    color: var(--azul-escuro);
 
-    margin-top: 5px;
-
-    color:
-        var(--azul);
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    transition:
-        color 0.2s ease;
+    font-size: 18px;
 }
 
-.politica-contato a:hover {
-    color:
-        var(--azul-escuro);
-
-    text-decoration: underline;
-}
-
-
-/* =========================================================
-   ÚLTIMA ATUALIZAÇÃO
-========================================================= */
-
-.politica-atualizacao {
-    margin-top: 35px;
-
-    padding-top: 20px;
-
-    border-top:
-        1px solid
-        #eeeeee;
-}
-
-.politica-atualizacao p {
-    color:
-        #888888;
+.admin-aviso p {
+    color: var(--texto-claro);
 
     font-size: 13px;
 }
@@ -476,19 +571,15 @@ a {
 .rodape {
     width: 100%;
 
-    padding:
-        30px 5%;
+    padding: 30px 5%;
 
-    background-color:
-        var(--azul-escuro);
+    background-color: var(--azul-escuro);
 
-    color:
-        #ffffff;
+    color: #ffffff;
 }
 
 .rodape-container {
     width: 100%;
-
     max-width: 1450px;
 
     margin: 0 auto;
@@ -496,7 +587,6 @@ a {
     display: flex;
 
     align-items: center;
-
     justify-content: space-between;
 
     gap: 30px;
@@ -504,7 +594,6 @@ a {
 
 .rodape-logo {
     width: 105px;
-
     max-width: 105px;
 
     height: auto;
@@ -525,7 +614,7 @@ a {
    RESPONSIVIDADE - TABLET
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
 
     .cabecalho-container {
         width: 92%;
@@ -534,10 +623,9 @@ a {
         padding: 0;
 
         flex-direction: row;
+
         align-items: center;
         justify-content: space-between;
-
-        gap: 0;
 
         position: relative;
     }
@@ -568,7 +656,8 @@ a {
 
         background-color: #ffffff;
 
-        border-radius: 0 0 16px 16px;
+        border-radius:
+            0 0 16px 16px;
 
         box-shadow:
             0 14px 30px
@@ -577,7 +666,8 @@ a {
         opacity: 0;
         visibility: hidden;
 
-        transform: translateY(-12px);
+        transform:
+            translateY(-12px);
 
         pointer-events: none;
 
@@ -591,7 +681,8 @@ a {
         opacity: 1;
         visibility: visible;
 
-        transform: translateY(0);
+        transform:
+            translateY(0);
 
         pointer-events: auto;
     }
@@ -618,24 +709,21 @@ a {
         color: var(--azul);
     }
 
-
-    .politica {
-        padding:
-            60px 6%
-            80px;
+    .menu .sair {
+        margin-top: 4px;
     }
 
-    .politica-container {
-        padding:
-            50px 45px;
+    .admin-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 
-    .politica-header {
-        margin-bottom: 45px;
+    .admin-header-mascote {
+        display: none;
     }
 
-    .politica-header h1 {
-        font-size: 44px;
+    .admin-header {
+        display: block;
     }
 }
 
@@ -644,10 +732,9 @@ a {
    RESPONSIVIDADE - CELULAR
 ========================================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
 
     .cabecalho-container {
-        width: 92%;
         height: 76px;
     }
 
@@ -663,54 +750,33 @@ a {
         font-size: 13px;
     }
 
-    .politica {
+    .admin {
         padding:
-            40px 18px
-            60px;
+            45px 18px
+            65px;
     }
 
-    .politica-container {
-        padding:
-            35px 22px;
-
-        border-radius: 18px;
+    .admin-header h1 {
+        font-size: 36px;
     }
 
-    .politica-tag {
-        font-size: 11px;
-
-        padding:
-            7px 13px;
-    }
-
-    .politica-header h1 {
-        font-size: 34px;
-    }
-
-    .politica-header p {
-        font-size: 16px;
-    }
-
-    .politica-secao {
-        margin-bottom: 32px;
-
-        padding-bottom: 28px;
-    }
-
-    .politica-secao h2 {
-        font-size: 21px;
-    }
-
-    .politica-secao p,
-    .politica-secao li {
+    .admin-header p {
         font-size: 15px;
     }
 
-    .politica-contato {
-        padding:
-            24px 20px;
+    .admin-grid {
+        grid-template-columns: 1fr;
     }
 
+    .admin-card {
+        min-height: auto;
+
+        padding: 24px;
+    }
+
+    .admin-aviso {
+        align-items: flex-start;
+    }
 
     .rodape-container {
         flex-direction: column;
@@ -722,7 +788,6 @@ a {
 
     .rodape-logo {
         width: 90px;
-
         max-width: 90px;
     }
 }
@@ -734,16 +799,15 @@ a {
 
 @media (max-width: 400px) {
 
-    .politica-container {
-        padding:
-            30px 17px;
+    .admin-header h1 {
+        font-size: 32px;
     }
 
-    .politica-header h1 {
-        font-size: 30px;
+    .admin-acessos h2 {
+        font-size: 23px;
     }
 
-    .politica-secao h2 {
-        font-size: 20px;
+    .admin-card h3 {
+        font-size: 21px;
     }
 }

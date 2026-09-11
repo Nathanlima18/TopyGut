@@ -61,7 +61,7 @@
 
             <nav class="menu">
 
-                <a href="cliente-painel.html">
+                <a href="painel-cliente.html">
                     Painel
                 </a>
 
@@ -228,7 +228,7 @@
                                 Situação
                             </span>
 
-                            <strong class="status-ativo">
+                            <strong class="status-ativo" id="statusConta">
                                 Conta ativa
                             </strong>
 
@@ -370,8 +370,8 @@
 
                     <div class="seguranca-info">
 
-                        <div>
 
+                        <div>
                             <span>
                                 Senha
                             </span>
@@ -401,6 +401,109 @@
                     </p>
 
                 </section>
+
+                <!-- ==================================================
+                    MODAL - ALTERAR SENHA
+                =================================================== -->
+
+                <div
+                    class="modal-senha"
+                    id="modalSenha"
+                >
+
+                    <div class="modal-senha-conteudo">
+
+                        <button
+                            type="button"
+                            class="modal-fechar"
+                            id="fecharModalSenha"
+                            aria-label="Fechar"
+                        >
+                            ×
+                        </button>
+
+
+                        <span class="card-subtitulo">
+                            SEGURANÇA
+                        </span>
+
+                        <h2>
+                            Alterar senha
+                        </h2>
+
+                        <p>
+                            Informe sua senha atual e escolha uma nova senha.
+                        </p>
+
+
+                        <div class="campo-senha">
+
+                            <label for="senhaAtual">
+                                Senha atual
+                            </label>
+
+                            <input
+                                type="password"
+                                id="senhaAtual"
+                                autocomplete="current-password"
+                            >
+
+                        </div>
+
+
+                        <div class="campo-senha">
+
+                            <label for="novaSenha">
+                                Nova senha
+                            </label>
+
+                            <input
+                                type="password"
+                                id="novaSenha"
+                                autocomplete="new-password"
+                            >
+
+                        </div>
+
+
+                        <div class="campo-senha">
+
+                            <label for="confirmarNovaSenha">
+                                Confirmar nova senha
+                            </label>
+
+                            <input
+                                type="password"
+                                id="confirmarNovaSenha"
+                                autocomplete="new-password"
+                            >
+
+                        </div>
+
+
+                        <div class="modal-senha-acoes">
+
+                            <button
+                                type="button"
+                                class="btn-secundario"
+                                id="cancelarSenha"
+                            >
+                                Cancelar
+                            </button>
+
+                            <button
+                                type="button"
+                                class="btn-principal"
+                                id="salvarNovaSenha"
+                            >
+                                Salvar nova senha
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -436,6 +539,7 @@
          JAVASCRIPT
     =================================================== -->
 
+    <script src="js/config.js"></script>
     <script src="js/minha-conta.js"></script>
 
 </body>

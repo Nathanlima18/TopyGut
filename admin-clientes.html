@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Clientes | Administração Topy'Gut</title>
+
+    <link
+        rel="icon"
+        type="image/avif"
+        href="img/Logo Topy´Gut.avif"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/admin-clientes.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================== -->
+
+    <header class="cabecalho">
+
+        <div class="cabecalho-container">
+
+            <a
+                href="admin-painel.html"
+                class="logo"
+                aria-label="Painel Administrativo Topy'Gut"
+            >
+
+                <img
+                    src="img/Logo Topy´Gut.avif"
+                    alt="Topy'Gut"
+                >
+
+            </a>
+
+
+            <!-- MENU MOBILE -->
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <!-- MENU -->
+
+            <nav class="menu">
+
+                <a href="admin-painel.html">
+                    Painel
+                </a>
+
+                <a
+                    href="admin-clientes.html"
+                    class="ativo"
+                >
+                    Clientes
+                </a>
+
+                <a href="admin-pedidos.html">
+                    Pedidos
+                </a>
+
+                <a href="admin-produtos.html">
+                    Produtos
+                </a>
+
+                <a href="admin-precos.html">
+                    Preços
+                </a>
+
+                <a
+                    href="index.html"
+                    class="sair"
+                >
+                    Sair
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTEÚDO
+    ========================================== -->
+
+    <main class="clientes">
+
+        <div class="clientes-container">
+
+
+            <!-- =====================================
+                 CABEÇALHO DA PÁGINA
+            ====================================== -->
+
+            <section class="clientes-header">
+
+                <div>
+
+                    <span class="clientes-tag">
+                        CADASTROS
+                    </span>
+
+                    <h1>
+                        Clientes
+                    </h1>
+
+                    <p>
+                        Gerencie as contas que possuem
+                        acesso à Área do Cliente.
+                    </p>
+
+                </div>
+
+
+               <div class="acoes-cadastro">
+
+                <button
+                    type="button"
+                    class="btn-novo-admin"
+                    id="btnNovoAdmin"
+                    style="display: none;"
+                >
+                    + Novo administrador
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-novo-cliente"
+                    id="btnNovoCliente"
+                >
+                    + Novo cliente
+                </button>
+
+            </div>
+            </section>
+
+
+            <!-- =====================================
+                 PESQUISA
+            ====================================== -->
+
+            <section class="clientes-ferramentas">
+
+                <div class="campo-pesquisa">
+
+                    <label for="pesquisaCliente">
+                        Buscar cliente
+                    </label>
+
+                    <input
+                        type="search"
+                        id="pesquisaCliente"
+                        placeholder="Nome, empresa ou e-mail..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 LISTA DE CLIENTES
+            ====================================== -->
+
+            <section class="clientes-lista">
+
+                <div class="lista-header">
+
+                    <div>
+
+                        <span class="lista-tag">
+                            CLIENTES CADASTRADOS
+                        </span>
+
+                        <h2>
+                            Contas de acesso
+                        </h2>
+
+                    </div>
+
+                    <span
+                        class="total-clientes"
+                        id="totalClientes"
+                    >
+                        2 clientes
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="tabela-container"
+                    id="listaClientes"
+                >
+
+                    <table class="tabela-clientes">
+
+                        <tr>
+                            <th>Cliente</th>
+                            <th>CNPJ</th>
+                            <th>Contato</th>
+                            <th>E-mail</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+
+
+                        <tbody>
+
+                        </tbody>
+
+                    </table>
+
+
+                    <!-- NENHUM RESULTADO -->
+
+                    <div
+                        class="clientes-vazio"
+                        id="clientesVazio"
+                    >
+
+                        <h3>
+                            Nenhum cliente encontrado
+                        </h3>
+
+                        <p>
+                            Tente pesquisar utilizando
+                            outro nome ou e-mail.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- =========================================
+     MODAL - NOVO ADMINISTRADOR
+========================================== -->
+
+    <div
+        class="modal"
+        id="modalAdmin"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-overlay"
+            id="modalAdminOverlay"
+        ></div>
+
+
+        <div
+            class="modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tituloModalAdmin"
+        >
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-tag">
+                        ADMINISTRAÇÃO
+                    </span>
+
+                    <h2 id="tituloModalAdmin">
+                        Novo administrador
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharModalAdmin"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formAdmin">
+
+
+                <div class="form-group">
+
+                    <label for="nomeAdminNovo">
+                        Nome
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeAdminNovo"
+                        placeholder="Nome do administrador"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="emailAdminNovo">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="emailAdminNovo"
+                        placeholder="admin@empresa.com.br"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="senhaAdminNovo">
+                        Senha inicial
+                    </label>
+
+                    <input
+                        type="password"
+                        id="senhaAdminNovo"
+                        placeholder="Mínimo de 8 caracteres"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="statusAdminNovo">
+                        Status
+                    </label>
+
+                    <select id="statusAdminNovo">
+
+                        <option value="ativo">
+                            Ativo
+                        </option>
+
+                        <option value="inativo">
+                            Inativo
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="modal-acoes">
+
+                    <button
+                        type="button"
+                        class="btn-cancelar"
+                        id="cancelarAdmin"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-salvar"
+                    >
+                        Criar administrador
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div
+        class="modal"
+        id="modalCliente"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-overlay"
+            id="modalOverlay"
+        ></div>
+
+
+        <div
+            class="modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tituloModalCliente"
+        >
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-tag">
+                        CONTA DE ACESSO
+                    </span>
+
+                    <h2 id="tituloModalCliente">
+                        Novo cliente
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharModalCliente"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formCliente">
+
+                <!-- =====================================
+                    DADOS DA EMPRESA
+                ====================================== -->
+
+                <div class="form-secao">
+
+                    <h3>Dados da empresa</h3>
+
+                    <!-- RAZÃO SOCIAL -->
+
+                    <div class="form-group">
+
+                        <label for="nomeCliente">
+                            Razão Social
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nomeCliente"
+                            name="nomeCliente"
+                            placeholder="Ex.: Mercado Central LTDA"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CNPJ -->
+
+                    <div class="form-group">
+
+                        <label for="cnpjCliente">
+                            CNPJ
+                        </label>
+
+                        <div class="campo-validacao">
+
+                            <input
+                                type="text"
+                                id="cnpjCliente"
+                                name="cnpjCliente"
+                                placeholder="00.000.000/0000-00"
+                                inputmode="numeric"
+                                maxlength="18"
+                                autocomplete="off"
+                                required
+                            >
+
+                            <span
+                                class="campo-status"
+                                id="statusCnpj"
+                            ></span>
+
+                        </div>
+
+                        <small
+                            class="mensagem-campo"
+                            id="mensagemCnpj"
+                        ></small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                    CONTATO
+                ====================================== -->
+
+                <div class="form-secao">
+
+                    <h3>Contato</h3>
+
+
+                    <div class="form-linha">
+
+                        <!-- NOME DO CONTATO -->
+
+                        <div class="form-group">
+
+                            <label for="contatoCliente">
+                                Nome do contato
+                            </label>
+
+                            <input
+                                type="text"
+                                id="contatoCliente"
+                                name="contatoCliente"
+                                placeholder="Ex.: João Silva"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- TELEFONE -->
+
+                        <div class="form-group">
+
+                            <label for="telefoneCliente">
+                                Telefone / WhatsApp
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="telefoneCliente"
+                                name="telefoneCliente"
+                                placeholder="(00) 00000-0000"
+                                maxlength="15"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- E-MAIL -->
+
+                    <div class="form-group">
+
+                        <label for="emailCliente">
+                            E-mail de acesso
+                        </label>
+
+                        <input
+                            type="email"
+                            id="emailCliente"
+                            name="emailCliente"
+                            placeholder="cliente@empresa.com.br"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                    ENDEREÇO
+                ====================================== -->
+
+                <div class="form-secao">
+
+                    <h3>Endereço</h3>
+
+
+                    <!-- CEP -->
+
+                    <div class="form-group form-cep">
+
+                        <label for="cepCliente">
+                            CEP
+                        </label>
+
+                        <div class="campo-validacao">
+
+                            <input
+                                type="text"
+                                id="cepCliente"
+                                name="cepCliente"
+                                placeholder="00000-000"
+                                maxlength="9"
+                                inputmode="numeric"
+                                autocomplete="postal-code"
+                                required
+                            >
+
+                            <span
+                                class="campo-status"
+                                id="statusCep"
+                            ></span>
+
+                        </div>
+
+                        <small
+                            class="mensagem-campo"
+                            id="mensagemCep"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- ENDEREÇO + NÚMERO -->
+
+                    <div class="form-linha endereco-linha">
+
+                        <div class="form-group form-endereco">
+
+                            <label for="enderecoCliente">
+                                Endereço
+                            </label>
+
+                            <input
+                                type="text"
+                                id="enderecoCliente"
+                                name="enderecoCliente"
+                                placeholder="Rua / Avenida"
+                                autocomplete="street-address"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group form-numero">
+
+                            <label for="numeroCliente">
+                                Número
+                            </label>
+
+                            <input
+                                type="text"
+                                id="numeroCliente"
+                                name="numeroCliente"
+                                placeholder="123"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COMPLEMENTO -->
+
+                    <div class="form-group">
+
+                        <label for="complementoCliente">
+                            Complemento
+                            <span class="opcional">(opcional)</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="complementoCliente"
+                            name="complementoCliente"
+                            placeholder="Sala, bloco, galpão..."
+                        >
+
+                    </div>
+
+
+                    <!-- BAIRRO + CIDADE -->
+
+                    <div class="form-linha">
+
+                        <div class="form-group">
+
+                            <label for="bairroCliente">
+                                Bairro
+                            </label>
+
+                            <input
+                                type="text"
+                                id="bairroCliente"
+                                name="bairroCliente"
+                                placeholder="Bairro"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="cidadeCliente">
+                                Cidade
+                            </label>
+
+                            <input
+                                type="text"
+                                id="cidadeCliente"
+                                name="cidadeCliente"
+                                placeholder="Cidade"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                    ACESSO
+                ====================================== -->
+
+                <div class="form-secao">
+
+                    <h3>Acesso à conta</h3>
+
+
+                    <div class="form-linha">
+
+                        <!-- SENHA -->
+
+                        <div class="form-group">
+
+                            <label for="senhaCliente">
+                                Senha
+                            </label>
+
+                            <input
+                                type="password"
+                                id="senhaCliente"
+                                name="senhaCliente"
+                                placeholder="Defina uma senha"
+                                autocomplete="new-password"
+                            >
+
+                            <small>
+                                A senha será protegida pelo servidor
+                                quando conectarmos o backend.
+                            </small>
+
+                        </div>
+
+
+                        <!-- STATUS -->
+
+                        <div class="form-group">
+
+                            <label for="statusCliente">
+                                Status da conta
+                            </label>
+
+                            <select
+                                id="statusCliente"
+                                name="statusCliente"
+                            >
+
+                                <option value="ativo">
+                                    Ativo
+                                </option>
+
+                                <option value="inativo">
+                                    Inativo
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                    BOTÕES
+                ====================================== -->
+
+                <div class="modal-acoes">
+
+                    <button
+                        type="button"
+                        class="btn-cancelar"
+                        id="cancelarCliente"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-salvar"
+                        id="btnSalvarCliente"
+                    >
+                        Salvar cliente
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         RODAPÉ
+    ========================================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-container">
+
+            <img
+                src="img/Logo Topy´Gut.avif"
+                alt="Topy'Gut"
+                class="rodape-logo"
+            >
+
+            <p>
+                © 2026 Topy'Gut. Painel Administrativo.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="js/config.js"></script>
+    <script src="js/admin-clientes.js"></script>
+
+</body>
+
+</html>

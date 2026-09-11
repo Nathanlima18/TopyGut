@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         formulario.addEventListener(
             "submit",
-            function (event) {
+            async function (event) {
 
                 /*
                    Ainda não temos backend.
@@ -201,11 +201,164 @@ document.addEventListener("DOMContentLoaded", function () {
                    MENSAGEM TEMPORÁRIA
                 ========================================= */
 
-                alert(
-                    "Tela de login funcionando corretamente!\n\n" +
-                    "Na próxima etapa do projeto, este formulário " +
-                    "será conectado ao sistema de autenticação."
-                );
+                try {
+
+                    const resposta =
+                        await fetch(
+                            `${API_URL}/login`,
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+                                    email: emailDigitado,
+                                    senha: senhaDigitada
+                                })
+                            }
+                        );
+
+
+                        const dados =
+                        await resposta.json();
+
+
+                    if (!resposta.ok) {
+
+                        alert(
+                            dados.mensagem ||
+                            "Não foi possível realizar o login."
+                        );
+
+                        return;
+
+                    }
+
+
+                    /* =================================================
+                    SALVA DADOS DA SESSÃO
+                    ================================================= */
+
+                    if (
+                        lembrar &&
+                        lembrar.checked
+                    ) {
+
+                        /*
+                        LEMBRAR DE MIM ATIVADO
+                        A sessão continua mesmo após fechar o navegador.
+                        */
+
+                        localStorage.setItem(
+                            "topygut_token",
+                            dados.token
+                        );
+
+                        localStorage.setItem(
+                            "topygut_usuario",
+                            JSON.stringify(
+                                dados.usuario
+                            )
+                        );
+
+
+                        /*
+                        Remove possíveis dados antigos
+                        do sessionStorage.
+                        */
+
+                        sessionStorage.removeItem(
+                            "topygut_token"
+                        );
+
+                        sessionStorage.removeItem(
+                            "topygut_usuario"
+                        );
+
+
+                    } else {
+
+                        /*
+                        LEMBRAR DE MIM DESATIVADO
+                        A sessão vale apenas para esta aba/sessão.
+                        */
+
+                        sessionStorage.setItem(
+                            "topygut_token",
+                            dados.token
+                        );
+
+                        sessionStorage.setItem(
+                            "topygut_usuario",
+                            JSON.stringify(
+                                dados.usuario
+                            )
+                        );
+
+
+                        /*
+                        Remove uma sessão persistente antiga.
+                        */
+
+                        localStorage.removeItem(
+                            "topygut_token"
+                        );
+
+                        localStorage.removeItem(
+                            "topygut_usuario"
+                        );
+
+                    }
+
+                    /* =================================================
+                    REDIRECIONAMENTO
+                    ================================================= */
+
+                    if (
+                        dados.usuario.tipo === "master" ||
+                        dados.usuario.tipo === "admin"
+                    ) {
+
+                        window.location.href =
+                            "admin-painel.html";
+
+                        return;
+
+                    }
+
+
+                    if (
+                        dados.usuario.tipo === "cliente"
+                    ) {
+
+                        window.location.href =
+                            "painel-cliente.html";
+
+                        return;
+
+                    }
+
+
+                    alert(
+                        "Tipo de usuário não reconhecido."
+                    );
+
+                } catch (erro) {
+
+                    console.error(
+                        "Erro ao fazer login:",
+                        erro
+                    );
+
+
+                    alert(
+                        "Não foi possível conectar ao servidor."
+                    );
+
+                }
 
             }
         );

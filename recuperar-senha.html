@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Recuperar Senha | Topy'Gut</title>
+
+    <link
+        rel="icon"
+        type="image/avif"
+        href="img/Logo Topy´Gut.avif"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/recuperar-senha.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================== -->
+
+    <header class="cabecalho">
+
+        <div class="cabecalho-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Página inicial da Topy'Gut"
+            >
+                <img
+                    src="img/Logo Topy´Gut.avif"
+                    alt="Logo Topy'Gut"
+                >
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTEÚDO
+    ========================================== -->
+
+    <main class="recuperacao">
+
+        <div class="recuperacao-container">
+
+
+            <!-- LADO ESQUERDO -->
+
+            <section class="recuperacao-apresentacao">
+
+                <span class="recuperacao-tag">
+                    SEGURANÇA
+                </span>
+
+                <h1>
+                    Redefina sua senha
+                </h1>
+
+                <p>
+                    Informe o e-mail da sua conta e
+                    cadastre uma nova senha para voltar
+                    a acessar o sistema da Topy'Gut.
+                </p>
+
+            </section>
+
+
+            <!-- CARD -->
+
+            <section class="recuperacao-card">
+
+                <div class="recuperacao-card-header">
+
+                    <h2>
+                        Recuperar acesso
+                    </h2>
+
+                    <p>
+                        Preencha os dados abaixo.
+                    </p>
+
+                </div>
+
+
+                <form id="formRecuperarSenha">
+
+
+                    <!-- E-MAIL -->
+
+                    <div class="form-group">
+
+                        <label for="emailRecuperacao">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="emailRecuperacao"
+                            name="emailRecuperacao"
+                            placeholder="Digite seu e-mail"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- NOVA SENHA -->
+
+                    <div class="form-group">
+
+                        <label for="novaSenha">
+                            Nova senha
+                        </label>
+
+                        <input
+                            type="password"
+                            id="novaSenha"
+                            name="novaSenha"
+                            placeholder="Digite a nova senha"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CONFIRMAR SENHA -->
+
+                    <div class="form-group">
+
+                        <label for="confirmarSenha">
+                            Confirmar nova senha
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmarSenha"
+                            name="confirmarSenha"
+                            placeholder="Digite novamente"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- MENSAGEM -->
+
+                    <p
+                        class="mensagem-recuperacao"
+                        id="mensagemRecuperacao"
+                    ></p>
+
+
+                    <!-- BOTÃO -->
+
+                    <button
+                        type="submit"
+                        class="btn-redefinir"
+                    >
+                        Redefinir senha
+                    </button>
+
+
+                    <!-- VOLTAR -->
+
+                    <a
+                        href="area-cliente.html"
+                        class="voltar-login"
+                    >
+                        ← Voltar para o login
+                    </a>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         RODAPÉ
+    ========================================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-container">
+
+            <img
+                src="img/Logo Topy´Gut.avif"
+                alt="Topy'Gut"
+                class="rodape-logo"
+            >
+
+            <p>
+                © 2026 Topy'Gut. Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="js/config.js"></script>
+    <script src="js/recuperar-senha.js"></script>
+
+</body>
+
+</html>

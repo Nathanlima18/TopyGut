@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Painel Administrativo | Topy'Gut</title>
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        type="image/avif"
+        href="img/Logo Topy´Gut.avif"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="css/admin-painel.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================== -->
+
+    <header class="cabecalho">
+
+        <div class="cabecalho-container">
+
+            <a
+                href="admin-painel.html"
+                class="logo"
+                aria-label="Painel Administrativo Topy'Gut"
+            >
+                <img
+                    src="img/Logo Topy´Gut.avif"
+                    alt="Topy'Gut"
+                >
+            </a>
+
+
+            <!-- MENU MOBILE -->
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <!-- MENU -->
+
+            <nav class="menu">
+
+                <a
+                    href="admin-painel.html"
+                    class="ativo"
+                >
+                    Painel
+                </a>
+
+                <a href="admin-clientes.html">
+                    Clientes
+                </a>
+
+                <a href="admin-pedidos.html">
+                    Pedidos
+                </a>
+
+                <a href="admin-produtos.html">
+                    Produtos
+                </a>
+
+                <a href="admin-precos.html">
+                    Preços
+                </a>
+
+                <a
+                    href="index.html"
+                    class="sair"
+                >
+                    Sair
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTEÚDO PRINCIPAL
+    ========================================== -->
+
+    <main class="admin">
+
+        <div class="admin-container">
+
+
+            <!-- APRESENTAÇÃO -->
+
+            <section class="admin-header">
+
+                <div class="admin-header-texto">
+
+                    <span class="admin-tag">
+                        ADMINISTRAÇÃO
+                    </span>
+
+                    <h1>
+                        Olá,
+                        <span id="nomeAdmin">
+                            Administrador
+                        </span>!
+                    </h1>
+
+                    <p>
+                        Gerencie clientes, produtos e preços
+                        da Topy'Gut.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-header-mascote">
+
+                    <img
+                        src="img/mascoteMaquina.png"
+                        alt="Mascote Topy'Gut"
+                    >
+
+                </div>
+
+            </section>
+
+            <!-- =====================================
+                 ACESSOS RÁPIDOS
+            ====================================== -->
+
+            <section class="admin-acessos">
+
+                <h2>
+                    O que deseja gerenciar?
+                </h2>
+
+
+                <div class="admin-grid">
+
+
+                    <!-- CLIENTES -->
+
+                    <a
+                        href="admin-clientes.html"
+                        class="admin-card"
+                    >
+
+                        <div class="admin-card-icone">
+                            👥
+                        </div>
+
+                        <div class="admin-card-conteudo">
+
+                            <span class="admin-card-tag">
+                                CADASTROS
+                            </span>
+
+                            <h3>
+                                Clientes
+                            </h3>
+
+                            <p>
+                                Crie, edite ou remova
+                                contas de clientes.
+                            </p>
+
+                            <span class="admin-card-link">
+                                Gerenciar clientes →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- PRODUTOS -->
+
+                    <a
+                        href="admin-produtos.html"
+                        class="admin-card"
+                    >
+
+                        <div class="admin-card-icone">
+                            📦
+                        </div>
+
+                        <div class="admin-card-conteudo">
+
+                            <span class="admin-card-tag">
+                                CATÁLOGO
+                            </span>
+
+                            <h3>
+                                Produtos e sabores
+                            </h3>
+
+                            <p>
+                                Cadastre e organize os
+                                produtos disponíveis.
+                            </p>
+
+                            <span class="admin-card-link">
+                                Gerenciar produtos →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- PREÇOS -->
+
+                    <a
+                        href="admin-precos.html"
+                        class="admin-card"
+                    >
+
+                        <div class="admin-card-icone">
+                            R$
+                        </div>
+
+                        <div class="admin-card-conteudo">
+
+                            <span class="admin-card-tag">
+                                VALORES
+                            </span>
+
+                            <h3>
+                                Preços
+                            </h3>
+
+                            <p>
+                                Defina os valores dos
+                                produtos para cada cliente.
+                            </p>
+
+                            <span class="admin-card-link">
+                                Definir preços →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 AVISO
+            ====================================== -->
+
+            <section class="admin-aviso">
+
+                <div class="admin-aviso-icone">
+                    ✓
+                </div>
+
+                <div>
+
+                    <h2>
+                        Área restrita
+                    </h2>
+
+                    <p>
+                        As informações e configurações
+                        desta área são exclusivas da
+                        administração da Topy'Gut.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         RODAPÉ
+    ========================================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-container">
+
+            <img
+                src="img/Logo Topy´Gut.avif"
+                alt="Topy'Gut"
+                class="rodape-logo"
+            >
+
+            <p>
+                © 2026 Topy'Gut. Painel Administrativo.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    
+    <script src="js/admin-painel.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Produtos | Administração Topy'Gut</title>
+
+    <link
+        rel="icon"
+        type="image/avif"
+        href="img/Logo Topy´Gut.avif"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/admin-produtos.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================== -->
+
+    <header class="cabecalho">
+
+        <div class="cabecalho-container">
+
+            <a
+                href="admin-painel.html"
+                class="logo"
+                aria-label="Painel Administrativo Topy'Gut"
+            >
+                <img
+                    src="img/Logo Topy´Gut.avif"
+                    alt="Topy'Gut"
+                >
+            </a>
+
+
+            <!-- MENU MOBILE -->
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <!-- MENU -->
+
+            <nav class="menu">
+
+                <a href="admin-painel.html">
+                    Painel
+                </a>
+
+                <a href="admin-clientes.html">
+                    Clientes
+                </a>
+
+                <a href="admin-pedidos.html">
+                    Pedidos
+                </a>
+
+                <a
+                    href="admin-produtos.html" class="ativo">
+                    Produtos
+                </a>
+
+                <a
+                    href="index.html"
+                    class="sair"
+                >
+                    Sair
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTEÚDO
+    ========================================== -->
+
+    <main class="produtos-admin">
+
+        <div class="produtos-container">
+
+
+            <!-- =====================================
+                 CABEÇALHO
+            ====================================== -->
+
+            <section class="produtos-header">
+
+                <div>
+
+                    <span class="produtos-tag">
+                        CATÁLOGO
+                    </span>
+
+                    <h1>
+                        Produtos e Sabores
+                    </h1>
+
+                    <p>
+                        Gerencie produtos, sabores,
+                        tamanhos e preços disponíveis
+                        para pedidos.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn-novo-produto"
+                    id="btnNovoProduto"
+                >
+                    + Novo produto
+                </button>
+
+            </section>
+
+
+            <!-- =====================================
+                 PESQUISA
+            ====================================== -->
+
+            <section class="produtos-ferramentas">
+
+                <div class="campo-pesquisa">
+
+                    <label for="pesquisaProduto">
+                        Buscar produto
+                    </label>
+
+                    <input
+                        type="search"
+                        id="pesquisaProduto"
+                        placeholder="Produto, sabor ou categoria..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 PRODUTOS
+            ====================================== -->
+
+            <section class="produtos-lista">
+
+                <div class="lista-header">
+
+                    <div>
+
+                        <span class="lista-tag">
+                            PRODUTOS CADASTRADOS
+                        </span>
+
+                        <h2>
+                            Catálogo
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        class="total-produtos"
+                        id="totalProdutos"
+                    >
+                        0 produtos
+                    </span>
+
+                </div>
+
+
+                <div class="tabela-container">
+
+                    <table class="tabela-produtos">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Produto</th>
+
+                                <th>Categoria</th>
+
+                                <th>Sabor</th>
+
+                                <th>Tamanho / Peso</th>
+
+                                <th>Preço</th>
+
+                                <th>Status</th>
+
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="listaProdutos">
+                        </tbody>
+
+                    </table>
+
+
+                    <div
+                        class="produtos-vazio"
+                        id="produtosVazio"
+                    >
+
+                        <h3>
+                            Nenhum produto encontrado
+                        </h3>
+
+                        <p>
+                            Cadastre um produto ou tente
+                            outra pesquisa.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 DESCONTOS
+            ====================================== -->
+
+            <section class="descontos-card">
+
+                <div class="descontos-header">
+
+                    <div>
+
+                        <span class="lista-tag">
+                            REGRAS COMERCIAIS
+                        </span>
+
+                        <h2>
+                            Descontos
+                        </h2>
+
+                        <p>
+                            Defina descontos automáticos
+                            conforme o valor total do pedido.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn-novo-desconto"
+                        id="btnNovoDesconto"
+                    >
+                        + Criar desconto
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="lista-descontos"
+                    id="listaDescontos"
+                >
+
+                    <div
+                        class="descontos-vazio"
+                        id="descontosVazio"
+                    >
+
+                        <h3>
+                            Nenhum desconto criado
+                        </h3>
+
+                        <p>
+                            Clique em “Criar desconto”
+                            para cadastrar uma regra.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         MODAL PRODUTO
+    ========================================== -->
+
+    <div
+        class="modal"
+        id="modalProduto"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-overlay"
+            id="modalProdutoOverlay"
+        ></div>
+
+
+        <div
+            class="modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tituloModalProduto"
+        >
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-tag">
+                        CATÁLOGO
+                    </span>
+
+                    <h2 id="tituloModalProduto">
+                        Novo produto
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharModalProduto"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formProduto" enctype="multipart/form-data">
+
+
+                <!-- NOME -->
+
+                <div class="form-group">
+
+                    <label for="nomeProduto">
+                        Nome do produto
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeProduto"
+                        placeholder="Ex.: Iogurte Semi Desnatado"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CATEGORIA + TAMANHO -->
+
+                <div class="form-linha">
+
+                    <div class="form-group">
+
+                        <label for="categoriaProduto">
+                            Categoria
+                        </label>
+
+                        <select id="categoriaProduto" required>
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="iogurtes">
+                                Iogurtes
+                            </option>
+
+                            <option value="laticinios">
+                                Laticínios
+                            </option>
+
+                            <option value="sucos">
+                                Sucos
+                            </option>
+
+                            <option value="pao_de_queijo">
+                                Pão de Queijo
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tamanhoProduto">
+                            Tamanho / Peso
+                        </label>
+
+                        <input
+                            type="text"
+                            id="tamanhoProduto"
+                            placeholder="Ex.: 900g, 5L..."
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- VARIAÇÕES -->
+
+                <div class="form-group variacoes-produto">
+
+                    <label>
+                        Variações
+                        <span class="opcional">
+                            (opcional)
+                        </span>
+                    </label>
+
+                    <div class="variacao-controles">
+
+                        <div class="variacao-campo variacao-tipo">
+
+                            <label for="tipoVariacao">
+                                Tipo
+                            </label>
+
+                            <select id="tipoVariacao">
+
+                                <option value="">
+                                    Selecione
+                                </option>
+
+                                <option value="sabor">
+                                    Sabor
+                                </option>
+
+                                <option value="tamanho">
+                                    Tamanho
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="variacao-campo">
+
+                            <label for="nomeVariacao">
+                                Nome da variação
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nomeVariacao"
+                                placeholder="Ex.: Morango, Coco, 15g..."
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="btn-adicionar-variacao"
+                            id="btnAdicionarVariacao"
+                        >
+                            + Adicionar
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="lista-variacoes"
+                        id="listaVariacoes"
+                    >
+                        <!-- Variações adicionadas aparecem aqui -->
+                    </div>
+
+                </div>
+
+
+                <!-- PREÇO + STATUS -->
+
+                <div class="form-linha">
+
+                    <div class="form-group">
+
+                        <label for="precoProduto">
+                            Preço cheio
+                        </label>
+
+                        <div class="campo-moeda">
+
+                            <span>
+                                R$
+                            </span>
+
+                            <input
+                                type="text"
+                                id="precoProduto"
+                                inputmode="decimal"
+                                placeholder="0,00"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="statusProduto">
+                            Status
+                        </label>
+
+                        <select id="statusProduto">
+
+                            <option value="ativo">
+                                Ativo
+                            </option>
+
+                            <option value="inativo">
+                                Inativo
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGEM DO PRODUTO -->
+
+                <div class="form-group">
+
+                    <label for="imagemProduto">
+                        Imagem do produto
+                    </label>
+
+                    <input
+                        type="file"
+                        id="imagemProduto"
+                        name="imagem"
+                        accept="image/jpeg,image/png,image/webp"
+                    >
+
+                    <small class="ajuda-campo">
+                        JPG, PNG ou WebP. Máximo de 5 MB.
+                    </small>
+
+                </div>
+
+
+                <!-- PREVIEW DA IMAGEM -->
+
+                <div
+                    class="produto-preview"
+                    id="produtoPreview"
+                >
+
+                    <p>
+                        Pré-visualização da imagem
+                    </p>
+
+                    <img
+                        id="imagemPreview"
+                        src=""
+                        alt="Prévia do produto"
+                    >
+
+                </div>
+
+                <!-- DESCRIÇÃO -->
+
+                <div class="form-group">
+
+                    <label for="descricaoProduto">
+                        Descrição
+                        <span class="opcional">
+                            (opcional)
+                        </span>
+                    </label>
+
+                    <textarea
+                        id="descricaoProduto"
+                        placeholder="Informações adicionais..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="modal-acoes">
+
+                    <button
+                        type="button"
+                        class="btn-cancelar"
+                        id="cancelarProduto"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-salvar"
+                    >
+                        Salvar produto
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         MODAL DESCONTO
+    ========================================== -->
+
+    <div
+        class="modal"
+        id="modalDesconto"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-overlay"
+            id="modalDescontoOverlay"
+        ></div>
+
+
+        <div
+            class="modal-card modal-card-menor"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tituloModalDesconto"
+        >
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-tag">
+                        REGRA COMERCIAL
+                    </span>
+
+                    <h2 id="tituloModalDesconto">
+                        Criar desconto
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharModalDesconto"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formDesconto">
+
+
+                <div class="form-group">
+
+                    <label for="valorMinimo">
+                        Valor mínimo do pedido
+                    </label>
+
+                    <div class="campo-moeda">
+
+                        <span>
+                            R$
+                        </span>
+
+                        <input
+                            type="text"
+                            id="valorMinimo"
+                            inputmode="decimal"
+                            placeholder="Ex.: 200,00"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="percentualDesconto">
+                        Percentual de desconto
+                    </label>
+
+                    <div class="campo-percentual">
+
+                        <input
+                            type="number"
+                            id="percentualDesconto"
+                            min="0.1"
+                            max="100"
+                            step="0.1"
+                            placeholder="Ex.: 5"
+                            required
+                        >
+
+                        <span>
+                            %
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="statusDesconto">
+                        Status
+                    </label>
+
+                    <select id="statusDesconto">
+
+                        <option value="ativo">
+                            Ativo
+                        </option>
+
+                        <option value="inativo">
+                            Inativo
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="modal-acoes">
+
+                    <button
+                        type="button"
+                        class="btn-cancelar"
+                        id="cancelarDesconto"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-salvar"
+                    >
+                        Salvar desconto
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         RODAPÉ
+    ========================================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-container">
+
+            <img
+                src="img/Logo Topy´Gut.avif"
+                alt="Topy'Gut"
+                class="rodape-logo"
+            >
+
+            <p>
+                © 2026 Topy'Gut. Painel Administrativo.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/admin-produtos.js"></script>
+
+</body>
+
+</html>

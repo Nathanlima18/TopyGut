@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Preços e Descontos | Administração Topy'Gut</title>
+
+    <link
+        rel="icon"
+        type="image/avif"
+        href="img/Logo Topy´Gut.avif"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/admin-precos.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================== -->
+
+    <header class="cabecalho">
+
+        <div class="cabecalho-container">
+
+            <a
+                href="admin-painel.html"
+                class="logo"
+                aria-label="Painel Administrativo Topy'Gut"
+            >
+
+                <img
+                    src="img/Logo Topy´Gut.avif"
+                    alt="Topy'Gut"
+                >
+
+            </a>
+
+
+            <!-- MENU MOBILE -->
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <!-- MENU -->
+
+            <nav class="menu">
+
+                <a href="admin-painel.html">
+                    Painel
+                </a>
+
+                <a href="admin-clientes.html">
+                    Clientes
+                </a>
+
+                <a href="admin-produtos.html">
+                    Produtos
+                </a>
+
+                <a
+                    href="admin-precos.html"
+                    class="ativo"
+                >
+                    Preços e Descontos
+                </a>
+
+                <a
+                    href="index.html"
+                    class="sair"
+                >
+                    Sair
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTEÚDO
+    ========================================== -->
+
+    <main class="precos-admin">
+
+        <div class="precos-container">
+
+
+            <!-- =====================================
+                 CABEÇALHO DA PÁGINA
+            ====================================== -->
+
+            <section class="precos-header">
+
+                <div>
+
+                    <span class="precos-tag">
+                        COMERCIAL
+                    </span>
+
+                    <h1>
+                        Preços e Descontos
+                    </h1>
+
+                    <p>
+                        Defina o preço cheio dos produtos
+                        e crie regras de desconto para pedidos.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 PREÇOS DOS PRODUTOS
+            ====================================== -->
+
+            <section class="precos-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="card-tag">
+                            PREÇOS
+                        </span>
+
+                        <h2>
+                            Preço cheio dos produtos
+                        </h2>
+
+                        <p>
+                            Os valores definidos aqui serão
+                            utilizados nos pedidos dos clientes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="tabela-container">
+
+                    <table class="tabela-precos">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Produto</th>
+
+                                <th>Categoria</th>
+
+                                <th>Sabor</th>
+
+                                <th>Tamanho</th>
+
+                                <th>Preço</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="listaPrecos">
+
+                            <!-- PRODUTO DE TESTE -->
+
+                            <tr
+                                class="preco-item"
+                                data-produto="Iogurte Semi Desnatado"
+                            >
+
+                                <td>
+                                    <strong>
+                                        Iogurte Semi Desnatado
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    Iogurtes
+                                </td>
+
+                                <td>
+                                    Morango
+                                </td>
+
+                                <td>
+                                    900g
+                                </td>
+
+                                <td>
+
+                                    <div class="campo-preco">
+
+                                        <span>
+                                            R$
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            class="input-preco"
+                                            inputmode="decimal"
+                                            placeholder="0,00"
+                                            value="0,00"
+                                        >
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="precos-acoes">
+
+                    <button
+                        type="button"
+                        class="btn-salvar-precos"
+                        id="btnSalvarPrecos"
+                    >
+                        Salvar preços
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 DESCONTOS
+            ====================================== -->
+
+            <section class="descontos-card">
+
+                <div class="card-header descontos-header">
+
+                    <div>
+
+                        <span class="card-tag">
+                            DESCONTOS
+                        </span>
+
+                        <h2>
+                            Regras de desconto
+                        </h2>
+
+                        <p>
+                            Crie descontos automáticos
+                            conforme o valor total do pedido.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn-novo-desconto"
+                        id="btnNovoDesconto"
+                    >
+                        + Criar desconto
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="lista-descontos"
+                    id="listaDescontos"
+                >
+
+                    <!-- COMEÇA VAZIO -->
+
+                    <div
+                        class="descontos-vazio"
+                        id="descontosVazio"
+                    >
+
+                        <h3>
+                            Nenhum desconto criado
+                        </h3>
+
+                        <p>
+                            Clique em “Criar desconto”
+                            para adicionar uma regra.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         MODAL - NOVO DESCONTO
+    ========================================== -->
+
+    <div
+        class="modal"
+        id="modalDesconto"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-overlay"
+            id="modalOverlay"
+        ></div>
+
+
+        <div
+            class="modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tituloModalDesconto"
+        >
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-tag">
+                        REGRA COMERCIAL
+                    </span>
+
+                    <h2 id="tituloModalDesconto">
+                        Criar desconto
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharModalDesconto"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formDesconto">
+
+
+                <!-- VALOR MÍNIMO -->
+
+                <div class="form-group">
+
+                    <label for="valorMinimo">
+                        Valor mínimo do pedido
+                    </label>
+
+                    <div class="campo-moeda">
+
+                        <span>
+                            R$
+                        </span>
+
+                        <input
+                            type="text"
+                            id="valorMinimo"
+                            name="valorMinimo"
+                            inputmode="decimal"
+                            placeholder="Ex.: 200,00"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- DESCONTO -->
+
+                <div class="form-group">
+
+                    <label for="percentualDesconto">
+                        Percentual de desconto
+                    </label>
+
+                    <div class="campo-percentual">
+
+                        <input
+                            type="number"
+                            id="percentualDesconto"
+                            name="percentualDesconto"
+                            min="0.1"
+                            max="100"
+                            step="0.1"
+                            placeholder="Ex.: 5"
+                            required
+                        >
+
+                        <span>
+                            %
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="form-group">
+
+                    <label for="statusDesconto">
+                        Status da regra
+                    </label>
+
+                    <select
+                        id="statusDesconto"
+                        name="statusDesconto"
+                    >
+
+                        <option value="ativo">
+                            Ativo
+                        </option>
+
+                        <option value="inativo">
+                            Inativo
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- BOTÕES -->
+
+                <div class="modal-acoes">
+
+                    <button
+                        type="button"
+                        class="btn-cancelar"
+                        id="cancelarDesconto"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-salvar"
+                    >
+                        Salvar desconto
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         RODAPÉ
+    ========================================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-container">
+
+            <img
+                src="img/Logo Topy´Gut.avif"
+                alt="Topy'Gut"
+                class="rodape-logo"
+            >
+
+            <p>
+                © 2026 Topy'Gut. Painel Administrativo.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="js/admin-precos.js"></script>
+
+</body>
+
+</html>

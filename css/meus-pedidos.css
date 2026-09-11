@@ -844,6 +844,25 @@ button {
     }
 }
 
+.status.pendente {
+    background: #fff4cf;
+    color: #9d7600;
+}
+
+.status.separado {
+    background: #dceffc;
+    color: #136c9f;
+}
+
+.status.entregue {
+    background: #dcf4e6;
+    color: #267549;
+}
+
+.status.cancelado {
+    background: #fbe0e5;
+    color: #a5394d;
+}
 
 /* =========================================================
    RESPONSIVIDADE - CELULAR

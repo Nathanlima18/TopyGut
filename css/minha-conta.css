@@ -706,6 +706,135 @@ button {
     }
 }
 
+/* =========================================================
+   MODAL - ALTERAR SENHA
+========================================================= */
+
+.modal-senha {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(10, 33, 49, 0.55);
+
+    z-index: 9999;
+}
+
+.modal-senha.ativo {
+    display: flex;
+}
+
+.modal-senha-conteudo {
+    position: relative;
+
+    width: 100%;
+    max-width: 520px;
+
+    padding: 32px;
+
+    background: #ffffff;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 24px 60px
+        rgba(0, 0, 0, 0.18);
+}
+
+.modal-senha-conteudo h2 {
+    margin:
+        8px
+        0
+        10px;
+
+    color: #075d95;
+}
+
+.modal-senha-conteudo p {
+    margin-bottom: 24px;
+
+    color: #667581;
+}
+
+.modal-fechar {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+
+    width: 42px;
+    height: 42px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #f2f6f8;
+
+    font-size: 28px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.campo-senha {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+}
+
+.campo-senha label {
+    font-weight: 700;
+
+    color: #075d95;
+}
+
+.campo-senha input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #d8e4eb;
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.campo-senha input:focus {
+    border-color: #1596d2;
+}
+
+.modal-senha-acoes {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 26px;
+}
+
+.btn-principal {
+    border: 0;
+    border-radius: 12px;
+
+    padding: 13px 20px;
+
+    background: #1596d2;
+    color: #ffffff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
 
 /* =========================================================
    RESPONSIVIDADE - CELULAR

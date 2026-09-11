@@ -63,16 +63,20 @@
 
             <nav class="menu">
 
-                <a href="index.html">
+                <a href="painel-cliente.html">
                     Início
                 </a>
 
-                <a href="index.html#produtos">
-                    Produtos
+                <a href="novo-pedido.html">
+                    Novo Pedido
+                </a>
+
+                <a href="meus-pedidos.html">
+                    Meus Pedidos
                 </a>
 
                 <a
-                    href="cliente-painel.html"
+                    href="minha-conta.html"
                     class="ativo"
                 >
                     Minha Conta
@@ -178,11 +182,8 @@
 
 
                 <!-- MEUS PEDIDOS -->
-
-                <a
-                    href="#pedidos"
-                    class="atalho-card"
-                >
+                
+                <a href="meus-pedidos.html" class="atalho-card">
 
                     <div class="atalho-icone">
                         📦
@@ -198,45 +199,15 @@
                             Consulte pedidos anteriores e
                             acompanhe o andamento.
                         </p>
-
                     </div>
-
                 </a>
-
 
                 <!-- PRODUTOS E PREÇOS -->
-
-                <a
-                    href="#"
-                    class="atalho-card"
-                >
-
-                    <div class="atalho-icone">
-                        🛒
-                    </div>
-
-                    <div class="atalho-conteudo">
-
-                        <h2>
-                            Produtos e Preços
-                        </h2>
-
-                        <p>
-                            Consulte os produtos disponíveis
-                            e seus preços.
-                        </p>
-
-                    </div>
-
-                </a>
-
+                
 
                 <!-- MINHA CONTA -->
 
-                <a
-                    href="#conta"
-                    class="atalho-card"
-                >
+                <a href="minha-conta.html" class="atalho-card">
 
                     <div class="atalho-icone">
                         👤
@@ -291,10 +262,9 @@
                         </div>
 
 
-                        <a href="#">
+                        <a href="meus-pedidos.html">
                             Ver todos
                         </a>
-
                     </div>
 
 
@@ -327,81 +297,7 @@
                             </thead>
 
 
-                            <tbody>
-
-                                <tr>
-
-                                    <td>
-                                        #1054
-                                    </td>
-
-                                    <td>
-                                        08/09/2026
-                                    </td>
-
-                                    <td>
-                                        <span
-                                            class="status-pedido separacao"
-                                        >
-                                            Em separação
-                                        </span>
-                                    </td>
-
-                                    <td>
-                                        R$ 000,00
-                                    </td>
-
-                                </tr>
-
-
-                                <tr>
-
-                                    <td>
-                                        #1048
-                                    </td>
-
-                                    <td>
-                                        02/09/2026
-                                    </td>
-
-                                    <td>
-                                        <span
-                                            class="status-pedido entregue"
-                                        >
-                                            Entregue
-                                        </span>
-                                    </td>
-
-                                    <td>
-                                        R$ 000,00
-                                    </td>
-
-                                </tr>
-
-
-                                <tr>
-
-                                    <td>
-                                        #1041
-                                    </td>
-
-                                    <td>
-                                        26/08/2026
-                                    </td>
-
-                                    <td>
-                                        <span
-                                            class="status-pedido entregue"
-                                        >
-                                            Entregue
-                                        </span>
-                                    </td>
-
-                                    <td>
-                                        R$ 000,00
-                                    </td>
-
-                                </tr>
+                            <tbody id="ultimosPedidos">
 
                             </tbody>
 
@@ -494,12 +390,12 @@
                     </div>
 
 
-                    <button
-                        type="button"
+                    <a
+                        href="minha-conta.html"
                         class="btn-conta"
                     >
                         Ver meus dados
-                    </button>
+                    </a>
 
                 </aside>
 
@@ -537,7 +433,8 @@
          JAVASCRIPT
     =================================================== -->
 
-    <script src="js/cliente-painel.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/painel-cliente.js"></script>
 
 </body>
 
