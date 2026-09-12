@@ -4647,23 +4647,29 @@ app.get(
 ========================================================= */
 
 const frontendPath =
-    path.resolve(__dirname, "..");
+    process.cwd();
+
 
 app.use(
-    express.static(frontendPath)
+    express.static(
+        frontendPath
+    )
 );
 
-app.get("/", (req, res) => {
 
-    res.sendFile(
-        path.join(
-            frontendPath,
-            "index.html"
-        )
-    );
+app.get(
+    "/",
+    (req, res) => {
 
-});
+        return res.sendFile(
+            path.join(
+                frontendPath,
+                "index.html"
+            )
+        );
 
+    }
+);
 
 /* =========================================================
    TRATAMENTO DE ERROS DO MULTER
