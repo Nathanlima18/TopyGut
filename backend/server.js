@@ -3438,17 +3438,152 @@ app.get(
                     `
                 );
 
+            return res.json({
+                descontos: descontos
+            });
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao listar descontos:", erro
+            );
+
+            return res.status(500).json({
+                mensagem: "Erro interno do servidor."
+            });
+        }
+    }
+);
+
+
+/* =========================================================
+   EDITAR DESCONTO
+========================================================= */
+
+app.put(
+    "/descontos/:id",
+    autenticarToken,
+    masterOuAdmin,
+    async (req, res) => {
+
+        try {
+
+            const descontoId =
+                Number(req.params.id);
+
+
+            const {
+                valorMinimo,
+                percentual,
+                status
+            } = req.body;
+
+
+            if (!descontoId) {
+
+                return res.status(400).json({
+                    mensagem:
+                        "Desconto inválido."
+                });
+
+            }
+
+
+            const valorNumero =
+                Number(valorMinimo);
+
+
+            const percentualNumero =
+                Number(percentual);
+
+
+            if (
+                !Number.isFinite(valorNumero) ||
+                valorNumero <= 0 ||
+                !Number.isFinite(percentualNumero) ||
+                percentualNumero <= 0 ||
+                percentualNumero > 100
+            ) {
+
+                return res.status(400).json({
+                    mensagem:
+                        "Informe valores válidos para o desconto."
+                });
+
+            }
+
+
+            const statusFinal =
+                status === "inativo"
+                    ? "inativo"
+                    : "ativo";
+
+
+            const [existentes] =
+                await pool.query(
+                    `
+                    SELECT id
+                    FROM descontos
+                    WHERE valor_minimo = ?
+                    AND id <> ?
+                    LIMIT 1
+                    `,
+                    [
+                        valorNumero,
+                        descontoId
+                    ]
+                );
+
+
+            if (existentes.length > 0) {
+
+                return res.status(409).json({
+                    mensagem:
+                        "Já existe outra regra de desconto para esse valor mínimo."
+                });
+
+            }
+
+
+            const [resultado] =
+                await pool.query(
+                    `
+                    UPDATE descontos
+                    SET
+                        valor_minimo = ?,
+                        percentual = ?,
+                        status = ?
+                    WHERE id = ?
+                    `,
+                    [
+                        valorNumero,
+                        percentualNumero,
+                        statusFinal,
+                        descontoId
+                    ]
+                );
+
+
+            if (resultado.affectedRows === 0) {
+
+                return res.status(404).json({
+                    mensagem:
+                        "Desconto não encontrado."
+                });
+
+            }
+
 
             return res.json({
-                descontos:
-                    descontos
+                mensagem:
+                    "Desconto atualizado com sucesso."
             });
 
 
         } catch (erro) {
 
             console.error(
-                "Erro ao listar descontos:",
+                "Erro ao editar desconto:",
                 erro
             );
 
@@ -3462,7 +3597,6 @@ app.get(
 
     }
 );
-
 
 /* =========================================================
    EXCLUIR DESCONTO

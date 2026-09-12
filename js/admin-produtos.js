@@ -2062,7 +2062,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     listaDescontos.addEventListener(
         "click",
-        function (event) {
+        async function (event) {
 
             const botao =
                 event.target;
@@ -2116,10 +2116,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 modalDesconto.classList.add(
                     "ativo"
                 );
-
-
                 return;
-
             }
 
 
@@ -2129,16 +2126,105 @@ document.addEventListener("DOMContentLoaded", function () {
                 )
             ) {
 
-                item.dataset.status =
-                    item.dataset.status ===
-                    "ativo"
+                const novoStatus =
+                    item.dataset.status === "ativo"
                         ? "inativo"
                         : "ativo";
 
 
-                montarConteudoDesconto(
-                    item
-                );
+                const token =
+                    sessionStorage.getItem(
+                        "topygut_token"
+                    ) ||
+                    localStorage.getItem(
+                        "topygut_token"
+                    );
+
+
+                if (!token) {
+
+                    alert(
+                        "Sua sessão expirou. Faça login novamente."
+                    );
+
+                    return;
+
+                }
+
+
+                try {
+
+                    const resposta =
+                        await fetch(
+                            `${API_URL}/descontos/${item.dataset.id}`,
+                            {
+                                method: "PUT",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json",
+
+                                    "Authorization":
+                                        "Bearer " + token
+                                },
+
+                                body:
+                                    JSON.stringify({
+                                        valorMinimo:
+                                            Number(
+                                                item.dataset.valor
+                                            ),
+
+                                        percentual:
+                                            Number(
+                                                item.dataset.percentual
+                                            ),
+
+                                        status:
+                                            novoStatus
+                                    })
+                            }
+                        );
+
+
+                    const dados =
+                        await resposta.json();
+
+
+                    if (!resposta.ok) {
+
+                        alert(
+                            dados.mensagem ||
+                            "Não foi possível alterar o desconto."
+                        );
+
+                        return;
+
+                    }
+
+
+                    item.dataset.status =
+                        novoStatus;
+
+
+                    montarConteudoDesconto(
+                        item
+                    );
+
+
+                } catch (erro) {
+
+                    console.error(
+                        "Erro ao alterar status do desconto:",
+                        erro
+                    );
+
+
+                    alert(
+                        "Não foi possível conectar ao servidor."
+                    );
+
+                }
 
 
                 return;
