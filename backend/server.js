@@ -1192,6 +1192,86 @@ app.patch(
 );
 
 /* =========================================================
+   EXCLUIR ADMINISTRADOR
+========================================================= */
+
+app.delete(
+    "/admins/:id",
+    autenticarToken,
+    somenteMaster,
+    async (req, res) => {
+
+        try {
+
+            const adminId =
+                Number(
+                    req.params.id
+                );
+
+
+            if (
+                !Number.isInteger(adminId) ||
+                adminId <= 0
+            ) {
+
+                return res.status(400).json({
+                    mensagem:
+                        "Administrador inválido."
+                });
+
+            }
+
+
+            const [resultado] =
+                await pool.query(
+                    `
+                    DELETE FROM usuarios
+                    WHERE id = ?
+                    AND tipo = 'admin'
+                    `,
+                    [
+                        adminId
+                    ]
+                );
+
+
+            if (
+                resultado.affectedRows === 0
+            ) {
+
+                return res.status(404).json({
+                    mensagem:
+                        "Administrador não encontrado."
+                });
+
+            }
+
+
+            return res.json({
+                mensagem:
+                    "Administrador excluído com sucesso."
+            });
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao excluir administrador:",
+                erro
+            );
+
+
+            return res.status(500).json({
+                mensagem:
+                    "Erro interno do servidor."
+            });
+
+        }
+
+    }
+);
+
+/* =========================================================
    CRIAR CLIENTE
 ========================================================= */
 
