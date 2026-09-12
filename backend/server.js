@@ -4643,23 +4643,26 @@ app.get(
 );
 
 /* =========================================================
-   ROTA SERVIDOR
+   FRONTEND
 ========================================================= */
 
-app.get(
-    "/",
-    (req, res) => {
+const frontendPath =
+    path.resolve(__dirname, "..");
 
-        return res.sendFile(
-            path.join(
-                __dirname,
-                "..",
-                "index.html"
-            )
-        );
-
-    }
+app.use(
+    express.static(frontendPath)
 );
+
+app.get("/", (req, res) => {
+
+    res.sendFile(
+        path.join(
+            frontendPath,
+            "index.html"
+        )
+    );
+
+});
 
 
 /* =========================================================
