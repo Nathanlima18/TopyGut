@@ -5,6 +5,9 @@ const pool = require("./database");
 const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
+const fs =
+    require("fs");
+
 require("dotenv").config();
 
 const {
@@ -483,6 +486,55 @@ app.use(
 const PORT =
     process.env.PORT ||
     3000;
+
+
+    /* =========================================================
+   GARANTE PASTAS DE UPLOAD
+========================================================= */
+
+const pastaUploads =
+    path.join(
+        __dirname,
+        "uploads"
+    );
+
+const pastaProdutos =
+    path.join(
+        pastaUploads,
+        "produtos"
+    );
+
+
+if (
+    !fs.existsSync(
+        pastaUploads
+    )
+) {
+
+    fs.mkdirSync(
+        pastaUploads,
+        {
+            recursive: true
+        }
+    );
+
+}
+
+
+if (
+    !fs.existsSync(
+        pastaProdutos
+    )
+) {
+
+    fs.mkdirSync(
+        pastaProdutos,
+        {
+            recursive: true
+        }
+    );
+
+}
 
 /* =========================================================
    ARQUIVOS ESTÁTICOS
