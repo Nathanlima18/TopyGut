@@ -1036,6 +1036,160 @@ app.post(
     }
 );
 
+/* =========================================================
+   LISTAR ADMINISTRADORES
+========================================================= */
+
+app.get(
+    "/admins",
+    autenticarToken,
+    somenteMaster,
+    async (req, res) => {
+
+        try {
+
+            const [admins] =
+                await pool.query(
+                    `
+                    SELECT
+                        id,
+                        nome,
+                        email,
+                        status
+                    FROM usuarios
+                    WHERE tipo = 'admin'
+                    ORDER BY nome ASC
+                    `
+                );
+
+
+            return res.json({
+                administradores:
+                    admins
+            });
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao listar administradores:",
+                erro
+            );
+
+
+            return res.status(500).json({
+                mensagem:
+                    "Erro interno do servidor."
+            });
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ALTERAR STATUS DO ADMINISTRADOR
+========================================================= */
+
+app.patch(
+    "/admins/:id/status",
+    autenticarToken,
+    somenteMaster,
+    async (req, res) => {
+
+        try {
+
+            const adminId =
+                Number(
+                    req.params.id
+                );
+
+
+            const {
+                status
+            } = req.body;
+
+
+            if (
+                !Number.isInteger(adminId) ||
+                adminId <= 0
+            ) {
+
+                return res.status(400).json({
+                    mensagem:
+                        "Administrador inválido."
+                });
+
+            }
+
+
+            if (
+                status !== "ativo" &&
+                status !== "inativo"
+            ) {
+
+                return res.status(400).json({
+                    mensagem:
+                        "Status inválido."
+                });
+
+            }
+
+
+            const [resultado] =
+                await pool.query(
+                    `
+                    UPDATE usuarios
+                    SET status = ?
+                    WHERE id = ?
+                    AND tipo = 'admin'
+                    `,
+                    [
+                        status,
+                        adminId
+                    ]
+                );
+
+
+            if (
+                resultado.affectedRows === 0
+            ) {
+
+                return res.status(404).json({
+                    mensagem:
+                        "Administrador não encontrado."
+                });
+
+            }
+
+
+            return res.json({
+                mensagem:
+                    "Status do administrador atualizado com sucesso.",
+
+                status:
+                    status
+            });
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao alterar status do administrador:",
+                erro
+            );
+
+
+            return res.status(500).json({
+                mensagem:
+                    "Erro interno do servidor."
+            });
+
+        }
+
+    }
+);
 
 /* =========================================================
    CRIAR CLIENTE
