@@ -2549,7 +2549,7 @@ app.put(
     "/produtos/:id",
     autenticarToken,
     masterOuAdmin,
-    upload.single("imagem"),
+    uploadProduto.single("imagem"),
     async (req, res) => {
 
         const conexao =
