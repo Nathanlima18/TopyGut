@@ -2364,6 +2364,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             imagem:
                                  produto.imagem || "",
+
+                            variacoes:
+                                produto.variacoes || []
                         },
 
                         "Produto #" +
