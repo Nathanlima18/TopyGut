@@ -2257,7 +2257,6 @@ app.post(
         const conexao =
             await pool.getConnection();
 
-
         try {
 
             const {
@@ -2279,12 +2278,9 @@ app.post(
             ) {
 
                 return res.status(400).json({
-                    mensagem:
-                        "Preencha os campos obrigatórios."
+                    mensagem: "Preencha os campos obrigatórios."
                 });
-
             }
-
 
             const categoriasPermitidas = [
                 "iogurtes",
@@ -2293,20 +2289,15 @@ app.post(
                 "pao_de_queijo"
             ];
 
-
             if (
                 !categoriasPermitidas.includes(
                     categoria
                 )
             ) {
-
                 return res.status(400).json({
-                    mensagem:
-                        "Categoria inválida."
+                    mensagem: "Categoria inválida."
                 });
-
             }
-
 
             /* =============================================
                PREÇO
@@ -2319,21 +2310,16 @@ app.post(
                         .replace(",", ".")
                 );
 
-
             if (
                 !Number.isFinite(
                     precoNumero
                 ) ||
                 precoNumero <= 0
             ) {
-
                 return res.status(400).json({
-                    mensagem:
-                        "Informe um preço válido."
+                    mensagem: "Informe um preço válido."
                 });
-
             }
-
 
             /* =============================================
                VARIAÇÕES
@@ -2341,7 +2327,6 @@ app.post(
 
             let variacoesRecebidas =
                 [];
-
 
             if (variacoes) {
 
@@ -2351,16 +2336,12 @@ app.post(
                         JSON.parse(
                             variacoes
                         );
-
                 } catch (erro) {
 
                     return res.status(400).json({
-                        mensagem:
-                            "Formato das variações inválido."
+                        mensagem: "Formato das variações inválido."
                     });
-
                 }
-
             }
 
 
@@ -2371,10 +2352,8 @@ app.post(
             ) {
 
                 return res.status(400).json({
-                    mensagem:
-                        "As variações são inválidas."
+                    mensagem: "As variações são inválidas."
                 });
-
             }
 
 
@@ -2556,6 +2535,294 @@ app.post(
                     "Erro interno do servidor."
             });
 
+        } finally {
+            conexao.release();
+        }
+    }
+);
+
+/* =========================================================
+   EDITAR PRODUTO
+========================================================= */
+
+app.put(
+    "/produtos/:id",
+    autenticarToken,
+    masterOuAdmin,
+    upload.single("imagem"),
+    async (req, res) => {
+
+        const conexao =
+            await pool.getConnection();
+
+
+        try {
+
+            const produtoId =
+                Number(req.params.id);
+
+
+            if (!produtoId) {
+
+                return res.status(400).json({
+                    mensagem:
+                        "Produto inválido."
+                });
+
+            }
+
+
+            const {
+                nome,
+                categoria,
+                tamanho,
+                preco,
+                status,
+                descricao,
+                variacoes
+            } = req.body;
+
+
+            if (
+                !nome ||
+                !categoria ||
+                !tamanho ||
+                !preco
+            ) {
+
+                return res.status(400).json({
+                    mensagem:
+                        "Preencha todos os campos obrigatórios."
+                });
+
+            }
+
+
+            const precoNumero =
+                Number(
+                    String(preco)
+                        .replace(/\./g, "")
+                        .replace(",", ".")
+                );
+
+
+            if (
+                Number.isNaN(precoNumero) ||
+                precoNumero <= 0
+            ) {
+
+                return res.status(400).json({
+                    mensagem:
+                        "Preço inválido."
+                });
+
+            }
+
+
+            const statusFinal =
+                status === "inativo"
+                    ? "inativo"
+                    : "ativo";
+
+
+            let variacoesRecebidas =
+                [];
+
+
+            if (variacoes) {
+
+                try {
+
+                    variacoesRecebidas =
+                        JSON.parse(
+                            variacoes
+                        );
+
+                } catch (erro) {
+
+                    return res.status(400).json({
+                        mensagem:
+                            "Variações inválidas."
+                    });
+
+                }
+
+            }
+
+
+            await conexao.beginTransaction();
+
+
+            const [produtos] =
+                await conexao.query(
+                    `
+                    SELECT imagem
+                    FROM produtos
+                    WHERE id = ?
+                    LIMIT 1
+                    `,
+                    [produtoId]
+                );
+
+
+            if (
+                produtos.length === 0
+            ) {
+
+                await conexao.rollback();
+
+
+                return res.status(404).json({
+                    mensagem:
+                        "Produto não encontrado."
+                });
+
+            }
+
+
+            let caminhoImagem =
+                produtos[0].imagem;
+
+
+            if (req.file) {
+
+                caminhoImagem =
+                    `/uploads/produtos/${req.file.filename}`;
+
+            }
+
+
+            await conexao.query(
+                `
+                UPDATE produtos
+                SET
+                    nome = ?,
+                    categoria = ?,
+                    tamanho = ?,
+                    descricao = ?,
+                    preco = ?,
+                    imagem = ?,
+                    status = ?
+                WHERE id = ?
+                `,
+                [
+                    nome.trim(),
+                    categoria,
+                    tamanho.trim(),
+
+                    descricao
+                        ? descricao.trim()
+                        : null,
+
+                    precoNumero,
+                    caminhoImagem,
+                    statusFinal,
+                    produtoId
+                ]
+            );
+
+
+            /* =================================================
+            ATUALIZA VARIAÇÕES
+            ================================================= */
+
+            await conexao.query(
+                `
+                DELETE FROM produto_variacoes
+                WHERE produto_id = ?
+                `,
+                [produtoId]
+            );
+
+
+            for (
+                const variacao
+                of variacoesRecebidas
+            ) {
+
+                if (
+                    !variacao.tipo ||
+                    !variacao.nome
+                ) {
+                    continue;
+                }
+
+
+                await conexao.query(
+                    `
+                    INSERT INTO produto_variacoes (
+                        produto_id,
+                        tipo,
+                        nome,
+                        status
+                    )
+                    VALUES (?, ?, ?, 'ativo')
+                    `,
+                    [
+                        produtoId,
+                        variacao.tipo,
+                        variacao.nome.trim()
+                    ]
+                );
+
+            }
+
+            await conexao.commit();
+
+
+            return res.json({
+                mensagem:
+                    "Produto atualizado com sucesso.",
+
+                produto: {
+                    id:
+                        produtoId,
+
+                    nome:
+                        nome.trim(),
+
+                    categoria:
+                        categoria,
+
+                    tamanho:
+                        tamanho.trim(),
+
+                    descricao:
+                        descricao
+                            ? descricao.trim()
+                            : null,
+
+                    preco:
+                        precoNumero,
+
+                    imagem:
+                        caminhoImagem,
+
+                    status:
+                        statusFinal,
+
+                    variacoes:
+                        variacoesRecebidas
+                }
+            });
+
+
+        } catch (erro) {
+
+            await conexao.rollback();
+
+
+            console.error(
+                "Erro ao editar produto:",
+                erro
+            );
+
+
+            return res.status(500).json({
+                mensagem:
+                    "Erro interno do servidor."
+            });
+
 
         } finally {
 
@@ -2565,7 +2832,6 @@ app.post(
 
     }
 );
-
 
 /* =========================================================
    LISTAR PRODUTOS - ADMIN
@@ -2598,27 +2864,59 @@ app.get(
                 );
 
 
+            const [variacoes] =
+                await pool.query(
+                    `
+                    SELECT
+                        id,
+                        produto_id,
+                        tipo,
+                        nome,
+                        status
+                    FROM produto_variacoes
+                    ORDER BY produto_id, id
+                    `
+                );
+
+
+            const produtosComVariacoes =
+                produtos.map(
+                    function (produto) {
+
+                        return {
+
+                            ...produto,
+
+                            variacoes:
+                                variacoes.filter(
+                                    function (variacao) {
+
+                                        return (
+                                            Number( variacao.produto_id ) ===
+                                            Number( produto.id )
+                                        );
+
+                                    }
+                                )
+                        };
+                    }
+                );
+
             return res.json({
-                produtos:
-                    produtos
+                produtos: produtosComVariacoes
             });
 
 
         } catch (erro) {
 
             console.error(
-                "Erro ao listar produtos:",
-                erro
+                "Erro ao listar produtos:", erro
             );
 
-
             return res.status(500).json({
-                mensagem:
-                    "Erro interno do servidor."
+                mensagem: "Erro interno do servidor."
             });
-
         }
-
     }
 );
 
@@ -2715,27 +3013,33 @@ app.delete(
             }
 
 
-            const [produtos] =
+            const [itensPedido] =
                 await pool.query(
                     `
-                    SELECT imagem
-                    FROM produtos
-                    WHERE id = ?
+                    SELECT id
+                    FROM pedido_itens
+                    WHERE produto_id = ?
                     LIMIT 1
                     `,
-                    [
-                        produtoId
-                    ]
+                    [produtoId]
                 );
 
 
-            if (
-                produtos.length === 0
-            ) {
+            if (itensPedido.length > 0) {
 
-                return res.status(404).json({
+                await pool.query(
+                    `
+                    UPDATE produtos
+                    SET status = 'inativo'
+                    WHERE id = ?
+                    `,
+                    [produtoId]
+                );
+
+
+                return res.json({
                     mensagem:
-                        "Produto não encontrado."
+                        "Produto já utilizado em pedidos e foi inativado."
                 });
 
             }
@@ -2746,9 +3050,7 @@ app.delete(
                 DELETE FROM produtos
                 WHERE id = ?
                 `,
-                [
-                    produtoId
-                ]
+                [produtoId]
             );
 
 
@@ -2758,20 +3060,20 @@ app.delete(
             });
 
 
-        } catch (erro) {
+            } catch (erro) {
 
-            console.error(
-                "Erro ao excluir produto:",
-                erro
-            );
+                console.error(
+                    "Erro ao excluir produto:",
+                    erro
+                );
 
 
-            return res.status(500).json({
-                mensagem:
-                    "Erro interno do servidor."
-            });
+                return res.status(500).json({
+                    mensagem:
+                        "Erro interno do servidor."
+                });
 
-        }
+            }
 
     }
 );
