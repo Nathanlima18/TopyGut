@@ -69,7 +69,22 @@ document.addEventListener("DOMContentLoaded", function () {
                             "article"
                         );
 
+                        card.dataset.nome =
+                            produto.nome || "";
 
+                        card.dataset.categoria =
+                            produto.categoria || "";
+
+                        card.dataset.tamanho =
+                            produto.tamanho || "";
+
+                        card.dataset.descricao =
+                            produto.descricao || "";
+
+                        card.dataset.imagem =
+                            produto.imagem || "";
+
+                    
                     /* =============================================
                     PÃO DE QUEIJO
                     ============================================= */
@@ -135,75 +150,49 @@ document.addEventListener("DOMContentLoaded", function () {
                             </div>
                         `;
 
-
                         listaPaoDeQueijo.appendChild(
                             card
                         );
 
-
                         return;
-
                     }
-
 
                     /* =============================================
                     DEMAIS PRODUTOS
                     ============================================= */
 
-                    let classeCor =
-                        "card-rosa";
-
+                    let classeCor = "card-rosa";
 
                     if (
-                        produto.categoria ===
-                        "laticinios"
+                        produto.categoria === "laticinios"
                     ) {
-
-                        classeCor =
-                            "card-azul";
-
+                        classeCor = "card-azul";
                     }
 
 
                     if (
-                        produto.categoria ===
-                        "sucos"
+                        produto.categoria === "sucos"
                     ) {
-
-                        classeCor =
-                            "card-amarelo";
-
+                        classeCor = "card-amarelo";
                     }
 
-
-                    card.className =
-                        "card-produto " +
+                    card.className = "card-produto " +
                         classeCor;
 
-
-                    let nomeCategoria =
-                        "Iogurtes";
+                    let nomeCategoria = "Iogurtes";
 
 
                     if (
-                        produto.categoria ===
-                        "laticinios"
+                        produto.categoria === "laticinios"
                     ) {
-
-                        nomeCategoria =
-                            "Laticínios";
-
+                        nomeCategoria = "Laticínios";
                     }
 
 
                     if (
-                        produto.categoria ===
-                        "sucos"
+                        produto.categoria === "sucos"
                     ) {
-
-                        nomeCategoria =
-                            "Sucos";
-
+                        nomeCategoria = "Sucos";
                     }
 
 
@@ -257,16 +246,22 @@ document.addEventListener("DOMContentLoaded", function () {
                             </button>
 
                         </div>
-                    `;
+                        `;
+                    card.dataset.nome = produto.nome || "";
 
+                    card.dataset.categoria = produto.categoria || "";
+
+                    card.dataset.tamanho = produto.tamanho || "";
+
+                    card.dataset.descricao = produto.descricao || "";
+
+                    card.dataset.imagem = produto.imagem || "";
 
                     listaProdutos.appendChild(
                         card
                     );
-
                 }
             );
-
 
         } catch (erro) {
 
@@ -274,11 +269,178 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Erro ao conectar com os produtos:",
                 erro
             );
-
         }
-
     }
 
+    /* =========================================================
+    MODAL - DETALHES DO PRODUTO
+    ========================================================= */
+
+    const modalProdutoPublico =
+        document.getElementById(
+            "modalProdutoPublico"
+        );
+
+    const modalProdutoPublicoOverlay =
+        document.getElementById(
+            "modalProdutoPublicoOverlay"
+        );
+
+    const fecharModalProdutoPublico =
+        document.getElementById(
+            "fecharModalProdutoPublico"
+        );
+
+    const modalProdutoPublicoImagem =
+        document.getElementById(
+            "modalProdutoPublicoImagem"
+        );
+
+    const modalProdutoPublicoCategoria =
+        document.getElementById(
+            "modalProdutoPublicoCategoria"
+        );
+
+    const modalProdutoPublicoNome =
+        document.getElementById(
+            "modalProdutoPublicoNome"
+        );
+
+    const modalProdutoPublicoTamanho =
+        document.getElementById(
+            "modalProdutoPublicoTamanho"
+        );
+
+    const modalProdutoPublicoDescricao =
+        document.getElementById(
+            "modalProdutoPublicoDescricao"
+        );
+
+    const btnWhatsappProduto =
+        document.getElementById(
+            "btnWhatsappProduto"
+        );
+
+
+    function abrirModalProdutoPublico(card) {
+
+        const nome = card.dataset.nome || "";
+
+        const categoria = card.dataset.categoria || "";
+
+        const tamanho = card.dataset.tamanho || "";
+
+        const descricao = card.dataset.descricao || "";
+
+        const imagem = card.dataset.imagem || "";
+
+        modalProdutoPublicoNome.textContent = nome;
+
+        modalProdutoPublicoCategoria.textContent = categoria;
+
+        modalProdutoPublicoTamanho.textContent = tamanho;
+
+        modalProdutoPublicoDescricao.textContent = descricao;
+
+
+        if (imagem) {
+
+            modalProdutoPublicoImagem.innerHTML = `
+                <img
+                    src="${API_URL}${imagem}"
+                    alt="${nome}"
+                >
+            `;
+
+        } else {
+
+            modalProdutoPublicoImagem.innerHTML = "";
+        }
+
+        const mensagemWhatsapp =
+            encodeURIComponent(
+                `Olá! Tenho interesse no produto ${nome}. Gostaria de mais informações.`
+            );
+
+
+        btnWhatsappProduto.href =
+            `https://wa.me/5511942977455?text=${mensagemWhatsapp}`;
+
+
+        modalProdutoPublico.classList.add(
+            "ativo"
+        );
+
+        modalProdutoPublico.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+    }
+
+    function fecharModalProdutoPublicoFunc() {
+
+        modalProdutoPublico.classList.remove(
+            "ativo"
+        );
+
+        modalProdutoPublico.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+    }
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            const botao =
+                event.target.closest(
+                    ".produto-botao"
+                );
+
+            if (!botao) {
+                return;
+            }
+
+            const card =
+                botao.closest(
+                    ".card-produto, .card-pao-queijo"
+                );
+
+            if (!card) {
+                return;
+            }
+
+            abrirModalProdutoPublico(
+                card
+            );
+        }
+    );
+
+
+    fecharModalProdutoPublico.addEventListener(
+        "click",
+        fecharModalProdutoPublicoFunc
+    );
+
+    modalProdutoPublicoOverlay.addEventListener(
+        "click",
+        fecharModalProdutoPublicoFunc
+    );
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+            if (
+                event.key === "Escape" &&
+                modalProdutoPublico.classList.contains(
+                    "ativo"
+                )
+            ) {
+                fecharModalProdutoPublicoFunc();
+            }
+        }
+    );
 
     /* =========================================================
     INICIAL

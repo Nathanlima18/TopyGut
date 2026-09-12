@@ -1632,6 +1632,177 @@ button {
     white-space: nowrap;
 }
 
+/* =====================================================
+   MODAL - PRODUTO PÚBLICO
+===================================================== */
+
+.modal-produto-publico {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.modal-produto-publico.ativo {
+    display: flex;
+}
+
+.modal-produto-publico-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+}
+
+.modal-produto-publico-conteudo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 32px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+}
+
+.modal-produto-publico-fechar {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    border: none;
+    background: transparent;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.modal-produto-publico-imagem {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f3f3f3;
+    margin-bottom: 22px;
+}
+
+.modal-produto-publico-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.modal-produto-publico-categoria {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #f27da6;
+}
+
+.modal-produto-publico-conteudo h2 {
+    margin: 0 0 8px;
+    font-size: 32px;
+    color: #0767a5;
+}
+
+.modal-produto-publico-tamanho {
+    display: block;
+    margin-bottom: 14px;
+    font-weight: 700;
+    color: #666666;
+}
+
+.modal-produto-publico-descricao {
+    margin-bottom: 24px;
+    color: #555555;
+    line-height: 1.6;
+}
+
+.modal-produto-publico-chamada {
+    background: #f5faff;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-produto-publico-chamada h3 {
+    margin: 0 0 6px;
+    color: #0767a5;
+}
+
+.modal-produto-publico-chamada p {
+    margin: 0;
+}
+
+.modal-produto-publico-acoes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.modal-produto-publico-btn {
+    flex: 1;
+    min-width: 180px;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-weight: 800;
+}
+
+.modal-produto-publico-btn.principal {
+    background: #0c91d1;
+    color: #ffffff;
+}
+
+.modal-produto-publico-btn.whatsapp {
+    background: #25d366;
+    color: #ffffff;
+}
+
+.modal-produto-publico-contato {
+    border-top: 1px solid #eeeeee;
+    padding-top: 20px;
+}
+
+.modal-produto-publico-contato strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #333333;
+}
+
+.modal-produto-publico-contato p {
+    margin: 0 0 8px;
+    color: #666666;
+}
+
+.modal-produto-publico-contato a {
+    color: #0767a5;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+
+    .modal-produto-publico-conteudo {
+        padding: 24px;
+        border-radius: 22px;
+    }
+
+    .modal-produto-publico-conteudo h2 {
+        font-size: 26px;
+    }
+
+}
+
 /* =========================================================
    RESPONSIVIDADE - TABLET / NOTEBOOK
 ========================================================= */

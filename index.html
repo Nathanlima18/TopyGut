@@ -408,49 +408,162 @@
 
    <!-- ==================================================
      HÁBITOS SAUDÁVEIS + FIORINOS
-=================================================== -->
+    =================================================== -->
 
-<section class="fiorinos-container">
+    <section class="fiorinos-container">
 
-    <div class="fiorinos-conteudo">
+        <div class="fiorinos-conteudo">
 
-        <!-- TEXTO -->
+            <!-- TEXTO -->
 
-        <div class="fiorinos-texto">
+            <div class="fiorinos-texto">
 
-            <span class="fiorinos-tag">
-                Entre em Contato!
-            </span>
+                <span class="fiorinos-tag">
+                    Entre em Contato!
+                </span>
 
-            <h2>
-                Se interessou em algum dos
-                <span>nossos produtos?</span>
-            </h2>
+                <h2>
+                    Se interessou em algum dos
+                    <span>nossos produtos?</span>
+                </h2>
 
-            <p>
-                Entregamos com rapidez em toda a Grande São Paulo, Interior, Sul de Minas Gerais e Rio de Janeiro.
-            </p>
+                <p>
+                    Entregamos com rapidez em toda a Grande São Paulo, Interior, Sul de Minas Gerais e Rio de Janeiro.
+                </p>
+
+            </div>
+
+
+            <!-- FIORINOS -->
+
+            <div class="fiorinos-veiculos">
+
+                <img
+                    src="img/fiorinos.png"
+                    alt="Fiorinos Topy'Gut e Pão de Queijo do Wagner"
+                    class="fiorinos-img"
+                >
+
+            </div>
 
         </div>
 
+    </section>
 
-        <!-- FIORINOS -->
 
-        <div class="fiorinos-veiculos">
+    <!-- =====================================================
+        MODAL - DETALHES DO PRODUTO
+    ===================================================== -->
 
-            <img
-                src="img/fiorinos.png"
-                alt="Fiorinos Topy'Gut e Pão de Queijo do Wagner"
-                class="fiorinos-img"
+    <div
+        class="modal-produto-publico"
+        id="modalProdutoPublico"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-produto-publico-overlay"
+            id="modalProdutoPublicoOverlay"
+        ></div>
+
+        <div class="modal-produto-publico-conteudo">
+
+            <button
+                type="button"
+                class="modal-produto-publico-fechar"
+                id="fecharModalProdutoPublico"
+                aria-label="Fechar"
             >
+                ×
+            </button>
+
+
+            <div
+                class="modal-produto-publico-imagem"
+                id="modalProdutoPublicoImagem"
+            ></div>
+
+
+            <span
+                class="modal-produto-publico-categoria"
+                id="modalProdutoPublicoCategoria"
+            ></span>
+
+
+            <h2 id="modalProdutoPublicoNome">
+                Produto
+            </h2>
+
+
+            <span
+                class="modal-produto-publico-tamanho"
+                id="modalProdutoPublicoTamanho"
+            ></span>
+
+
+            <p
+                class="modal-produto-publico-descricao"
+                id="modalProdutoPublicoDescricao"
+            ></p>
+
+
+            <div class="modal-produto-publico-chamada">
+
+                <h3>
+                    Se interessou?
+                </h3>
+
+                <p>
+                    Faça seu pedido diretamente pelo nosso sistema.
+                </p>
+
+            </div>
+
+
+            <div class="modal-produto-publico-acoes">
+
+                <a
+                    href="area-cliente.html"
+                    class="modal-produto-publico-btn principal"
+                >
+                    Fazer pedido
+                </a>
+
+                <a
+                    href="#"
+                    class="modal-produto-publico-btn whatsapp"
+                    id="btnWhatsappProduto"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Falar no WhatsApp
+                </a>
+
+            </div>
+
+
+            <div class="modal-produto-publico-contato">
+
+                <strong>
+                    Ainda não é cadastrado?
+                </strong>
+
+                <p>
+                    Entre em contato com nossa equipe para solicitar seu cadastro.
+                </p>
+
+                <a
+                    href="mailto:vendas.topygut@outlook.com"
+                    id="emailProdutoContato"
+                >
+                    vendas.topygut@outlook.com
+                </a>
+
+            </div>
 
         </div>
 
     </div>
-
-</section>
-
-
 
     <!-- ==================================================
          RODAPÉ
