@@ -836,20 +836,82 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function abrirEdicaoProduto(produto) {
 
-        produtoEmEdicao = produto;
+        produtoEmEdicao =
+            produto;
+
 
         try {
+
             variacoesProduto =
-                JSON.parse(produto.dataset.variacoes || "[]");
+                JSON.parse(
+                    produto.dataset.variacoes || "[]"
+                );
 
         } catch (erro) {
 
             variacoesProduto = [];
+
         }
+
 
         renderizarVariacoes();
 
-        tituloModalProduto.textContent = "Editar produto";
+
+        tituloModalProduto.textContent =
+            "Editar produto";
+
+
+        nomeProduto.value =
+            produto.dataset.nome || "";
+
+
+        categoriaProduto.value =
+            produto.dataset.categoria || "";
+
+
+        if (saborProduto) {
+
+            saborProduto.value =
+                produto.dataset.sabor || "";
+
+        }
+
+
+        tamanhoProduto.value =
+            produto.dataset.tamanho || "";
+
+
+        precoProduto.value =
+            Number(
+                produto.dataset.preco
+            ).toLocaleString(
+                "pt-BR",
+                {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }
+            );
+
+
+        statusProduto.value =
+            produto.dataset.status || "ativo";
+
+
+        descricaoProduto.value =
+            produto.dataset.descricao || "";
+
+
+        modalProduto.classList.add(
+            "ativo"
+        );
+
+
+        modalProduto.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+    }
 
         function atualizarProduto(
             produto,
@@ -2429,4 +2491,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     carregarDescontos();
 
-}});
+});
