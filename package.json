@@ -1,0 +1,20 @@
+{
+  "name": "topygut",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "@getbrevo/brevo": "^6.0.3",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.3.0",
+    "mysql2": "^3.24.4",
+    "nodemailer": "^10.0.3"
+  }
+}
