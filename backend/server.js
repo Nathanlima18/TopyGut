@@ -43,14 +43,11 @@ async function enviarEmailPedido({
 
     const nomePagamento = {
 
-        pix:
-            "Pix",
+        pix: "Pix",
 
-        boleto:
-            "Boleto",
+        boleto: "Boleto",
 
-        faturamento_10:
-            "Faturamento em 10 dias"
+        faturamento_10: "Faturamento em 10 dias"
 
     };
 
@@ -118,9 +115,7 @@ async function enviarEmailPedido({
                         border-bottom:1px solid #e8edf1;
                         text-align:right;
                     ">
-                        ${formatarMoeda(
-                            item.precoUnitario
-                        )}
+                        ${formatarMoeda( item.precoUnitario )}
                     </td>
 
                     <td style="
@@ -128,26 +123,19 @@ async function enviarEmailPedido({
                         border-bottom:1px solid #e8edf1;
                         text-align:right;
                     ">
-                        ${formatarMoeda(
-                            item.subtotal
-                        )}
+                        ${formatarMoeda( item.subtotal )}
                     </td>
 
                 </tr>
 
             `;
-
         }
     );
 
-
     let htmlDesconto = "";
 
-
     if (
-        Number(
-            pedido.descontoValor
-        ) > 0
+        Number(pedido.descontoValor) > 0
     ) {
 
         htmlDesconto = `
@@ -162,9 +150,7 @@ async function enviarEmailPedido({
                     "
                 >
                     Desconto
-                    (${Number(
-                        pedido.descontoPercentual
-                    )}%)
+                    (${Number( pedido.descontoPercentual )}%)
                 </td>
 
                 <td style="
@@ -173,9 +159,7 @@ async function enviarEmailPedido({
                     font-weight:bold;
                     color:#c34c62;
                 ">
-                    - ${formatarMoeda(
-                        pedido.descontoValor
-                    )}
+                    - ${formatarMoeda( pedido.descontoValor )}
                 </td>
 
             </tr>
@@ -315,7 +299,6 @@ async function enviarEmailPedido({
                             margin-top:24px;
                         "
                     >
-
                         <tr>
 
                             <td style="
@@ -330,9 +313,7 @@ async function enviarEmailPedido({
                                 text-align:right;
                                 font-weight:bold;
                             ">
-                                ${formatarMoeda(
-                                    pedido.subtotal
-                                )}
+                                ${formatarMoeda( pedido.subtotal )}
                             </td>
 
                         </tr>
@@ -359,9 +340,7 @@ async function enviarEmailPedido({
                                 font-weight:bold;
                                 color:#1596d2;
                             ">
-                                ${formatarMoeda(
-                                    pedido.total
-                                )}
+                                ${formatarMoeda( pedido.total )}
                             </td>
 
                         </tr>
@@ -410,11 +389,9 @@ async function enviarEmailPedido({
 
         destinatarios.push({
 
-            email:
-                cliente.email,
+            email:cliente.email,
 
-            name:
-                cliente.razao_social
+            name: cliente.razao_social
 
         });
 
@@ -427,14 +404,11 @@ async function enviarEmailPedido({
 
         destinatarios.push({
 
-            email:
-                process.env.EMAIL_VENDEDOR,
+            email: process.env.EMAIL_VENDEDOR,
 
-            name:
-                "Topy'Gut Vendas"
+            name: "Topy'Gut Vendas"
 
         });
-
     }
 
 
@@ -450,24 +424,17 @@ async function enviarEmailPedido({
                     "0"
                 )} - Topy'Gut`,
 
-            htmlContent:
-                html,
+            htmlContent: html,
 
             sender: {
+                name: "Topy'Gut",
 
-                name:
-                    "Topy'Gut",
-
-                email:
-                    process.env.EMAIL_VENDEDOR
-
+                email: process.env.EMAIL_VENDEDOR
             },
 
-            to:
-                destinatarios
+            to: destinatarios
 
         });
-
 }
 
 
@@ -479,16 +446,11 @@ const app = express();
 
 app.use(cors());
 
-app.use(
-    express.json()
-);
+app.use(express.json());
 
-const PORT =
-    process.env.PORT ||
-    3000;
+const PORT = process.env.PORT || 3000;
 
-
-    /* =========================================================
+/* =========================================================
    GARANTE PASTAS DE UPLOAD
 ========================================================= */
 
@@ -517,7 +479,6 @@ if (
             recursive: true
         }
     );
-
 }
 
 
@@ -533,7 +494,6 @@ if (
             recursive: true
         }
     );
-
 }
 
 /* =========================================================
@@ -546,6 +506,19 @@ app.use(
         path.join(
             __dirname,
             "uploads"
+        )
+    )
+);
+
+/* =========================================================
+   FRONTEND
+========================================================= */
+
+app.use(
+    express.static(
+        path.join(
+            __dirname,
+            ".."
         )
     )
 );
@@ -4670,17 +4643,20 @@ app.get(
 );
 
 /* =========================================================
-   ROTA DE TESTE DO SERVIDOR
+   ROTA SERVIDOR
 ========================================================= */
 
 app.get(
     "/",
     (req, res) => {
 
-        return res.json({
-            mensagem:
-                "API Topy'Gut funcionando."
-        });
+        return res.sendFile(
+            path.join(
+                __dirname,
+                "..",
+                "index.html"
+            )
+        );
 
     }
 );
