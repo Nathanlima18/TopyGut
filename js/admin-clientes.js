@@ -137,6 +137,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const mensagemCep =
         document.getElementById("mensagemCep");
 
+    const listaAdmins =
+        document.getElementById(
+            "listaAdmins"
+        );
+
+    const contadorAdmins =
+        document.getElementById(
+            "contadorAdmins"
+        );
+
+    const adminsVazio =
+        document.getElementById(
+            "adminsVazio"
+        );
 
     /* =====================================================
        CONTROLE
@@ -2808,11 +2822,374 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    async function carregarAdministradores() {
 
+    const token =
+        sessionStorage.getItem(
+            "topygut_token"
+        ) ||
+        localStorage.getItem(
+            "topygut_token"
+        );
+
+
+    if (!token) {
+        return;
+    }
+
+
+    try {
+
+        const resposta =
+            await fetch(
+                `${API_URL}/admins`,
+                {
+                    headers: {
+                        "Authorization":
+                            "Bearer " + token
+                    }
+                }
+            );
+
+
+        const dados =
+            await resposta.json();
+
+
+        if (!resposta.ok) {
+
+            console.error(
+                "Erro ao carregar administradores:",
+                dados
+            );
+
+            return;
+        }
+
+
+        listaAdmins.innerHTML = "";
+
+
+            const admins =
+                Array.isArray(
+                    dados.administradores
+                )
+                    ? dados.administradores
+                    : [];
+
+
+            contadorAdmins.textContent =
+                admins.length === 1
+                    ? "1 administrador"
+                    : `${admins.length} administradores`;
+
+
+            adminsVazio.style.display =
+                admins.length === 0
+                    ? "block"
+                    : "none";
+
+
+            admins.forEach(
+                function (admin) {
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "cliente-item";
+
+
+                    item.dataset.id =
+                        admin.id;
+
+                    item.dataset.status =
+                        admin.status;
+
+
+                    const iniciais =
+                        admin.nome
+                            .split(" ")
+                            .filter(Boolean)
+                            .slice(0, 2)
+                            .map(
+                                function (parte) {
+                                    return parte[0];
+                                }
+                            )
+                            .join("")
+                            .toUpperCase();
+
+
+                    const textoStatus =
+                        admin.status === "ativo"
+                            ? "Ativo"
+                            : "Inativo";
+
+
+                    const textoBotao =
+                        admin.status === "ativo"
+                            ? "Desativar"
+                            : "Ativar";
+
+
+                    item.innerHTML = `
+
+                        <div class="cliente-avatar">
+                            ${iniciais}
+                        </div>
+
+
+                        <div class="cliente-nome">
+
+                            <strong>
+                                ${admin.nome}
+                            </strong>
+
+                            <span>
+                                Administrador
+                            </span>
+
+                        </div>
+
+
+                        <div class="cliente-email">
+                            ${admin.email}
+                        </div>
+
+
+                        <span
+                            class="status-cliente ${admin.status}"
+                        >
+                            ${textoStatus}
+                        </span>
+
+
+                        <div class="cliente-acoes">
+
+                            <button
+                                type="button"
+                                class="btn-status-admin"
+                            >
+                                ${textoBotao}
+                            </button>
+
+                        </div>
+
+                    `;
+
+
+                    listaAdmins.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao conectar ao carregar administradores:",
+                    erro
+                );
+
+            }
+
+    }
+
+
+        listaAdmins.addEventListener(
+        "click",
+        async function (event) {
+
+            const item =
+                event.target.closest(
+                    ".cliente-item"
+                );
+
+
+            if (!item) {
+                return;
+            }
+
+
+            const adminId =
+                item.dataset.id;
+
+
+            const token =
+                sessionStorage.getItem(
+                    "topygut_token"
+                ) ||
+                localStorage.getItem(
+                    "topygut_token"
+                );
+
+
+            /* =============================================
+            EXCLUIR
+            ============================================= */
+
+            if (
+                event.target.classList.contains(
+                    "btn-excluir-admin"
+                )
+            ) {
+
+                const confirmar =
+                    confirm(
+                        "Deseja realmente excluir este administrador?"
+                    );
+
+
+                if (!confirmar) {
+                    return;
+                }
+
+
+                try {
+
+                    const resposta =
+                        await fetch(
+                            `${API_URL}/admins/${adminId}`,
+                            {
+                                method: "DELETE",
+
+                                headers: {
+                                    "Authorization":
+                                        "Bearer " + token
+                                }
+                            }
+                        );
+
+
+                    const dados =
+                        await resposta.json();
+
+
+                    if (!resposta.ok) {
+
+                        alert(
+                            dados.mensagem ||
+                            "Não foi possível excluir o administrador."
+                        );
+
+                        return;
+                    }
+
+
+                    await carregarAdministradores();
+
+
+                } catch (erro) {
+
+                    console.error(
+                        "Erro ao excluir administrador:",
+                        erro
+                    );
+
+
+                    alert(
+                        "Não foi possível conectar ao servidor."
+                    );
+
+                }
+
+
+                return;
+            }
+
+
+            /* =============================================
+            ATIVAR / DESATIVAR
+            ============================================= */
+
+            if (
+                event.target.classList.contains(
+                    "btn-status-admin"
+                )
+            ) {
+
+                const statusAtual =
+                    item.dataset.status;
+
+
+                const novoStatus =
+                    statusAtual === "ativo"
+                        ? "inativo"
+                        : "ativo";
+
+
+                try {
+
+                    const resposta =
+                        await fetch(
+                            `${API_URL}/admins/${adminId}/status`,
+                            {
+                                method: "PATCH",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json",
+
+                                    "Authorization":
+                                        "Bearer " + token
+                                },
+
+                                body:
+                                    JSON.stringify({
+                                        status:
+                                            novoStatus
+                                    })
+                            }
+                        );
+
+
+                    const dados =
+                        await resposta.json();
+
+
+                    if (!resposta.ok) {
+
+                        alert(
+                            dados.mensagem ||
+                            "Não foi possível alterar o administrador."
+                        );
+
+                        return;
+                    }
+
+
+                    await carregarAdministradores();
+
+
+                } catch (erro) {
+
+                    console.error(
+                        "Erro ao alterar administrador:",
+                        erro
+                    );
+
+
+                    alert(
+                        "Não foi possível conectar ao servidor."
+                    );
+
+                }
+
+            }
+
+        }
+    );
+    
     /* =====================================================
        ESTADO INICIAL
     ===================================================== */
 
     carregarClientes();
-
+    carregarAdministradores();
 });

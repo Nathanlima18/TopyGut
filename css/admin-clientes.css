@@ -1397,6 +1397,205 @@ button {
 
 
 /* =========================================================
+   ADMINISTRADORES
+========================================================= */
+
+.administradores-card {
+    margin-top: 32px;
+    padding: 38px;
+
+    background-color: #ffffff;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 14px 35px rgba(24, 68, 97, 0.08);
+}
+
+
+.administradores-card .card-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-bottom: 28px;
+
+    border-bottom: 1px solid #e6eef3;
+}
+
+
+.administradores-card .card-subtitulo {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #f77fa5;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.administradores-card h2 {
+    margin: 0;
+
+    color: #075e96;
+
+    font-size: 30px;
+}
+
+
+#contadorAdmins {
+    padding: 10px 18px;
+
+    background-color: #eef8fd;
+
+    color: #075e96;
+
+    border-radius: 999px;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+#listaAdmins .cliente-item {
+    display: grid;
+
+    grid-template-columns:
+        64px
+        minmax(180px, 1fr)
+        minmax(240px, 1.5fr)
+        100px
+        auto;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 24px 20px;
+
+    border-bottom: 1px solid #edf2f5;
+}
+
+
+#listaAdmins .cliente-item:last-child {
+    border-bottom: none;
+}
+
+
+#listaAdmins .cliente-avatar {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #eaf6fc;
+
+    color: #00639c;
+
+    border-radius: 50%;
+
+    font-weight: 800;
+}
+
+
+#listaAdmins .cliente-nome {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+#listaAdmins .cliente-nome strong {
+    color: #172b3a;
+
+    font-size: 16px;
+}
+
+
+#listaAdmins .cliente-nome span {
+    color: #8898a5;
+
+    font-size: 13px;
+}
+
+
+#listaAdmins .cliente-email {
+    color: #455d6d;
+}
+
+
+#listaAdmins .status-cliente {
+    width: fit-content;
+
+    padding: 8px 15px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+#listaAdmins .status-cliente.ativo {
+    background-color: #e4f7ed;
+
+    color: #219653;
+}
+
+
+#listaAdmins .status-cliente.inativo {
+    background-color: #fdebee;
+
+    color: #d94b69;
+}
+
+
+#listaAdmins .cliente-acoes {
+    display: flex;
+
+    gap: 10px;
+
+    justify-content: flex-end;
+}
+
+
+.btn-status-admin,
+.btn-excluir-admin {
+    padding: 12px 18px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.btn-status-admin {
+    background-color: #fdebf2;
+
+    color: #df4f7b;
+}
+
+
+.btn-excluir-admin {
+    background-color: #ffe6e6;
+
+    color: #df3333;
+}
+
+/* =========================================================
    CELULAR PEQUENO
 ========================================================= */
 

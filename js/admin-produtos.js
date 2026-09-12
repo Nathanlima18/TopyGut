@@ -846,7 +846,7 @@ document.addEventListener("DOMContentLoaded", function () {
             produto.dataset.categoria;
 
         saborProduto.value =
-            produto.dataset.sabor;
+            produto.dataset.sabor || "";
 
         tamanhoProduto.value =
             produto.dataset.tamanho;

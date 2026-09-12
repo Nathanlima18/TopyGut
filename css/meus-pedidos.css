@@ -583,7 +583,7 @@ button {
     border-top: 1px solid #e6eef3;
 }
 
-.pedido-detalhes.aberto {
+.pedido-detalhes.ativo {
     display: block;
 }
 

@@ -3,4 +3,4 @@
 ========================================================= */
 
 const API_URL =
-    "http://localhost:3000";
+    "https://topygut-production.up.railway.app";
