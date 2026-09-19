@@ -487,7 +487,7 @@ document.addEventListener("DOMContentLoaded", function () {
            try {
 
     const dadosFormulario =
-        new FormData(form);
+        new FormData(formulario);
 
 
     const resposta =
@@ -523,7 +523,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
-    form.reset();
+    formulario.reset();
 
 
     if (curriculoNome) {
