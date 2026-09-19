@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
        ELEMENTOS DO FORMULÁRIO
     ===================================================== */
 
+    const API_URL = "https://topygut-production.up.railway.app";
     const formulario = document.getElementById("formTrabalhe");
-
     const nome = document.getElementById("nome");
     const nascimento = document.getElementById("nascimento");
     const email = document.getElementById("email");
@@ -409,7 +409,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     formulario.addEventListener(
         "submit",
-        function (event) {
+        async function (event) {
             /*
                 O envio real ainda está desativado.
 
@@ -484,15 +484,69 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-            /* =============================================
-               TESTE CONCLUÍDO
-            ============================================= */
+           try {
 
-            alert(
-                "Formulário preenchido corretamente!\n\n" +
-                "Na próxima etapa configuraremos o " +
-                "envio da candidatura."
-            );
+    const dadosFormulario =
+        new FormData(form);
+
+
+    const resposta =
+        await fetch(
+            `${API_URL}/trabalhe-conosco`,
+            {
+                method: "POST",
+
+                body:
+                    dadosFormulario
+            }
+        );
+
+
+    const dados =
+        await resposta.json();
+
+
+    if (!resposta.ok) {
+
+        alert(
+            dados.mensagem ||
+            "Não foi possível enviar a candidatura."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Candidatura enviada com sucesso!"
+    );
+
+
+    form.reset();
+
+
+    if (curriculoNome) {
+
+        curriculoNome.textContent =
+            "Nenhum arquivo selecionado";
+
+    }
+
+
+} catch (erro) {
+
+    console.error(
+        "Erro ao enviar candidatura:",
+        erro
+    );
+
+
+    alert(
+        "Não foi possível conectar ao servidor."
+    );
+
+}
 
         }
     );

@@ -617,6 +617,265 @@ const uploadProduto =
 
     });
 
+/* =========================================================
+   CONFIGURAÇÃO DO MULTER - CURRÍCULO
+========================================================= */
+
+const uploadCurriculo =
+    multer({
+
+        storage:
+            multer.memoryStorage(),
+
+        limits: {
+            fileSize:
+                5 * 1024 * 1024
+        },
+
+        fileFilter:
+            function (
+                req,
+                file,
+                cb
+            ) {
+
+                const tiposPermitidos = [
+                    "application/pdf",
+                    "application/msword",
+                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                ];
+
+
+                if (
+                    tiposPermitidos.includes(
+                        file.mimetype
+                    )
+                ) {
+
+                    cb(
+                        null,
+                        true
+                    );
+
+                } else {
+
+                    cb(
+                        new Error(
+                            "Envie o currículo em PDF, DOC ou DOCX."
+                        )
+                    );
+
+                }
+
+            }
+
+});
+
+/* =========================================================
+   TRABALHE CONOSCO - ENVIAR CANDIDATURA
+========================================================= */
+
+app.post(
+    "/trabalhe-conosco",
+
+    uploadCurriculo.single("curriculo"),
+
+    async (req, res) => {
+
+        try {
+
+            const {
+                nome,
+                nascimento,
+                email,
+                telefone,
+                endereco,
+                cidade,
+                cep,
+                experiencia
+            } = req.body;
+
+
+            if (
+                !nome ||
+                !nascimento ||
+                !email ||
+                !telefone ||
+                !endereco ||
+                !cidade ||
+                !cep
+            ) {
+
+                return res.status(400).json({
+                    mensagem:
+                        "Preencha todos os campos obrigatórios."
+                });
+
+            }
+
+
+            if (!req.file) {
+
+                return res.status(400).json({
+                    mensagem:
+                        "Anexe seu currículo."
+                });
+
+            }
+
+
+            const html = `
+
+                <div style="
+                    font-family: Arial, Helvetica, sans-serif;
+                    color: #163047;
+                ">
+
+                    <h2 style="
+                        color: #0f659f;
+                    ">
+                        Nova candidatura - Trabalhe Conosco
+                    </h2>
+
+
+                    <p>
+                        Uma nova candidatura foi enviada pelo site da Topy'Gut.
+                    </p>
+
+
+                    <p>
+                        <strong>Nome:</strong>
+                        ${nome}
+                    </p>
+
+
+                    <p>
+                        <strong>Data de nascimento:</strong>
+                        ${nascimento}
+                    </p>
+
+
+                    <p>
+                        <strong>E-mail:</strong>
+                        ${email}
+                    </p>
+
+
+                    <p>
+                        <strong>Telefone / WhatsApp:</strong>
+                        ${telefone}
+                    </p>
+
+
+                    <p>
+                        <strong>Endereço:</strong>
+                        ${endereco}
+                    </p>
+
+
+                    <p>
+                        <strong>Cidade:</strong>
+                        ${cidade}
+                    </p>
+
+
+                    <p>
+                        <strong>CEP:</strong>
+                        ${cep}
+                    </p>
+
+
+                    <p>
+                        <strong>Experiência profissional:</strong>
+                        <br>
+                        ${experiencia || "Não informada"}
+                    </p>
+
+                </div>
+
+            `;
+
+
+            await brevoClient
+                .transactionalEmails
+                .sendTransacEmail({
+
+                    subject:
+                        `Nova candidatura - ${nome}`,
+
+                    htmlContent:
+                        html,
+
+                    sender: {
+
+                        name:
+                            "Topy'Gut",
+
+                        email:
+                            process.env.EMAIL_VENDEDOR
+
+                    },
+
+                    to: [
+
+                        {
+
+                            email:
+                                process.env.EMAIL_VENDEDOR,
+
+                            name:
+                                "Topy'Gut"
+
+                        }
+
+                    ],
+
+                    attachment: [
+
+                        {
+
+                            name:
+                                req.file.originalname,
+
+                            content:
+                                req.file.buffer.toString(
+                                    "base64"
+                                )
+
+                        }
+
+                    ]
+
+                });
+
+
+            return res.status(200).json({
+
+                mensagem:
+                    "Candidatura enviada com sucesso!"
+
+            });
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao enviar candidatura:",
+                erro
+            );
+
+
+            return res.status(500).json({
+
+                mensagem:
+                    "Não foi possível enviar a candidatura."
+
+            });
+
+        }
+
+    }
+);
 
 /* =========================================================
    AUTENTICAÇÃO
